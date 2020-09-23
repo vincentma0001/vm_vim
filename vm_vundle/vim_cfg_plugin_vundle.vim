@@ -1,21 +1,32 @@
 " ================================================================================================ "
 " ==                                                                                            == "
-" ==                                        VIM 配置文件                                        == "
+" ==                                      Vundle 配置文件                                       == "
 " ==                                                                                            == "
-" == ------------------------------------------------------------------------------------------ == "
+" ------------------------------------------------------------------------------------------------ "
 " ==                                                                                            == "
-" ==   Author         : v.m.  (vincent_ma0001@hotmail.com)                                      == "
-" ==   Version        : 0.0.0.0                                                                 == "
-" ==   Create Time    : 2020-09-10 20:51:51                                                     == "
-" ==   Modify Time    : 2020-09-10 20:51:51                                                     == "
-" ==   Issue          :                                                                         == "
-" ==   Change List    :                                                                         == "
-" == 	  [ 1.0.0.5 ] - 添加Airline(漂亮的状态栏)                                               == "
-" == 	  [ 1.0.0.4 ] - 添加vim-coloresque(以背景方式显示颜色编码)                              == "
-" == 	  [ 1.0.0.3 ] - 添加molokaii(配色方案)                                                  == "
-" == 	  [ 1.0.0.2 ] - 添加vim-one(配色方案)                                                   == "
-" == 	  [ 1.0.0.1 ] - 添加solarized(配色方案)                                                 == "
-" ==      [ 0.0.0.0 ] - 基础版本                                                                == "
+" ==   Author               : v.m. ( vincent_ma0001@hotmail.com )                               == "
+" ==   Version              : 1.0.0.16                                                          == "
+" ==   Create Time          : 2020-09-23 13:04:34                                               == "
+" ==   Modify Time          : 2020-09-23 13:04:34                                               == "
+" ==   Issue  List          :                                                                   == "
+" ==   Change List          :                                                                   == "
+" ==     [    1.0.0.16    ] - 添加multiple cursors(操作多个目标)                                == "
+" ==     [    1.0.0.15    ] - 添加fzf（快速查找）                                               == "
+" ==     [    1.0.0.14    ] - 添加tabular(字符对齐)                                             == "
+" ==     [    1.0.0.13    ] - 添加Template(文件模板)                                            == "
+" ==     [    1.0.0.12    ] - 添加Ultisnippet(定义补全)                                         == "
+" ==     [    1.0.0.11    ] - 添加a.vim(C/H文件转换)                                            == "
+" ==     [    1.0.0.10    ] - 添加nerdtree(显示目录树)                                          == "
+" ==     [    1.0.0.9     ] - 添加indentLine(显示字符对齐)                                      == "
+" ==     [    1.0.0.8     ] - 添加TaskList(TODO列表支持)                                        == "
+" ==     [    1.0.0.7     ] - 添加fugitive(Git操作支持)                                         == "
+" ==     [    1.0.0.6     ] - 添加gitgutter(Git状态支持)                                        == "
+" ==     [    1.0.0.5     ] - 添加Airline(漂亮的状态栏)                                         == "
+" ==     [    1.0.0.4     ] - 添加vim-coloresque(以背景方式显示颜色编码)                        == "
+" ==     [    1.0.0.3     ] - 添加molokaii(配色方案)                                            == "
+" ==     [    1.0.0.2     ] - 添加vim-one(配色方案)                                             == "
+" ==     [    1.0.0.1     ] - 添加solarized(配色方案)                                           == "
+" ==     [    0.0.0.0     ] - 基础版本                                                          == "
 " ==   Note           :                                                                         == "
 " ==     以下范例用来支持不同格式的插件安装.                                                    == "
 " ==        1. Github上的插件                                                                   == "
@@ -36,9 +47,9 @@
 " ==        6. 如果已经安装过这个插件，可利用以下格式避免命名冲突                               == "
 " ==           Plugin 'ascenator/L9', {'name': 'newL9'}                                         == "
 " ==                                                                                            == "
-" == ------------------------------------------------------------------------------------------ == "
+" ------------------------------------------------------------------------------------------------ "
 " ==                                                                                            == "
-" ==   Copyright(C) : This file has copyrighted by v.m., the all right will been reserved!      == "
+" ==   Copyright(c) : This file has copyrighted by v.m., the all right will been reserved!      == "
 " ==                                                                                            == "
 " ================================================================================================ "
 
@@ -67,22 +78,22 @@ set rtp+=$vim_cfg_plugin_path/Vundle.vim
 " [ 加载插件 ] {{{
 call vundle#begin($vim_cfg_plugin_path)
 
-	" 管理Vundle (插件管理)
-	Plugin 'VundleVim/Vundle.vim'
+    " 管理Vundle (插件管理)
+    Plugin 'VundleVim/Vundle.vim'
 
 " ================================================================================================ "
 " ==  配色方案                                                                                  == "
 " ================================================================================================ "
 " [ 配色方案 ] {{{
 
-	" 管理Solarized (配色方案)
-	Plugin 'altercation/vim-colors-solarized'
+    " 管理Solarized (配色方案)
+    Plugin 'altercation/vim-colors-solarized'
 
-	" 安装vim_one (配色方案)
-	" Plugin 'rakr/vim-one'
+    " 安装vim_one (配色方案)
+    " Plugin 'rakr/vim-one'
 
-	" 安装molokai (配色方案)
-	Plugin 'tomasr/molokai'
+    " 安装molokai (配色方案)
+    Plugin 'tomasr/molokai'
 
     " 安装coloresque (以背景颜色显示颜色代码)    
     Bundle 'https://github.com/gorodinskiy/vim-coloresque.git'
@@ -96,9 +107,9 @@ call vundle#begin($vim_cfg_plugin_path)
 " ================================================================================================ "
 " [ 界面扩展 ] {{{
 
-	" 安装airline (个性化状态栏)
-	Plugin 'vim-airline/vim-airline'
-	Plugin 'vim-airline/vim-airline-themes'
+    " 安装airline (个性化状态栏)
+    Plugin 'vim-airline/vim-airline'
+    Plugin 'vim-airline/vim-airline-themes'
 
     " 安装nerdtree(树状目录)
     Plugin 'scrooloose/nerdtree'
@@ -136,10 +147,10 @@ call vundle#begin($vim_cfg_plugin_path)
 
     " 安装template(文件模板)
     Plugin 'aperezdc/vim-template'
-    "
-	" 安装ultisnips (代码片段快速补全). vim-snippets (github中以定义好的一些代码片段)
-	Plugin 'SirVer/ultisnips'
-	Plugin 'honza/vim-snippets'
+
+    " 安装ultisnips (代码片段快速补全). vim-snippets (github中以定义好的一些代码片段)
+    Plugin 'SirVer/ultisnips'
+    Plugin 'honza/vim-snippets'
     Plugin 'reconquest/vim-pythonx'
 
 " }}}
@@ -163,9 +174,11 @@ call vundle#begin($vim_cfg_plugin_path)
     " 字符对齐
     Plugin 'godlygeek/tabular'
 
+    " 多匹配操作
+    Plugin 'terryma/vim-multiple-cursors'
 
-    "Plugin 'octol/vim-cpp-enhanced-highlight'	
-	"Plugin 'sheerun/vim-polyglot'
+    "Plugin 'octol/vim-cpp-enhanced-highlight'
+    "Plugin 'sheerun/vim-polyglot'
 
 " }}}
 " ================================================================================================ "
@@ -176,14 +189,14 @@ call vundle#begin($vim_cfg_plugin_path)
 " ================================================================================================ "
 " [ 其他插件 ] {{{
 
-	" 安装Mark.vim
-	" Plugin 'inkarkat/vim-mark'
+    " 安装Mark.vim
+    " Plugin 'inkarkat/vim-mark'
 
-	" 安装ale(代码检测)
-	" Plugin 'w0rp/ale'
+    " 安装ale(代码检测)
+    " Plugin 'w0rp/ale'
 
-	" 管理fzf(快速查询)
-	" Plugin 'junegunn/fzf.vim'
+    " 管理fzf(快速查询)
+    Plugin 'junegunn/fzf.vim'
 
 " }}} ![ 其他插件 ]
 " ================================================================================================ "
@@ -247,10 +260,25 @@ source $vim_cfg_path_vundle/vim_cfg_plugin_gitgutter.vim
 " a.vim C文件切换
 source $vim_cfg_path_vundle/vim_cfg_plugin_a.vim
 
+" ------------------------------------------------------------------------------------------------ "
+"  multiple cursors 操纵多个目标
+source $vim_cfg_path_vundle/vim_cfg_plugin_multiple_cursors.vim
+
 " }}} ![ Plugins 参数设置 ]
 " ================================================================================================ "
 
+" ================================================================================================ "
+" ==  Usage :                                                                                   == "
+" ------------------------------------------------------------------------------------------------ "
+" [ Usage ] {{{ /*
 
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+
+" }}} */
 " ================================================================================================ "
 " ==                                          结束文件                                          == "
 " ================================================================================================ "
+

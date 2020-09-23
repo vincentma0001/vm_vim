@@ -52,7 +52,7 @@ class vLine(object):
     def Line_l ( self, tRsv=[] ):
         import operator
         ltRsv = tRsv if operator.ne( tRsv, [] ) else self.tTxtRsv
-        lsLineTxt = cmt_fmt()[0]+ltRsv[0]
+        lsLineTxt = cmt()[0]+ltRsv[0]
         return lsLineTxt
     # }}} ! [ Line_l ]
 
@@ -60,7 +60,7 @@ class vLine(object):
     def Line_r ( self, tRsv=[] ):
         import operator
         ltRsv = tRsv if operator.ne( tRsv, []) else self.tTxtRsv
-        lsLineTxt = ltRsv[1]+cmt_fmt()[2]
+        lsLineTxt = ltRsv[1]+cmt()[2]
         return lsLineTxt
     # }}} ! [ Line_r ]
 # }}} ! [ Line funcs ] 

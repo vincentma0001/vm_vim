@@ -26,7 +26,12 @@ scriptencoding utf-8
 " ================================================================================================
 " TODO 配置说明
 " ================================================================================================
-let g:UltiSnipsSnippetDirectories = [ "e:/MyWork/MyVim/vm_Snips" ]
+
+" 设置ultisnippet模板加载目录
+let $VIM_PLUGIN_ULTISNIPPET = $VIM_CFG_PATH."/vm_snips"
+let g:UltiSnipsSnippetDirectories = [ $VIM_PLUGIN_ULTISNIPPET ]
+
+" 设置触发点
 let g:UltiSnipsExpandTrigger="<tab>"
 
 " 使用 tab 切换下一个触发点，shit+tab 上一个触发点
