@@ -6,8 +6,8 @@
 " ==                                                                                            == "
 " ==   Author               : v.m. ( vincent_ma0001@hotmail.com )                               == "
 " ==   Version              : 1.0.0.0                                                           == "
-" ==   Create Time          : 2020-09-23 09:17:15                                               == "
-" ==   Modify Time          : 2020-09-23 09:17:15                                               == "
+" ==   Create Time          : 2020-09-23 11:16:30                                               == "
+" ==   Modify Time          : 2020-09-23 11:16:30                                               == "
 " ==   Issue  List          :                                                                   == "
 " ==   Change List          :                                                                   == "
 " ==     [    0.0.0.0     ] - Basic version                                                     == "
@@ -30,14 +30,7 @@ scriptencoding utf-8
 " ================================================================================================ "
 " [ Configures ] {{{
 
-let g:gitgutter_max_signs = 500  " default value (Vim < 8.1.0614, Neovim < 0.4.0)
-let g:gitgutter_max_signs = -1   " default value (otherwise)
 
-let g:gitgutter_terminal_reports_focus = 0
-
-map ggt <ESC>:GitGutterToggle<CR>
-nmap ]h <Plug>(GitGutterNextHunk)
-nmap [h <Plug>(GitGutterPrevHunk)
 
 " }}}
 " ================================================================================================ "

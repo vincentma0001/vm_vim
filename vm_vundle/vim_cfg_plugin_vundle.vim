@@ -148,11 +148,18 @@ call vundle#begin($vim_cfg_plugin_path)
 " ================================================================================================ "
 " [ 功能扩展 ] {{{
 
+    " 安装Git操作支持
+    Plugin 'tpope/vim-fugitive'
+
     " 安装Git支持
     Plugin 'airblade/vim-gitgutter'
 
     " 安装a.vim提供在.c文件与.h文件之间切换
     Plugin 'vim-scripts/a.vim'
+
+    " 字符对齐
+    Plugin 'godlygeek/tabular'
+
 
     "Plugin 'octol/vim-cpp-enhanced-highlight'	
 	"Plugin 'sheerun/vim-polyglot'
@@ -222,7 +229,11 @@ source $vim_cfg_path_vundle/vim_cfg_plugin_snippet.vim
 source $vim_cfg_path_vundle/vim_cfg_plugin_template.vim 
 
 " ------------------------------------------------------------------------------------------------ "
-" Git支持
+" Git操作支持
+source $vim_cfg_path_vundle/vim_cfg_plugin_fugitive.vim
+
+" ------------------------------------------------------------------------------------------------ "
+" Git状态支持
 source $vim_cfg_path_vundle/vim_cfg_plugin_gitgutter.vim
 
 " ------------------------------------------------------------------------------------------------ "

@@ -34,6 +34,9 @@ onoremap <C-A> <C-C>gggH<C-O>G
 snoremap <C-A> <C-C>gggH<C-O>G 
 xnoremap <C-A> <C-C>ggVG 
 
+map ggt <ESC>:GitGutterToggle<CR>
+nmap ]h <Plug>(GitGutterNextHunk)
+nmap [h <Plug>(GitGutterPrevHunk)
 " =========================================================================================
 " ==                                   结束文件                                          ==
 " =========================================================================================

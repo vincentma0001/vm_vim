@@ -6,8 +6,8 @@
 " ==                                                                                            == "
 " ==   Author               : v.m. ( vincent_ma0001@hotmail.com )                               == "
 " ==   Version              : 1.0.0.0                                                           == "
-" ==   Create Time          : 2020-09-23 09:17:15                                               == "
-" ==   Modify Time          : 2020-09-23 09:17:15                                               == "
+" ==   Create Time          : 2020-09-23 10:48:15                                               == "
+" ==   Modify Time          : 2020-09-23 10:48:15                                               == "
 " ==   Issue  List          :                                                                   == "
 " ==   Change List          :                                                                   == "
 " ==     [    0.0.0.0     ] - Basic version                                                     == "
@@ -30,14 +30,7 @@ scriptencoding utf-8
 " ================================================================================================ "
 " [ Configures ] {{{
 
-let g:gitgutter_max_signs = 500  " default value (Vim < 8.1.0614, Neovim < 0.4.0)
-let g:gitgutter_max_signs = -1   " default value (otherwise)
 
-let g:gitgutter_terminal_reports_focus = 0
-
-map ggt <ESC>:GitGutterToggle<CR>
-nmap ]h <Plug>(GitGutterNextHunk)
-nmap [h <Plug>(GitGutterPrevHunk)
 
 " }}}
 " ================================================================================================ "
@@ -46,6 +39,74 @@ nmap [h <Plug>(GitGutterPrevHunk)
 " ==  Usage :                                                                                   == "
 " ------------------------------------------------------------------------------------------------ "
 " [ Usage ] {{{
+"
+" ------------------------------------------------------------------------------------------------ "
+" [ Command 1 : :Tab /= ] {{{
+"
+"one = 1
+"two = 2
+"three = 3
+"four = 4
+" 
+" =>
+"
+"one   = 1
+"two   = 2
+"three = 3
+"four  = 4
+"
+" }}}
+" ------------------------------------------------------------------------------------------------ "
+"
+" ------------------------------------------------------------------------------------------------ "
+" [ Command 2 : :Tab /: ] {{{
+"
+"title: "Aligning assignments"
+"h264Src: "/media/alignment.mov",
+"oggSrc: "/media/alignment.ogv"
+"posterSrc: "/media/alignment.png"
+"duration: 320,
+" =>
+"title     : "Aligning assignments"
+"h264Src   : "/media/alignment.mov",
+"oggSrc    : "/media/alignment.ogv"
+"posterSrc : "/media/alignment.png"
+"duration  : 320,
+"
+" }}}
+" ------------------------------------------------------------------------------------------------ "
+"
+" ------------------------------------------------------------------------------------------------ "
+" [ Command 3 :  :Tab /:  \zs ] {{{
+"
+"title: "Aligning assignments"
+"h264Src: "/media/alignment.mov",
+"oggSrc: "/media/alignment.ogv"
+"posterSrc: "/media/alignment.png"
+"duration: 320,
+" =>
+"title:          "Aligning assignments"
+"h264Src:        "/media/alignment.mov",
+"oggSrc:         "/media/alignment.ogv"
+"posterSrc:      "/media/alignment.png"
+"duration:       320,
+"
+" }}}
+" ------------------------------------------------------------------------------------------------ "
+"
+" ------------------------------------------------------------------------------------------------ "
+" [ Command 4 : :Tab /| ] {{{
+"
+" |start|eat|left|
+" |12|5|7|
+" |20|5|15|
+" =>
+" | start | eat | left |
+" | 12    | 5   | 7    |
+" | 20    | 5   | 15   |
+"
+" }}}
+" ------------------------------------------------------------------------------------------------ "
 " }}}
 " ================================================================================================ "
 " ==                                   结束文件                                                 == "
