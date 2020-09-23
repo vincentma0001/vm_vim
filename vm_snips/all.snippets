@@ -1,0 +1,386 @@
+# ================================================================================================ #
+# ==                                                                                            == #
+# ==                                        all.snippets                                        == #
+# ==                                                                                            == #
+# == ------------------------------------------------------------------------------------------ == #
+# ==                                                                                            == #
+# ==   Author               : v.m. ( vincent_ma000!hotmail.com )                                == #
+# ==   Version              : 0.0.0.0                                                           == #
+# ==   Create Time          : 2020-09-14 01:32:13                                               == #
+# ==   Modify Time          : 2020-09-14 01:32:13                                               == #
+# ==   Issue  List          :                                                                   == #
+# ==   Change List          :                                                                   == #
+# ==     [    0.0.0.0     ] - Basic version                                                     == #
+# ==                                                                                            == #
+# == ------------------------------------------------------------------------------------------ == #
+# ==                                                                                            == #
+# ==   Copyright(c) : This file has copyrighted by v.m., the all right will been reserved!      == #
+# ==                                                                                            == #
+# ================================================================================================ #
+
+# sligthly lower priority than everything else since specialized versions
+# should overwrite. The user needs to adjust her priority in her snippets to
+# ~-55 so that other filetypes will still overwrite
+priority -60
+
+# ================================================================================================ #
+# ==  载入python函数                                                                            == #
+# ================================================================================================ #
+# [ global ] {{{
+global !p
+import string,vim,re,time,Ultisnips
+import px.snippets
+
+from vm_snip_define import *
+#from vm_snip_vim    import *
+from vm_snip_line   import vLine
+endglobal
+# }}} ![ global ]
+
+# ================================================================================================ #
+# ==  折叠代码块                                                                                == #
+# ================================================================================================ #
+# [ 折叠代码块 ] {{{
+
+# ------------------------------------------------------------------------------------------------ #
+# [ foldh : Insert a vim fold marker ] {{{
+snippet foldh "Insert a vim fold marker" bw
+`!p snip.rv = cmt_fmt()[0]` [ ${1:fold comment} ] {{{
+endsnippet
+# }}} End of SnipFunc foldh
+# ------------------------------------------------------------------------------------------------ #
+
+# ------------------------------------------------------------------------------------------------ #
+# [ foldc : Insert a vim fold close marker ] {{{
+snippet foldc "Insert a vim fold close marker" bw
+`!p snip.rv = cmt_fmt()[0]` }}} ![ ${1:fold comment} ]
+endsnippet
+# }}} End of SnipFunc foldc
+# ------------------------------------------------------------------------------------------------ #
+
+# ------------------------------------------------------------------------------------------------ #
+# [ fold : Insert a vim fold marker pair ] {{{
+snippet fold "Insert a vim fold marker pair" bw
+`!p snip.rv = cmt_fmt()[0]` [ ${1:fold comment} ] {{{
+${0:${VISUAL}}
+`!p snip.rv = cmt_fmt()[0]` }}} ![ $1 ]
+endsnippet
+# }}} End of SnipFunc fold
+# ------------------------------------------------------------------------------------------------ #
+
+# }}} ![ 折叠代码块 ]
+# ================================================================================================ #
+
+# ================================================================================================ #
+# ==  时间相关代码块                                                                            == #
+# ================================================================================================ #
+# [ 时间相关代码段 ] {{{
+
+# ------------------------------------------------------------------------------------------------ #
+# [ date :  date fmt (YYYY-MM-DD) ] {{{
+snippet date " date fmt (YYYY-MM-DD)" bw
+`!v strftime("%Y-%m-%d")`
+endsnippet
+# }}} End of SnipFunc date
+# ------------------------------------------------------------------------------------------------ #
+
+# ------------------------------------------------------------------------------------------------ #
+# [ time : time fmt (hh:mm:ss) ] {{{
+snippet time "time fmt (hh:mm:ss)FuncComment" bw
+`!v strftime("%H:%M:%S")`
+endsnippet
+# }}} End of SnipFunc time
+# ------------------------------------------------------------------------------------------------ #
+
+# ------------------------------------------------------------------------------------------------ #
+# [ datetime : datetime fmt (YYYY-MM-DD hh:mm:ss ] {{{
+snippet datetime " datetime fmt (YYYY-MM-DD hh:mm:ss) " bw
+`!v strftime("%Y-%m-%d %H:%M:%S")`
+endsnippet
+# }}} End of SnipFunc datetime
+# ------------------------------------------------------------------------------------------------ #
+
+# }}} ![ 时间相关代码块 ]
+# ================================================================================================ #
+
+# ================================================================================================ #
+# ==  注释相关代码块                                                                            == #
+# ================================================================================================ #
+# [ 注释相关代码块 ] {{{
+
+# ------------------------------------------------------------------------------------------------ #
+# [ #= : Comment splite line ] {{{
+snippet #= "Comment splite line" bw
+`!p line=vLine()
+``!p snip.rv=line.Line_txt_f('=',[" ===","=== "])`
+endsnippet
+# }}} End of SnipFunc #=
+# ------------------------------------------------------------------------------------------------ #
+
+# ------------------------------------------------------------------------------------------------ #
+# [ #- : Comment splite line with char - ] {{{
+snippet #- "Comment splite line with char -" bw
+`!p line=vLine()
+``!p snip.rv=line.Line_txt_f('-', [" ---","--- "])`
+endsnippet
+# }}} End of SnipFunc #-
+# ------------------------------------------------------------------------------------------------ #
+
+# ------------------------------------------------------------------------------------------------ #
+# [ ## : Comment one line ] {{{
+snippet ## "Comment one line" bw
+`!p line=vLine()
+``!p snip.rv=line.Line_l()`${1:TODO (Add comment info)}`!p snip.rv=line.Line_spc_r(t[1])`
+endsnippet
+# }}} End of SnipFunc ##
+# ------------------------------------------------------------------------------------------------ #
+
+# ------------------------------------------------------------------------------------------------ #
+# [ #box : Comment box ] {{{
+snippet #box "Comment box" bw
+`!p 
+line=vLine()
+``!p snip.rv=line.Line_txt_f('=',[" ===","=== "])`
+`!p snip.rv =line.Line_spc_cl(t[1])`${1:TODO (Add comment info)}`!p snip.rv=line.Line_spc_cr(t[1])`
+`!p snip.rv =line.Line_txt_f('=',[" ===","=== "])`
+endsnippet
+# }}} End of SnipFunc #box
+# ------------------------------------------------------------------------------------------------ #
+
+
+# ------------------------------------------------------------------------------------------------ #
+# [ #lbox : comment box with txt left ] {{{
+snippet #lbox "comment box with txt left" bw
+`!p 
+line=vLine()
+``!p snip.rv=line.Line_txt_f('=',[" ===","=== "])`
+`!p snip.rv =line.Line_txt_l2("  ")`${1:TODO (Add comment info)}`!p snip.rv=line.Line_spc_r("  "+t[1])`
+`!p snip.rv =line.Line_txt_f('=',[" ===","=== "])`
+endsnippet
+# }}} End of SnipFunc #lbox
+# ------------------------------------------------------------------------------------------------ #
+
+# ------------------------------------------------------------------------------------------------ #
+# [ #cmt : Comment block ] {{{
+snippet #cmt "Comment block" bw
+`!p 
+line=vLine()
+``!p snip.rv=line.Line_txt_f('=',[" ===","=== "])`
+`!p snip.rv =line.Line_txt_l2(" ")`${1:TODO: Add Notes}`!p snip.rv=line.Line_spc_r(" "+t[1])`
+`!p snip.rv =line.Line_txt_f('=',[" ===","=== "])`
+`!p snip.rv =line.Line_l(["",""])` [ $1 ] {{{
+
+${0:${VISUAL}}
+
+`!p snip.rv =line.Line_l(["",""])` }}} ![ $1 ]
+`!p snip.rv =line.Line_txt_f('=',[" ===","=== "])`
+endsnippet
+# }}} End of SnipFunc #cmt
+# ------------------------------------------------------------------------------------------------ #
+
+# ------------------------------------------------------------------------------------------------ #
+# [ #cmt2 : Comment block ] {{{
+snippet #cmt2 "Comment block" bw
+`!p 
+line=vLine()
+``!p snip.rv=line.Line_txt_f('=',[" ===","=== "])`
+`!p snip.rv =line.Line_txt_l2(" ")`${1:TODO: Add Notes}`!p snip.rv=line.Line_spc_r(" "+t[1])`
+`!p snip.rv =line.Line_txt_f('-',[" ---","--- "])`
+`!p snip.rv =line.Line_l(["",""])` [ $1 ] {{{
+
+${0:${VISUAL}}
+
+`!p snip.rv =line.Line_l(["",""])` }}} ![ $1 ]
+`!p snip.rv =line.Line_txt_f('=',[" ===","=== "])`
+endsnippet
+# }}} End of SnipFunc #cmt2
+# ------------------------------------------------------------------------------------------------ #
+
+# ------------------------------------------------------------------------------------------------ #
+# [ #cmt3 : comment block type 3 ] {{{
+snippet #cmt3 "comment block type 3" bw
+`!p line=vLine()
+``!p snip.rv=line.Line_txt_f('-',[" ---","--- "])`
+`!p snip.rv =line.Line_l(["",""])` [ ${1:Comment info} ] {{{
+
+${0:${VISUAL}}
+
+`!p snip.rv =line.Line_l(["",""])` }}} ! [ $1 ]
+`!p snip.rv =line.Line_txt_f('-',[" ---","--- "])`
+
+endsnippet
+# ==  }}} End of SnipFunc #cmt3
+# ------------------------------------------------------------------------------------------------ #
+
+
+# ------------------------------------------------------------------------------------------------ #
+# [ #todo : Todo comment ] {{{
+snippet #todo "Todo comment" bw
+`!p line=vLine()
+``!p snip.rv =line.Line_l( ["",""] )`  ${1:TODO: Add Notes}
+endsnippet
+# }}} End of SnipFunc #todo
+# ------------------------------------------------------------------------------------------------ #
+
+# }}} ![ 注释相关代码块 ]
+# ================================================================================================ #
+
+# ================================================================================================ #
+# ==  文件模板代码块                                                                            == #
+# ================================================================================================ #
+# [ 文件模板代码块 ] {{{
+
+# ------------------------------------------------------------------------------------------------ #
+# [ file : file template ] {{{
+snippet file "file template" bw
+`!p line=vLine()
+``!p snip.rv =line.Line_txt_f('=',[" ===","=== "])`
+`!p snip.rv  =line.Line_txt_f(' '                )`
+`!p snip.rv  =line.Line_spc_cl(t[1])`${1:`!p snip.rv=snip.fn`}`!p snip.rv=line.Line_spc_cr(t[1])`
+`!p snip.rv  =line.Line_txt_f(' '                )`
+`!p snip.rv  =line.Line_txt_f('-',[" ---","--- "])`
+`!p snip.rv  =line.Line_txt_f(' '                )`
+`!p snip.rv  =line.Line_txt_t( line.Txt_l ("  Author"            ,gLine['Len1'] )+" : "+gContxt['Author']+" ( "+gContxt['Email']+" ) ")`
+`!p snip.rv  =line.Line_txt_t( line.Txt_l ("  Version"           ,gLine['Len1'] )+" : "+"0.0.0.0" )`
+`!p snip.rv  =line.Line_txt_t( line.Txt_l ("  Create Time"       ,gLine['Len1'] )+" : "+strtime() )`
+`!p snip.rv  =line.Line_txt_t( line.Txt_l ("  Modify Time"       ,gLine['Len1'] )+" : "+strtime() )`
+`!p snip.rv  =line.Line_txt_t( line.Txt_l ("  Issue  List"       ,gLine['Len1'] )+" : " )`
+`!p snip.rv  =line.Line_txt_t( line.Txt_l ("  Change List"       ,gLine['Len1'] )+" : " )`
+`!p snip.rv  =line.Line_txt_t( line.Txt_c3("    [","0.0.0.0","]" ,gLine['Len1'] )+" - Basic version" )`
+`!p snip.rv  =line.Line_txt_f(' '                )`
+`!p snip.rv  =line.Line_txt_f('-',[" ---","--- "])`
+`!p snip.rv  =line.Line_txt_f(' '                )`
+`!p snip.rv  =line.Line_txt_t( "  Copyright(c) : "+gContxt['Lisense'] )`
+`!p snip.rv  =line.Line_txt_f(' '                )`
+`!p snip.rv  =line.Line_txt_f('=',[" ===","=== "])`
+
+${0:`!p snip.rv=line_l(" ")`TODO : Add codes file!}
+
+`!p snip.rv  =line.Line_txt_f('=',[" ===","=== "])`
+`!p snip.rv  =line.Line_txt_c(   "End of file"   )`
+`!p snip.rv  =line.Line_txt_f('=',[" ===","=== "])`
+endsnippet
+# }}} End of SnipFunc file
+# ------------------------------------------------------------------------------------------------ #
+
+# ------------------------------------------------------------------------------------------------ #
+# [ fileh : file header template ] {{{
+pre_expand "del snip.buffer[snip.line]; snip.buffer.append(''); snip.cursor.set(0, 0)"
+snippet fileh "file header template" bw
+`!p line=vLine()
+``!p snip.rv =line.Line_txt_f('=',[" ===","=== "])`
+`!p snip.rv  =line.Line_txt_f(' '                )`
+`!p snip.rv  =line.Line_spc_cl(t[1])`${1:`!p snip.rv=snip.fn`}`!p snip.rv=line.Line_spc_cr(t[1])`
+`!p snip.rv  =line.Line_txt_f(' '                )`
+`!p snip.rv  =line.Line_txt_f('-',[" ---","--- "])`
+`!p snip.rv  =line.Line_txt_f(' '                )`
+`!p snip.rv  =line.Line_txt_t( line.Txt_l ("  Author"            ,gLine['Len1'])+" : "+gContxt['Author']+" ( "+gContxt['Email']+" ) ")`
+`!p snip.rv  =line.Line_txt_t( line.Txt_l ("  Version"           ,gLine['Len1'])+" : "+"0.0.0.0" )`
+`!p snip.rv  =line.Line_txt_t( line.Txt_l ("  Create Time"       ,gLine['Len1'])+" : "+strtime() )`
+`!p snip.rv  =line.Line_txt_t( line.Txt_l ("  Modify Time"       ,gLine['Len1'])+" : "+strtime() )`
+`!p snip.rv  =line.Line_txt_t( line.Txt_l ("  Issue  List"       ,gLine['Len1'])+" : " )`
+`!p snip.rv  =line.Line_txt_t( line.Txt_l ("  Change List"       ,gLine['Len1'])+" : " )`
+`!p snip.rv  =line.Line_txt_t( line.Txt_c3("    [","0.0.0.0","]" ,gLine['Len1'])+" - Basic version" )`
+`!p snip.rv  =line.Line_txt_f(' '                )`
+`!p snip.rv  =line.Line_txt_f('-',[" ---","--- "])`
+`!p snip.rv  =line.Line_txt_f(' '                )`
+`!p snip.rv  =line.Line_txt_t( "  Copyright(c) : "+gContxt['Lisense'] )`
+`!p snip.rv  =line.Line_txt_f(' '                )`
+`!p snip.rv  =line.Line_txt_f('=',[" ===","=== "])`
+${0}
+endsnippet
+# }}} End of SnipFunc fileh
+# ------------------------------------------------------------------------------------------------ #
+
+# ------------------------------------------------------------------------------------------------ #
+# [ filet : file tail template ] {{{
+pre_expand "del snip.buffer[snip.line]; snip.buffer.append(''); snip.cursor.set(len(snip.buffer)-1, 0)"
+snippet filet "file tail template" bw
+${0}
+`!p line=vLine()
+``!p snip.rv =line.Line_txt_f('=',[" ===","=== "])`
+`!p snip.rv  =line.Line_txt_c(   "End of file"   )`
+`!p snip.rv  =line.Line_txt_f('=',[" ===","=== "])`
+endsnippet
+# }}} End of SnipFunc filet
+# ------------------------------------------------------------------------------------------------ #
+
+# ------------------------------------------------------------------------------------------------ #
+# [ #changelist : Create a new changlist line ] {{{
+snippet #changelist "Create a new changlist line" bw
+`!p line     =vLine()
+liWidth1     =gLine['Len1'] - str_len("    [") - str_len("]")
+liWidth2     =gLine['Len'] - gLine['Len1'] -str_len( " - " )
+``!p snip.rv =line.Line_l()+"    ["+line.Spc_cl( t[1], liWidth1 )`${1:0.0.0.0 }`!p snip.rv=line.Spc_cr( t[1], liWidth1 )+"]"
+` - ${2:TODO : add version change info.}`!p snip.rv=line.Spc_r( t[2], liWidth2 )+line.Line_r()`
+endsnippet
+# }}} End of SnipFunc #changlist
+# ------------------------------------------------------------------------------------------------ #
+
+# ------------------------------------------------------------------------------------------------ #
+# [ #issuelist : Create a issue comment line ] {{{
+snippet #issuelist "Create a issue comment line" bw
+`!p line     =vLine()
+liWidth1     =gLine['Len1'] - str_len("    [") - str_len("]")
+liWidth2     =gLine['Len'] - gLine['Len1'] -str_len( " - " )
+``!p snip.rv =line.Line_l()+"    ["+line.Spc_cl( t[1], liWidth1 )`${1:#0000000}`!p snip.rv=line.Spc_cr( t[1], liWidth1 )+"]"
+` - ${2:TODO : add issue info.}`!p snip.rv=line.Spc_r( t[2], liWidth2 )+line.Line_r()`
+endsnippet
+# }}} End of SnipFunc #issuelist
+# ------------------------------------------------------------------------------------------------ #
+
+# ------------------------------------------------------------------------------------------------ #
+# ==  [ #usage : usage info ] {{{
+snippet #usage "usage info" bw
+`!p line=vLine()
+``!p snip.rv =line.Line_txt_f('=',[" ===","=== "])`
+`!p snip.rv  =line.Line_txt_t(" Usage :"   )`
+`!p snip.rv  =line.Line_txt_f('-',[" ---","--- "])`
+`!p snip.rv  =line.Line_l(["",""])` [ Usage ] {{{ /*
+${0:${VISUAL: TODO add usage info}}
+`!p snip.rv  =line.Line_l(["",""])` }}} */
+endsnippet
+# ==  }}} End of SnipFunc #usage
+# ------------------------------------------------------------------------------------------------ #
+
+# }}} ![ 文件模板代码块 ]
+# ================================================================================================ #
+
+# ================================================================================================ #
+# ==  其他代码块                                                                                == #
+# ================================================================================================ #
+# [ 其他代码块 ] {{{
+
+# ------------------------------------------------------------------------------------------------ #
+# [ #snip : Create new snip func ] {{{
+snippet #snip "Create new snip func" bw
+
+`!p line=vLine()
+``!p snip.rv =line.Line_txt_f('-',[" ---","--- "])`
+`!p snip.rv  =line.Line_l()` [ $1 : $2 ] {{{
+`!p snip.rv  ="snippet"` ${1:FuncName} "${2:FuncComment}" bw
+${0:${VISUAL}}
+`!p snip.rv  ="endsnippet"`
+`!p snip.rv  =line.Line_l()` }}} End of SnipFunc $1
+`!p snip.rv  =line.Line_txt_f('-',[" ---","--- "])`
+
+endsnippet
+# }}} End of SnipFunc #snip
+# ------------------------------------------------------------------------------------------------ #
+
+# ------------------------------------------------------------------------------------------------ #
+# [ uuid : Random UUID ] {{{
+snippet uuid "Random UUID" bw
+`!p if not snip.c: import uuid; snip.rv = str(uuid.uuid4())`
+endsnippet
+# }}} End of SnipFunc uuid
+# ------------------------------------------------------------------------------------------------ #
+
+# }}} ![ 其他代码块 ]
+# ================================================================================================ #
+
+# vim:ft=snippets:
+
+# ================================================================================================ #
+# ==                                       End of file                                          == #
+# ================================================================================================ #
