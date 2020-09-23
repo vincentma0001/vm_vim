@@ -20,8 +20,11 @@ autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
 
 ""修改树的显示图标
+"let g:NERDTreeDirArrowExpandable = '+'
+"let g:NERDTreeDirArrowCollapsible = '-'
 let g:NERDTreeDirArrowExpandable = '►'
 let g:NERDTreeDirArrowCollapsible = '▼'
+
 let NERDTreeAutoCenter=1
 
 " 显示行号
@@ -39,7 +42,7 @@ let g:nerdtree_tabs_open_on_console_startup=1
 " 忽略一下文件的显示
 let NERDTreeIgnore=['\.pyc','\~$','\.swp']
 
-
+"""
 " let g:NERDTreeIndicatorMapCustom = {
 "    \ "Modified"  : "★",
 "    \ "Staged"    : "+",
@@ -52,6 +55,7 @@ let NERDTreeIgnore=['\.pyc','\~$','\.swp']
 "    \ 'Ignored'   : "◇",
 "    \ "Unknown"   : "⊙"
 "    \ }
+"""
 
 " =========================================================================================
 " ==                                   结束文件                                          ==

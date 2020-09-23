@@ -32,7 +32,7 @@ import string,vim,re,time,Ultisnips
 import px.snippets
 
 from vm_snip_define import *
-#from vm_snip_vim    import *
+from vm_snip_vim    import str_len,cmt_fmt,strtime
 from vm_snip_line   import vLine
 endglobal
 # }}} ![ global ]
@@ -308,9 +308,9 @@ endsnippet
 # ------------------------------------------------------------------------------------------------ #
 # [ #changelist : Create a new changlist line ] {{{
 snippet #changelist "Create a new changlist line" bw
-`!p line     =vLine()
-liWidth1     =gLine['Len1'] - str_len("    [") - str_len("]")
-liWidth2     =gLine['Len'] - gLine['Len1'] -str_len( " - " )
+`!p line=vLine()
+liWidth1=gLine['Len1']-str_len("    [")-str_len("]")
+liWidth2=gLine['Len']-gLine['Len1']-str_len(" - ")
 ``!p snip.rv =line.Line_l()+"    ["+line.Spc_cl( t[1], liWidth1 )`${1:0.0.0.0 }`!p snip.rv=line.Spc_cr( t[1], liWidth1 )+"]"
 ` - ${2:TODO : add version change info.}`!p snip.rv=line.Spc_r( t[2], liWidth2 )+line.Line_r()`
 endsnippet
@@ -320,9 +320,9 @@ endsnippet
 # ------------------------------------------------------------------------------------------------ #
 # [ #issuelist : Create a issue comment line ] {{{
 snippet #issuelist "Create a issue comment line" bw
-`!p line     =vLine()
-liWidth1     =gLine['Len1'] - str_len("    [") - str_len("]")
-liWidth2     =gLine['Len'] - gLine['Len1'] -str_len( " - " )
+`!p line=vLine()
+liWidth1=gLine['Len1']-str_len("    [")-str_len("]")
+liWidth2=gLine['Len']-gLine['Len1']-str_len(" - ")
 ``!p snip.rv =line.Line_l()+"    ["+line.Spc_cl( t[1], liWidth1 )`${1:#0000000}`!p snip.rv=line.Spc_cr( t[1], liWidth1 )+"]"
 ` - ${2:TODO : add issue info.}`!p snip.rv=line.Spc_r( t[2], liWidth2 )+line.Line_r()`
 endsnippet

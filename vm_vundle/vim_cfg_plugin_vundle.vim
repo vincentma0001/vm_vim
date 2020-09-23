@@ -117,7 +117,10 @@ call vundle#begin($vim_cfg_plugin_path)
 " [ 文档界面扩展 ] {{{
 
     " 安装vim-indent-guides (可视化缩进)
-    Plugin 'nathanaelkane/vim-indent-guides'
+    "Plugin 'nathanaelkane/vim-indent-guides'
+
+    " 安装indentLin(可视化对齐)
+    Plugin 'Yggdroot/indentLine'
 
     " 安装syntastic (静态代码分析)
     Plugin 'vim-syntastic/syntastic'
@@ -219,6 +222,10 @@ source $vim_cfg_path_vundle/vim_cfg_plugin_tasklist.vim
 " ------------------------------------------------------------------------------------------------ "
 " vim-indent_guides 可视化缩进
 source $vim_cfg_path_vundle/vim_cfg_plugin_indent_guides.vim
+
+" ------------------------------------------------------------------------------------------------ "
+" indentLine 可视化对齐
+source $vim_cfg_path_vundle/vim_cfg_plugin_indentLine.vim
 
 " ------------------------------------------------------------------------------------------------ 
 " Snippet 代码自动化
