@@ -1,2 +1,5 @@
 vm_plugins
 __pycache__
+/vm_fonts
+/*.swo
+/*.swp

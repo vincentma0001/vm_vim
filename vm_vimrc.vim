@@ -43,7 +43,6 @@ source $vim_cfg_path/vim_cfg_base.vim
 " ------------------------------------------------------------------------------------------------ "
 " [ 自定义函数 ] {{{
 let $vim_file_script_path = $vim_cfg_path."/vm_funcs"
-
 source $vim_file_script_path/vim_funcs.vim
 "source $vim_cfg_path/vim_cfg_func_newvimfile.vim
 " }}} ! [ 自定义函数 ]
@@ -54,7 +53,6 @@ source $vim_file_script_path/vim_funcs.vim
 " ------------------------------------------------------------------------------------------------ "
 " [ 使用Vundle管理插件 ] {{{
 let $vim_cfg_path_vundle = $vim_cfg_path."/vm_vundle"
-
 source $vim_cfg_path_vundle/vim_cfg_plugin_vundle.vim
 " }}} ! [ 使用Vundle管理插件 ]
 " ================================================================================================ "

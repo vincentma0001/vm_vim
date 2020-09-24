@@ -22,7 +22,7 @@
 " TODO 配置说明
 
 " vim配置文件目录变量
-set $vim_cfg_path="e:/MyWork/vm_vim"
+let $vim_cfg_path="e:/MyWork/vm_vim"
 
 " 加载配置文件
 source $vim_cfg_path/vm_vimrc.vim

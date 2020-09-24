@@ -133,7 +133,8 @@ set rulerformat=%15(%c%V\ %p%%%)
 " set backspace=2
 
 " 允许backspace和光标键跨越行边界
-" set whichwrap+=<,>,h,l" set linespace=0
+" set whichwrap+=<,>,h,l
+" set linespace=0
 
 " }}}
 " ================================================================================================ "
@@ -221,14 +222,13 @@ set foldcolumn=1
 "   syntax  用语法高亮来定义折叠
 "   diff    对没有更改的文本进行折叠
 "   marker  对文中的标志折叠
-
 set foldmethod=marker
+
 "启动时不要自动折叠代码
 set foldlevel=10
 
-" 用空格键来开关折叠 
+" 用空格键来开关折叠
 "nnoremap <space> @=((foldclosed(line('.')) < 0) ? 'zc':'zo')<CR> "
-nmap <space> <ESC>za<CR>
 " }}}
 
 " ================================================================================================ "

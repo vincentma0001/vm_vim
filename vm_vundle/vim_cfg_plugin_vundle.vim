@@ -145,6 +145,9 @@ call vundle#begin($vim_cfg_plugin_path)
 " ================================================================================================ "
 " [ 文档补全 ] {{{
 
+    " 安装YouCompleteMe(文档补全)
+    Plugin 'Valloric/YouCompleteMe'
+
     " 安装template(文件模板)
     Plugin 'aperezdc/vim-template'
 
@@ -244,7 +247,11 @@ source $vim_cfg_path_vundle/vim_cfg_plugin_indentLine.vim
 " Snippet 代码自动化
 source $vim_cfg_path_vundle/vim_cfg_plugin_snippet.vim
 
-" ------------------------------------------------------------------------------------------------ 
+" ------------------------------------------------------------------------------------------------ "
+" YouCompleteMe 文本自动补全
+source $vim_cfg_path_vundle/vim_cfg_plugin_youcompleteme.vim
+
+" ------------------------------------------------------------------------------------------------ "
 " template 文件模板
 source $vim_cfg_path_vundle/vim_cfg_plugin_template.vim 
 
