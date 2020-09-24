@@ -145,6 +145,9 @@ call vundle#begin($vim_cfg_plugin_path)
 " ================================================================================================ "
 " [ 文档补全 ] {{{
 
+    " 安装YouCompleteMe(文档补全)
+    Plugin 'Valloric/YouCompleteMe'
+
     " 安装template(文件模板)
     Plugin 'aperezdc/vim-template'
 
