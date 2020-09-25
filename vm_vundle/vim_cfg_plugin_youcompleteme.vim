@@ -34,8 +34,8 @@ scriptencoding utf-8
 let g:ycm_global_ycm_extra_conf=$vim_cfg_path."/vm_plugins/YouCompleteMe/.ycm_extra_conf.py"
 
 " 解决YouCompleteMe与UltiSnippet冲突问题
-let g:ycm_key_list_select_completion=[] 
-let g:ycm_key_list_previous_completion=[] 
+let g:ycm_key_list_select_completion=[]
+let g:ycm_key_list_previous_completion=[]
 
 " }}}
 " ================================================================================================ "
