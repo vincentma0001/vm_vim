@@ -3,3 +3,4 @@ __pycache__
 /vm_fonts
 /*.swo
 /*.swp
+/vm_vundle/*.swp
