@@ -23,9 +23,10 @@
 
 
 gLine = {
-  'Len'    :90,
-  'Len1'   :22,
-  'Len2'   :15,
+  'Len'         : 90,
+  'Len1'        : 22,
+  'Len2'        : 15,
+  'MinParamLen' : 20,
 }
 
 gContxt = {

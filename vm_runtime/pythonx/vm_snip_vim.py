@@ -66,7 +66,7 @@ def strtime():
 # [ get_args : 将一个以‘，’作为分割符的字符串转换为列表 ] {{{
 def get_args(arglist):
     args = [arg.strip() for arg in arglist.split(',') if arg]
-    return arg
+    return args
 # }}} ! [ get_args : 将一个以‘，’作为分割符的字符串转换为列表 ]
 # ------------------------------------------------------------------------------------------------ #
 

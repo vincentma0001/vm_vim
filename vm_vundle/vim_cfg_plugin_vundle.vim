@@ -270,8 +270,12 @@ source $vim_cfg_path_vundle/vim_cfg_plugin_gitgutter.vim
 source $vim_cfg_path_vundle/vim_cfg_plugin_a.vim
 
 " ------------------------------------------------------------------------------------------------ "
-"  multiple cursors 操纵多个目标
+" multiple cursors 操纵多个目标
 source $vim_cfg_path_vundle/vim_cfg_plugin_multiple_cursors.vim
+
+" ------------------------------------------------------------------------------------------------ "
+" Fzf 文件快熟查找
+source $vim_cfg_path_vundle/vim_cfg_plugin_fzf.vim
 
 " }}} ![ Plugins 参数设置 ]
 " ================================================================================================ "

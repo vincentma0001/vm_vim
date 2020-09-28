@@ -28,6 +28,8 @@ priority -60
 # ================================================================================================ #
 # [ global ] {{{
 global !p
+import string
+
 from vm_snip_vim    import *
 from vm_snip_define import *
 from vm_snip_line   import vLine
@@ -467,38 +469,47 @@ endsnippet
 # [ 函数定义代码块 ] {{{
 
 # ------------------------------------------------------------------------------------------------ #
-# [ funcd : define function ] {{{
-snippet funcd "define function" bw
-    // ${4:func description}
-    ${1:void} ${2:function_name}(${3});
+# [ dfunc : define function ] {{{
+snippet dfunc "define function" bw
+// ${4:func description}
+${1:void} ${2:function_name}(${3});
 endsnippet
-# }}} End of SnipFunc funcd
+# }}} End of SnipFunc dfunc
 # ------------------------------------------------------------------------------------------------ #
 
 # ------------------------------------------------------------------------------------------------ #
-# [ func : func define ] {{{
-snippet func "func define" bw
-// ================================================================================================ //
-// ==  $2 : ${4:todo (add function brief)}`!p snip.rv=str_space_l(g()['linelen']-str_len(t[2])-4,t[4], ' ')+line_r(" == ")` 
-// == ------------------------------------------------------------------------------------------ == //
-// ==  return   : ${5:todo ( add return comment info )}
-// ==  paramter : `!p
+# [ cfunc : func define ] {{{
+snippet cfunc "c func define" bw
+`!p line=vLine()`
+`!p snip.rv=line.Line_txt_f( '=', [" ===","=== "] )`
+`!p snip.rv=line.Line_txt_t( " Methord    : "+t[2]+"(...)" )`
+`!p snip.rv=line.Line_txt_f( '-' )`
+`!p snip.rv=line.Line_l()` Brief      : ${4:TODO ( Add function bref )}
+`!p snip.rv=line.Line_l()` Return     : ${5:TODO ( Add return value's comment info )}
+`!p snip.rv=line.Line_l()` Paramters  : `!p
 snip.rv = ""
 snip >> 2
-args = get_args(t[2])
+args = get_args(t[3])
 if args:
     for arg in args:
-        snip.rv += '\n' + '"' + ' ==     ' + str_fill_l(g()['len_2'],arg,' ') + ' - todo ( add paramter comment )'
+        lsArgName = arg.split(" ",-1)
+        if len(lsArgName)<2:
+            continue
+        snip.rv += '\n'
+        snip.rv += line.Line_l()
+        snip.rv += '    ' + lsArgName[1]+line.Spc_r(lsArgName[1],gLine['MinParamLen'])+ ' - [X] # TODO : Add comment for '+lsArgName[1]+' #'
 snip<<2
 `
-" [ $2 : $4 ] {{{ 
-${1:void} ${2:func_name} ( ${3:func_param} )
-    ${0}
-endfunction
-// }}} end of func $1
-// ================================================================================================ //
+`!p snip.rv=cmt()[0]` [ $1 $2 ( $3 ) ] {{{
+${1:void} ${2:func_name} ( ${3:p_type p_name} ) 
+{
+    ${0:${VISUAL}}
+}
+`!p snip.rv=cmt()[0]` }}} end of func $2(...)
+`!p snip.rv=line.Line_txt_f( '=', [" ===","=== "] )`
+
 endsnippet
-# }}} End of SnipFunc func
+# }}} End of SnipFunc cfunc
 # ------------------------------------------------------------------------------------------------ #
 
 # }}} ![ 函数定义代码块 ]

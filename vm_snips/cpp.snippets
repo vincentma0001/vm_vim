@@ -341,14 +341,77 @@ endsnippet
 # ------------------------------------------------------------------------------------------------ #
 
 # ------------------------------------------------------------------------------------------------ #
-# [ mfunc : class's function defin ] {{{
-snippet mfunc "class's function defin" bw
-${5:void} ${1:Class_Name}::${2:Func_name}(${3:Param_type} ${4:Param_name}) {
-    ${0}
+# [ mfunc : class's function define ] {{{
+snippet mfunc "class's function define" bw
+`!p line=vLine()`
+`!p snip.rv=line.Line_txt_f( '=', [" ===","=== "] )`
+`!p snip.rv=line.Line_txt_t( " Methord    : "+t[1]+"::"+t[2]+"(...)" )`
+`!p snip.rv=line.Line_txt_f( '-' )`
+`!p snip.rv=line.Line_l()` Brief      : ${5:TODO ( Add function bref )}
+`!p snip.rv=line.Line_l()` Return     : ${6:TODO ( Add return value's comment info )}
+`!p snip.rv=line.Line_l()` Paramters  : `!p
+snip.rv = ""
+snip >> 2
+args = get_args(t[3])
+if args:
+    for arg in args:
+        lsArgName = arg.split(" ",-1)
+        if len(lsArgName)<2:
+            continue
+        snip.rv += '\n'
+        snip.rv += line.Line_l()
+        snip.rv += '    ' + lsArgName[1]+line.Spc_r(lsArgName[1],gLine['MinParamLen'])+ ' - [X] # TODO : Add comment for '+lsArgName[1]+' #'
+snip<<2
+`
+`!p snip.rv=cmt()[0]` [ $4 $1::$2( $3 ) ] {{{
+${4:void} ${1:Class_Name}::${2:Func_name}( ${3:p_type p_name} )
+{
+    ${0:${VISUAL}}
 }
+`!p snip.rv=cmt()[0]` }}} end of func $1::$2(...)
+`!p snip.rv=line.Line_txt_f( '=', [" ===","=== "] )`
+
 endsnippet
 # }}} End of SnipFunc mfunc
 # ------------------------------------------------------------------------------------------------ #
+
+# ------------------------------------------------------------------------------------------------ #
+# ==  [ tfunc : class's function with template<> ] {{{
+snippet tfunc "class's function with template<>" bw
+`!p line=vLine()`
+`!p snip.rv=line.Line_txt_f( '=', [" ===","=== "] )`
+`!p snip.rv=line.Line_txt_t( " Methord    : "+t[3]+"<"+t[2]+">::"+t[4]+"(...)" )`
+`!p snip.rv=line.Line_txt_f( '-' )`
+`!p snip.rv=line.Line_l()` Brief      : ${7:TODO ( Add function bref )}
+`!p snip.rv=line.Line_l()` Return     : ${8:TODO ( Add return value's comment info )}
+`!p snip.rv=line.Line_l()` Paramters  : `!p
+snip.rv = ""
+snip >> 2
+args = get_args(t[5])
+if args:
+	liSpcLen = gLine['Len2']
+    for arg in args:
+        lsArgName = arg.split(" ",-1)
+        if len(lsArgName)<2:
+            continue
+        snip.rv += '\n'
+        snip.rv += line.Line_l()
+        snip.rv += '    ' + lsArgName[1]+line.Spc_r(lsArgName[1],gLine['MinParamLen'])+ ' - [X] # TODO : Add comment for '+lsArgName[1]+' #'
+snip<<2
+`
+`!p snip.rv=cmt()[0]` [ $6 $3<$2>::$4( $5 ) ] {{{ 
+template<${1:typename} ${2:tName}>
+${6:void} ${3:Class_Name}<$2>::${4:Func_name}( ${5:p_type p_name} )
+{
+    ${0:${VISUAL}}
+}
+`!p snip.rv=cmt()[0]` }}} end of func $3<$2>::$4(...)
+`!p snip.rv=line.Line_txt_f( '=', [" ===","=== "] )`
+
+endsnippet
+# ==  }}} End of SnipFunc tfunc
+# ------------------------------------------------------------------------------------------------ #
+
 
 # }}} ! [ Class定义 ]
 # ================================================================================================ #
