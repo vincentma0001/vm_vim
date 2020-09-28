@@ -36,12 +36,15 @@ def cmt():
     if commentstring.endswith("%s"):
         c = commentstring[:-2]
         return (c.rstrip(), c.rstrip(), c.rstrip(), "")
-    from vimsnippets import _parse_comments
-    comments = _parse_comments(vim.eval("&comments"))
-    for c in comments:
-        if c[0] == "SINGLE_CHAR":
-            return c[1:]
-    return comments[0][1:]
+
+    # return cmts for c,cpp files 
+    return ("//","//","//","")
+#    from vimsnippets import _parse_comments
+#    comments = _parse_comments(vim.eval("&comments"))
+#    for c in comments:
+#        if c[0] == "SINGLE_CHAR":
+#            return c[1:]
+#    return comments[0][1:]
 # }}} ! [ cmt : 获取当前文件类型的注释符 ]
 # ------------------------------------------------------------------------------------------------ #
 

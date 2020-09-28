@@ -282,8 +282,7 @@ lsTxtClass = " Class "+t[1]+" : "
 ``!p snip.rv = line.Line_txt_f("=",[" ===","=== "])`
 `!p snip.rv  = line.Line_l()+lsTxtClass`${2:TODO add class brief here}`!p snip.rv=line.Line_spc_r(lsTxtClass+t[2])`
 `!p snip.rv  = line.Line_txt_f("-",[" ---","--- "])`
-`!p snip.rv  = line.Line_l(["",""])` [ Class $1 ] {{{
-class ${1:class_name}
+class ${1:class_name} // {{{
 { 
 `!p snip.rv  = line.Line_txt_f("-",[" ---","--- "])`
 `!p snip.rv  = line.Line_l(["",""])` Construct & Destruct : {{{
@@ -300,16 +299,16 @@ private   :
 `!p snip.rv  = line.Line_l(["",""])` }}} ! Construct & Destruct
 
 `!p snip.rv  = line.Line_txt_f("-",[" ---","--- "])`
-`!p snip.rv  = line.Line_l(["",""])` Menbers : {{{
+`!p snip.rv  = line.Line_l(["",""])` Menbers  : {{{
 private   :
-    // TODO Add class's menbers here
+//  # TODO Add class's menbers here #
 `!p snip.rv  = line.Line_l(["",""])` }}} ! Members
 
 `!p snip.rv  = line.Line_txt_f("-",[" ---","--- "])`
-`!p snip.rv  = line.Line_l(["",""])` Functions : {{{
+`!p snip.rv  = line.Line_l(["",""])` Methods  : {{{
 public    :
-    // TODO Add class's functions here
-`!p snip.rv  = line.Line_l(["",""])` }}} ! Functions
+//  # TODO Add class's Methods here #
+`!p snip.rv  = line.Line_l(["",""])` }}} ! Methods
 
 `!p snip.rv  = line.Line_l(["",""])` }}} ! [ class $1 ]
 `!p snip.rv  = line.Line_txt_f('=',[" ===","=== "])`

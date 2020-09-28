@@ -4,3 +4,10 @@ __pycache__
 /*.swo
 /*.swp
 /vm_vundle/*.swp
+/vm_tmp/tst.c
+/vm_tmp/tst.cpp
+/vm_tmp/tst.h
+/vm_tmp/tst.hpp
+/vm_tmp/tst.py
+/vm_tmp/tst.vim
+/vm_tmp/.ycm_extra_conf.py
