@@ -200,6 +200,7 @@ call vundle#begin($vim_cfg_plugin_path)
     " Plugin 'w0rp/ale'
 
     " 管理fzf(快速查询)
+    Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
     Plugin 'junegunn/fzf.vim'
 
 " }}} ![ 其他插件 ]
