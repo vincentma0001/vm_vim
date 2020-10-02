@@ -7,7 +7,7 @@
 # ==   Author               : v.m. ( vincent_ma000!hotmail.com )                                == #
 # ==   Version              : 0.0.0.1                                                           == #
 # ==   Create Time          : 2020-09-14 01:53:57                                               == #
-# ==   Modify Time          : 2020-09-15 00:30:37                                               == #
+# ==   Modify Time          : 2020-10-01 12:43:56                                               == #
 # ==   Issue  List          :                                                                   == #
 # ==   Change List          :                                                                   == #
 # ==     [    0.0.0.1     ] - 修改函数注释                                                      == #
@@ -72,30 +72,34 @@ endsnippet
 # [ vim 函数相关代码块 ] {{{
 
 # ------------------------------------------------------------------------------------------------ #
-# [ func : create a vim function template ] {{{
-snippet func "create a vim function template" bw
+# [ vfunc : create a vim function template ] {{{
+snippet vfunc "create a vim function template" bw
 `!p line=vLine()`
-`!p snip.rv=line.Line_txt_f( '=', [" ===","=== "]  )`
-`!p snip.rv=line.Line_txt_t( ' Method     : '+t[1] )`
+`!p snip.rv=line.Line_txt_f( '=', [" ===","=== "] )`
+`!p snip.rv=line.Line_txt_t( " Methord : "+t[1]+"(...)" )`
 `!p snip.rv=line.Line_txt_f( '-' )`
-`!p snip.rv=line.Line_l()` Brief      : ${3:TODO ( Add function bref )}
-`!p snip.rv=line.Line_l()` return     : ${4:TODO ( Add return value's comment info )}
-`!p snip.rv=line.Line_l()` paramters  : `!p
+`!p snip.rv=line.Line_l()` Brief   : ${3:TODO : Add function brief #}
+`!p snip.rv=line.Line_l()` Return  : ${4:RET_VALUE}`!p snip.rv=line.Spc_r(t[4],gLine['MinParamLen'])` - [O] ${0:Nothing for return}
+`!p snip.rv=line.Line_l()` Params  : `!p
 snip.rv = ""
 snip >> 2
 args = get_args(t[2])
 if args:
-    for arg in args:
-        snip.rv += '\n' + cmt()[0] + ' ==     ' + arg+line.Spc_r(arg,gLine['Len2']) + ' - TODO ( Add comment for '+arg+' )'
+    for index in range(len(args)):
+        lsArgName = args[index].split(" ",-1)
+        if index==0:
+            snip.rv += lsArgName[-1]+line.Spc_r(lsArgName[-1],gLine['MinParamLen'])+ ' - [X] # TODO : Add comment for '+lsArgName[-1]+' #'
+            continue
+        snip.rv += '\n'+line.Line_l()+"           "+lsArgName[-1]+line.Spc_r(lsArgName[-1],gLine['MinParamLen'])+ ' - [X] # TODO : Add comment for '+lsArgName[-1]+' #'
 snip<<2
 `
 function! ${1:func_name} ( ${2:func_param} ) `!p snip.rv=cmt()[0]` {{{
-    ${0:${VISUAL:TODO Add codes}}
+    ${VISUAL:# TODO : add function codes here #}
 endfunction `!p snip.rv=cmt()[0]` }}} end of func $1
 `!p snip.rv=line.Line_txt_f( '=', [" ===","=== "] )`
 
 endsnippet
-# }}} End of SnipFunc func
+# }}} End of SnipFunc vfunc
 # ------------------------------------------------------------------------------------------------ #
 
 # }}} ![ vim 函数相关代码块 ]

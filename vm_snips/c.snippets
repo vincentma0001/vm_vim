@@ -7,7 +7,7 @@
 # ==   Author               : v.m. ( vincent_ma000!hotmail.com )                                == #
 # ==   Version              : 0.0.0.0                                                           == #
 # ==   Create Time          : 2020-09-14 11:18:27                                               == #
-# ==   Modify Time          : 2020-09-15 00:20:31                                               == #
+# ==   Modify Time          : 2020-10-02 15:48:55                                               == #
 # ==   Issue  List          :                                                                   == #
 # ==   Change List          :                                                                   == #
 # ==     [    0.0.0.0     ] - Basic version                                                     == #
@@ -107,21 +107,52 @@ endsnippet
 # [ 宏代码块 ] {{{
 
 # ------------------------------------------------------------------------------------------------ #
-# [ #include : Add a include file to .c file ] {{{
-snippet #inc "Add a include file to .c file" bw
-#include <${1:stdio}.h>
+# ==  [ #guard : Add file guard marcro ] {{{
+snippet #guard "Add file guard marcro" bw
+#ifndef   __`!v toupper(tr(expand("%"),'.','_'))`__
+#define   __`!v toupper(tr(expand("%"),'.','_'))`__
+
+${0:${VISUAL}}
+
+#endif // __`!v toupper(tr(expand("%"),'.','_'))`__
 endsnippet
-# }}} End of SnipFunc #include
+# ==  }}} End of SnipFunc #guard
 # ------------------------------------------------------------------------------------------------ #
 
 # ------------------------------------------------------------------------------------------------ #
-# [ #inc2 : Add a include file to .h file ] {{{
-snippet #inc2 "Add a include file to .h file" bw
-#ifndef     __`!p snip.rv=str(t[1].upper())`_H__
-#   Error : this file need #include <${1:stdio}.h>
-#endif  // !__`!p snip.rv=str(t[1].upper())`_H__
+# ==  [ #include : add include comment ] {{{
+snippet #include "add include comment" bw
+`!p line=vLine()`
+`!p snip.rv = line.Line_txt_f("=",[" ===","=== "] )`
+`!p snip.rv = line.Line_txt_t("Include files :")`
+`!p snip.rv = line.Line_txt_f("-")`
+`!p snip.rv = cmt()[0]` [ Include files ] {{{
+${0:${VISUAL}}
+`!p snip.rv = cmt()[0]` }}}
+
 endsnippet
-# }}} End of SnipFunc #inc2
+# ==  }}} End of SnipFunc #include
+# ------------------------------------------------------------------------------------------------ #
+
+# ------------------------------------------------------------------------------------------------ #
+# [ #inc : Add a include file to .c file ] {{{
+snippet #inc "Add include file to .c file" bw
+#include <${1:stdio}.h>
+endsnippet
+# }}} End of SnipFunc #inc
+# ------------------------------------------------------------------------------------------------ #
+
+# ------------------------------------------------------------------------------------------------ #
+# ==  [ #inc1 : Add include file ] {{{
+snippet #inc1 "Add include file" bw
+`!p 
+lsfile = split_file(t[1])
+`
+#ifndef     __`!p snip.rv=lsfile.upper()`_H__
+#   error this file need #include <${1:stdio}.h>
+#endif  // !__`!p snip.rv=lsfile.upper()`_H__
+endsnippet
+# ==  }}} End of SnipFunc #inc1
 # ------------------------------------------------------------------------------------------------ #
 
 # ------------------------------------------------------------------------------------------------ #
@@ -189,7 +220,7 @@ endsnippet
 # ------------------------------------------------------------------------------------------------ #
 # [ if1 : if codes in one line ] {{{
 snippet if1 "if codes in one line" bw
-	if (${1:true}) { ${0} };
+    if (${1:true}) { ${0} };
 endsnippet
 # }}} End of SnipFunc if1
 # ------------------------------------------------------------------------------------------------ #
@@ -242,11 +273,12 @@ endsnippet
 # [ switch : switch codes ] {{{
 snippet switch "switch codes" bw
 switch (${1:/* variable */}) {
+// {{{
     case ${2:/* variable case */}:
     { ${3:;} ${4:break;} }
     default:
     { ${5} }
-} // End of switch($1)
+} // }}} End of switch($1)
 endsnippet
 # }}} End of SnipFunc switch
 # ------------------------------------------------------------------------------------------------ #
@@ -255,9 +287,10 @@ endsnippet
 # [ switch2 : switch without define value ] {{{
 snippet switch2 "switch without define value" bw
 switch (${1:/* variable */}) {
+// {{{
     case ${2:/* variable case */}:
     { ${3:;} ${4:break;} }
-} // End of switch($1)
+} // }}} End of switch($1)
 endsnippet
 # }}} End of SnipFunc switch2
 # ------------------------------------------------------------------------------------------------ #
@@ -303,7 +336,7 @@ endsnippet
 # [ for : for(...)... loop codes ] {{{
 snippet for "for(...)... loop codes" bw
 for (int ${1:i} = 0; $1 < ${2:count}; $1${3:++}) {
-    ${0}
+    ${0:${VISUAL}}
 } // End of for ( $1 ...
 endsnippet
 # }}} End of SnipFunc for
@@ -319,7 +352,7 @@ endsnippet
 
 # ------------------------------------------------------------------------------------------------ #
 # [ ? : ? function code ] {{{
-snippet ? "? function code" bw
+snippet ? "? function code"
 ${1:/* a>b */} ? ${2:a} : ${3:b}
 endsnippet
 # }}} End of SnipFunc #?
@@ -353,103 +386,87 @@ endsnippet
 # [ 数据类型代码块 ] {{{
 
 # ------------------------------------------------------------------------------------------------ #
-# [ st : struct define ] {{{
+# [ struct : struct define ] {{{
 snippet struct "def struct data" bw
-// $1 {{{ : ${2:stName description}
-struct ${1:stName} {
-    ${3:int Data;}                // ${4:Data description}
+// struct $1 : ${2:stName description}
+struct ${1:stName}
+// {{{
+{
+    ${3:int miData;}                // ${4:Data description}
 } 
 // }}} End of def struct $1
-${0}
 endsnippet
-# }}} End of SnipFunc st
+# }}} End of SnipFunc struct
 # ------------------------------------------------------------------------------------------------ #
 
 # ------------------------------------------------------------------------------------------------ #
-# [ tdst : typedef struct data ] {{{
-snippet tdst "typedef struct data" bw
-// $1 {{{ : ${2:stName description}
-typedef struct ${1:stName} {
-    ${3:int Data;}                // ${4:Data description}
+# [ tStruct : typedef struct data ] {{{
+snippet tStruct "typedef struct data" bw
+// struct $1 : ${2:stName description}
+typedef struct ${1:stName} 
+// {{{
+{
+    ${3:int miData;}                // ${4:Data description}
 } *P`!p snip.rv=str(t[1]).upper()`
-// }}} End of def struct $
-${0}
+// }}} End of def struct $1
 endsnippet
-# }}} End of SnipFunc tdst
+# }}} End of SnipFunc tStruct
 # ------------------------------------------------------------------------------------------------ #
 
 # ------------------------------------------------------------------------------------------------ #
 # [ enum : def enum data ] {{{
 snippet enum "def enum data" bw
-// $1 {{{ : ${2:emName description}
-enum ${1:emName}{
+// enum $1 : ${2:emName description}
+enum ${1:emName}
+// {{{
+{
     ${3:emValue} = ${4:value}
 }
 // }}} End of def enum $1
-${0}
 endsnippet
-# }}} End of SnipFunc em
+# }}} End of SnipFunc enum
 # ------------------------------------------------------------------------------------------------ #
 
 # ------------------------------------------------------------------------------------------------ #
-# [ tdem : typedef enum data ] {{{
-snippet tdem "typedef enum data" bw
-// $1 {{{ : ${2:emName description}
-typedef enum ${1:emName}{
+# [ tEnum : typedef enum data ] {{{
+snippet tEnum "typedef enum data" bw
+// enum $1 : ${2:emName description}
+typedef enum ${1:emName}
+// {{{
+{
     ${3:emValue} = ${4:value}
 } *P`!p snip.rv=str(t[1]).upper()`
 // }}} End of def enum $1
-${0}
 endsnippet
-# }}} End of SnipFunc tdem
-# ------------------------------------------------------------------------------------------------ #
-
-# ------------------------------------------------------------------------------------------------ #
-# [ emRet : Set func return value enum ] {{{
-snippet emRet "Set func return value enum" bw
-// [ emRet ] {{{ : function default return value
-typedef enum emRet
-{
-    vSucceed    = 0,
-    vUnknown    = -1,
-    vTimeout    = -2,
-
-    vIsInvalied = -10,
-    vIsExisted  = -20,
-
-    vError      = vMinsInt,
-    vlError     = vMinsLong,
-    vulError    = vMaxuLong
-}*PRET
-// }}} End of def emRet 
-endsnippet
-# }}} End of SnipFunc emRet
+# }}} End of SnipFunc tEnum
 # ------------------------------------------------------------------------------------------------ #
 
 # ------------------------------------------------------------------------------------------------ #
 # [ union : def union data ] {{{
 snippet union "def union data" bw
-// $1 {{{ : ${2:uiName description}
-union ${1:uiName}{
-    ${3:int iValue = value;}
+// union $1 : ${2:$1 description}
+union ${1:uiName}
+// {{{
+{
+    ${0:int iValue = value;}
 }
 // }}} End of def union $1
-${0}
 endsnippet
 # }}} End of SnipFunc union
 # ------------------------------------------------------------------------------------------------ #
 
 # ------------------------------------------------------------------------------------------------ #
-# [ tdui : typedef union data ] {{{
-snippet tdui "typedef union data" bw
-// $1 {{{ : ${2:uiName description}
-typedef union ${1:uiName}{
-    ${3:int iValue = value;}
+# [ tUnion : typedef union data ] {{{
+snippet tUnion "typedef union data" bw
+// union $1 : ${2:$1 description}
+typedef union ${1:uiName}
+// {{{
+{
+    ${0:int iValue = value;}
 } *P`!p snip.rv=str(t[1]).upper()`
-// }}} End of def enum $1
-${0}
+// }}} End of def union $1
 endsnippet
-# }}} End of SnipFunc tdui
+# }}} End of SnipFunc tUnion
 # ------------------------------------------------------------------------------------------------ #
 
 # ------------------------------------------------------------------------------------------------ #
@@ -470,7 +487,7 @@ endsnippet
 
 # ------------------------------------------------------------------------------------------------ #
 # [ dfunc : define function ] {{{
-snippet dfunc "define function" bw
+snippet dfunc "define function"
 // ${4:func description}
 ${1:void} ${2:function_name}(${3});
 endsnippet
@@ -482,30 +499,29 @@ endsnippet
 snippet cfunc "c func define" bw
 `!p line=vLine()`
 `!p snip.rv=line.Line_txt_f( '=', [" ===","=== "] )`
-`!p snip.rv=line.Line_txt_t( " Methord    : "+t[2]+"(...)" )`
+`!p snip.rv=line.Line_txt_t( " Methord : "+t[1]+"(...)" )`
 `!p snip.rv=line.Line_txt_f( '-' )`
-`!p snip.rv=line.Line_l()` Brief      : ${4:TODO ( Add function bref )}
-`!p snip.rv=line.Line_l()` Return     : ${5:TODO ( Add return value's comment info )}
-`!p snip.rv=line.Line_l()` Paramters  : `!p
+`!p snip.rv=line.Line_l()` Brief   : ${4:TODO : Add function brief #}
+`!p snip.rv=line.Line_l()` Return  : `!p snip.rv=t[3]+line.Spc_r(t[3],gLine['MinParamLen'])` - [O] ${0:Nothing for return}
+`!p snip.rv=line.Line_l()` Params  : `!p
 snip.rv = ""
 snip >> 2
-args = get_args(t[3])
+args = get_args(t[2])
 if args:
-    for arg in args:
-        lsArgName = arg.split(" ",-1)
-        if len(lsArgName)<2:
+    for index in range(len(args)):
+        lsArgName = args[index].split(" ",-1)
+        if index==0:
+            snip.rv += lsArgName[-1]+line.Spc_r(lsArgName[-1],gLine['MinParamLen'])+ ' - [X] # TODO : Add comment for '+lsArgName[-1]+' #'
             continue
-        snip.rv += '\n'
-        snip.rv += line.Line_l()
-        snip.rv += '    ' + lsArgName[1]+line.Spc_r(lsArgName[1],gLine['MinParamLen'])+ ' - [X] # TODO : Add comment for '+lsArgName[1]+' #'
+        snip.rv += '\n'+line.Line_l()+"           "+lsArgName[-1]+line.Spc_r(lsArgName[-1],gLine['MinParamLen'])+ ' - [X] # TODO : Add comment for '+lsArgName[-1]+' #'
 snip<<2
 `
-`!p snip.rv=cmt()[0]` [ $1 $2 ( $3 ) ] {{{
-${1:void} ${2:func_name} ( ${3:p_type p_name} ) 
+${3:void} ${1:func_name} ( ${2:p_type p_name} )
+`!p snip.rv=cmt()[0]` {{{
 {
-    ${0:${VISUAL}}
+    ${VISUAL:# TODO : add function codes here #}
 }
-`!p snip.rv=cmt()[0]` }}} end of func $2(...)
+`!p snip.rv=cmt()[0]` }}} end of func $1(...)
 `!p snip.rv=line.Line_txt_f( '=', [" ===","=== "] )`
 
 endsnippet

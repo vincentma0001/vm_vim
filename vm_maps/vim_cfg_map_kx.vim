@@ -27,8 +27,15 @@ map <K0> <ESC>:!python %<CR>
 " K2    -  重新加载_vimrc文件
 map <K1> <ESC>:source $vim/_vimrc<CR>
 
-" K3    -  重新定义PluginInstall命令
-map <K2> <ESC>:PluginInstall<CR>
+"
+map <K4> <ESC>:YcmComplete GoToInclude<CR>
+map <K5> <ESC>:YcmComplete GoToDeclaration<CR>
+map <K6> <ESC>:YcmComplete GoToDefinition<CR>
+
+
+" K7    -  重新定义PluginInstall命令
+map <K7> <ESC>:PluginInstall<CR>
+map <K8> <ESC>:PluginClean<CR>
 
 
 " =========================================================================================

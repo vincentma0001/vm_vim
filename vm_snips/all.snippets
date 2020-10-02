@@ -7,7 +7,7 @@
 # ==   Author               : v.m. ( vincent_ma000!hotmail.com )                                == #
 # ==   Version              : 0.0.0.1                                                           == #
 # ==   Create Time          : 2020-09-14 01:32:13                                               == #
-# ==   Modify Time          : 2020-09-14 01:32:13                                               == #
+# ==   Modify Time          : 2020-10-02 22:30:44                                               == #
 # ==   Issue  List          :                                                                   == #
 # ==   Change List          :                                                                   == #
 # ==     [    0.0.0.1     ] - 添加#==,#--,$npvm功能                                             == #
@@ -109,6 +109,11 @@ endsnippet
 # ================================================================================================ #
 # [ 注释相关代码块 ] {{{
 
+# ================================================================================================ #
+# ==  线性注释                                                                                      == #
+# ================================================================================================ #
+# [ 线性注释 ] {{{
+
 # ------------------------------------------------------------------------------------------------ #
 # [ #= : Comment splite line ] {{{
 snippet #= "Comment splite line" bw
@@ -119,7 +124,7 @@ endsnippet
 # ------------------------------------------------------------------------------------------------ #
 
 # ------------------------------------------------------------------------------------------------ #
-# ==  [ $== : Comment splite line ] {{{
+# [ $== : Comment splite line ] {{{
 snippet $== "Comment splite line" bw
 `!p line=vLine()
 ``!p snip.rv=line.Line_txt_f('=',["====","===="])`
@@ -137,7 +142,7 @@ endsnippet
 # ------------------------------------------------------------------------------------------------ #
 
 # ------------------------------------------------------------------------------------------------ #
-# ==  [ #-- : Comment splite line with char - ] {{{
+# [ #-- : Comment splite line with char - ] {{{
 snippet #-- "Comment splite line with char -" bw
 `!p line=vLine()
 ``!p snip.rv=line.Line_txt_f('-', ["----","----"])`
@@ -153,6 +158,14 @@ snippet ## "Comment one line" bw
 endsnippet
 # }}} End of SnipFunc ##
 # ------------------------------------------------------------------------------------------------ #
+
+# }}} ![ 线性注释 ]
+# ================================================================================================ #
+
+# ================================================================================================ #
+# ==  Box注释                                                                                     == #
+# ================================================================================================ #
+# [ Box注释 ] {{{
 
 # ------------------------------------------------------------------------------------------------ #
 # [ #box : Comment box ] {{{
@@ -178,22 +191,13 @@ endsnippet
 # }}} End of SnipFunc #lbox
 # ------------------------------------------------------------------------------------------------ #
 
-# ------------------------------------------------------------------------------------------------ #
-# ==  [ $npvm : namespace define ] {{{
-snippet $npvm "namespace define" bw
-`!p line=vLine()`
-`!p snip.rv=line.Line_txt_f('=',[" ===","=== "])`
-`!p snip.rv=cmt()[0]` [ namespace vm ] {{{
-namespace vm {
+# }}} ![ Box注释 ]
+# ================================================================================================ #
 
-$end$
-
-} `!p snip.rv=cmt()[2]` }}} End of namespace vm
-`!p snip.rv =line.Line_txt_f('=',[" ===","=== "])`
-
-endsnippet
-# ==  }}} End of SnipFunc $np
-# ------------------------------------------------------------------------------------------------ #
+# ================================================================================================ #
+# ==  Cmt注释                                                                                     == #
+# ================================================================================================ #
+# [ Cmt注释 ] {{{
 
 # ------------------------------------------------------------------------------------------------ #
 # [ #cmt : Comment block ] {{{
@@ -220,7 +224,7 @@ snippet #cmt2 "Comment block" bw
 line=vLine()
 ``!p snip.rv=line.Line_txt_f('=',[" ===","=== "])`
 `!p snip.rv =line.Line_txt_l2(" ")`${1:TODO: Add Notes}`!p snip.rv=line.Line_spc_r(" "+t[1])`
-`!p snip.rv =line.Line_txt_f('-',[" ---","--- "])`
+`!p snip.rv =line.Line_txt_f('-')`
 `!p snip.rv =line.Line_l(["",""])` [ $1 ] {{{
 
 ${0:${VISUAL}}
@@ -232,11 +236,11 @@ endsnippet
 # ------------------------------------------------------------------------------------------------ #
 
 # ------------------------------------------------------------------------------------------------ #
-# [ #cmt3 : comment block type 3 ] {{{
-snippet #cmt3 "comment block type 3" bw
+# [ #cmt- : comment block with splite line - ] {{{
+snippet #cmt- "comment block type 3" bw
 `!p line=vLine()
 ``!p snip.rv=line.Line_txt_f('-',[" ---","--- "])`
-`!p snip.rv =line.Line_l(["",""])` [ ${1:Comment info} ] {{{
+`!p snip.rv =line.Line_l(["",""])` [ ${1:Comment info :} ] {{{
 
 ${0:${VISUAL}}
 
@@ -244,7 +248,75 @@ ${0:${VISUAL}}
 `!p snip.rv =line.Line_txt_f('-',[" ---","--- "])`
 
 endsnippet
-# ==  }}} End of SnipFunc #cmt3
+# ==  }}} End of SnipFunc #cmt-
+# ------------------------------------------------------------------------------------------------ #
+
+# ------------------------------------------------------------------------------------------------ #
+# ==  [ #cmt-1 : comment block type splite line - 1 ] {{{
+snippet #cmt-1 "comment block type splite line - 1" bw
+`!p line=vLine()
+``!p snip.rv=line.Line_txt_f('-',[" ---","--- "])`
+`!p snip.rv =line.Line_l(["",""])`  ${1:Comment info :}  {{{
+
+${0:${VISUAL}}
+
+`!p snip.rv =line.Line_l(["",""])` }}} ! [ $1 ]
+
+endsnippet
+# ==  }}} End of SnipFunc #cmt-1
+# ------------------------------------------------------------------------------------------------ #
+
+# ------------------------------------------------------------------------------------------------ #
+# ==  [ #cmt= : commment block with splite line = ] {{{
+snippet #cmt= "commment block with splite line =" bw
+`!p line=vLine()
+``!p snip.rv=line.Line_txt_f('=',[" ===","=== "])`
+`!p snip.rv =line.Line_l(["",""])` [ ${1:Comment info :} ] {{{
+
+${0:${VISUAL}}
+
+`!p snip.rv =line.Line_l(["",""])` }}} ! $1
+`!p snip.rv =line.Line_txt_f('=',[" ===","=== "])`
+
+endsnippet
+# ==  }}} End of SnipFunc #cmt=
+# ------------------------------------------------------------------------------------------------ #
+
+# ------------------------------------------------------------------------------------------------ #
+# ==  [ #cmt=1 : comment block with splite line = 1 ] {{{
+snippet #cmt=1 "comment block with splite line = 1" bw
+`!p line=vLine()
+``!p snip.rv=line.Line_txt_f('=',[" ===","=== "])`
+`!p snip.rv =line.Line_l(["",""])` ${1:Comment info :} {{{
+
+${0:${VISUAL}}
+
+`!p snip.rv =line.Line_l(["",""])` }}} ! $1
+
+endsnippet
+# ==  }}} End of SnipFunc #cmt=1
+# ------------------------------------------------------------------------------------------------ #
+
+# }}} ![ Cmt注释 ]
+# ================================================================================================ #
+
+# ------------------------------------------------------------------------------------------------ #
+# [ $npvm : namespace define ] {{{
+snippet $npvm "namespace define" bw
+`!p line=vLine()`
+`!p snip.rv=line.Line_txt_f( '=', [" ===","=== "] )`
+`!p snip.rv=cmt()[0]` using namespace vm {{{
+namespace vm
+{
+
+${0:${VISUAL}}
+
+} 
+`!p snip.rv=cmt()[0]` }}} End of namespace vm
+`!p snip.rv=line.Line_txt_f( '=', [" ===","=== "] )`
+
+endsnippet
+# }}} End of SnipFunc $np
 # ------------------------------------------------------------------------------------------------ #
 
 
@@ -273,7 +345,7 @@ snippet file "file template" bw
 `!p snip.rv  =line.Line_txt_f(' '                )`
 `!p snip.rv  =line.Line_spc_cl(t[1])`${1:`!p snip.rv=snip.fn`}`!p snip.rv=line.Line_spc_cr(t[1])`
 `!p snip.rv  =line.Line_txt_f(' '                )`
-`!p snip.rv  =line.Line_txt_f('-',[" ---","--- "])`
+`!p snip.rv  =line.Line_txt_f('-')`
 `!p snip.rv  =line.Line_txt_f(' '                )`
 `!p snip.rv  =line.Line_txt_t( line.Txt_l ("  Author"            ,gLine['Len1'] )+" : "+gContxt['Author']+" ( "+gContxt['Email']+" ) ")`
 `!p snip.rv  =line.Line_txt_t( line.Txt_l ("  Version"           ,gLine['Len1'] )+" : "+"0.0.0.0" )`
@@ -283,7 +355,7 @@ snippet file "file template" bw
 `!p snip.rv  =line.Line_txt_t( line.Txt_l ("  Change List"       ,gLine['Len1'] )+" : " )`
 `!p snip.rv  =line.Line_txt_t( line.Txt_c3("    [","0.0.0.0","]" ,gLine['Len1'] )+" - Basic version" )`
 `!p snip.rv  =line.Line_txt_f(' '                )`
-`!p snip.rv  =line.Line_txt_f('-',[" ---","--- "])`
+`!p snip.rv  =line.Line_txt_f('-')`
 `!p snip.rv  =line.Line_txt_f(' '                )`
 `!p snip.rv  =line.Line_txt_t( "  Copyright(c) : "+gContxt['Lisense'] )`
 `!p snip.rv  =line.Line_txt_f(' '                )`
@@ -307,7 +379,7 @@ snippet fileh "file header template" bw
 `!p snip.rv  =line.Line_txt_f(' '                )`
 `!p snip.rv  =line.Line_spc_cl(t[1])`${1:`!p snip.rv=snip.fn`}`!p snip.rv=line.Line_spc_cr(t[1])`
 `!p snip.rv  =line.Line_txt_f(' '                )`
-`!p snip.rv  =line.Line_txt_f('-',[" ---","--- "])`
+`!p snip.rv  =line.Line_txt_f('-')`
 `!p snip.rv  =line.Line_txt_f(' '                )`
 `!p snip.rv  =line.Line_txt_t( line.Txt_l ("  Author"            ,gLine['Len1'])+" : "+gContxt['Author']+" ( "+gContxt['Email']+" ) ")`
 `!p snip.rv  =line.Line_txt_t( line.Txt_l ("  Version"           ,gLine['Len1'])+" : "+"0.0.0.0" )`
@@ -317,7 +389,7 @@ snippet fileh "file header template" bw
 `!p snip.rv  =line.Line_txt_t( line.Txt_l ("  Change List"       ,gLine['Len1'])+" : " )`
 `!p snip.rv  =line.Line_txt_t( line.Txt_c3("    [","0.0.0.0","]" ,gLine['Len1'])+" - Basic version" )`
 `!p snip.rv  =line.Line_txt_f(' '                )`
-`!p snip.rv  =line.Line_txt_f('-',[" ---","--- "])`
+`!p snip.rv  =line.Line_txt_f('-')`
 `!p snip.rv  =line.Line_txt_f(' '                )`
 `!p snip.rv  =line.Line_txt_t( "  Copyright(c) : "+gContxt['Lisense'] )`
 `!p snip.rv  =line.Line_txt_f(' '                )`
@@ -370,7 +442,7 @@ snippet #usage "usage info" bw
 `!p line=vLine()
 ``!p snip.rv =line.Line_txt_f('=',[" ===","=== "])`
 `!p snip.rv  =line.Line_txt_t(" Usage :"   )`
-`!p snip.rv  =line.Line_txt_f('-',[" ---","--- "])`
+`!p snip.rv  =line.Line_txt_f('-')`
 `!p snip.rv  =line.Line_l(["",""])` [ Usage ] {{{ /*
 ${0:${VISUAL: TODO add usage info}}
 `!p snip.rv  =line.Line_l(["",""])` }}} */
@@ -387,16 +459,24 @@ endsnippet
 # [ 其他代码块 ] {{{
 
 # ------------------------------------------------------------------------------------------------ #
+# ==  [ vT : wchar/char input ] {{{
+snippet vT "wchar/char input" A
+vT("${0}")
+endsnippet
+# ==  }}} End of SnipFunc vT
+# ------------------------------------------------------------------------------------------------ #
+
+# ------------------------------------------------------------------------------------------------ #
 # [ #snip : Create new snip func ] {{{
 snippet #snip "Create new snip func" bw
 
 `!p line=vLine()
 ``!p snip.rv =line.Line_txt_f('-',[" ---","--- "])`
-`!p snip.rv  =line.Line_l()` [ $1 : $2 ] {{{
+`!p snip.rv  =line.Line_l(["",""])` [ $1 : $2 ] {{{
 `!p snip.rv  ="snippet"` ${1:FuncName} "${2:FuncComment}" bw
 ${0:${VISUAL}}
 `!p snip.rv  ="endsnippet"`
-`!p snip.rv  =line.Line_l()` }}} End of SnipFunc $1
+`!p snip.rv  =line.Line_l(["",""])` }}} End of SnipFunc $1
 `!p snip.rv  =line.Line_txt_f('-',[" ---","--- "])`
 
 endsnippet

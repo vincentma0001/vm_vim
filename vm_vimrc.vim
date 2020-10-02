@@ -7,7 +7,7 @@
 " ==   Author               : v.m. ( vincent_ma000!hotmail.com )                                == "
 " ==   Version              : 1.0.0.4                                                           == "
 " ==   Create Time          : 2020-09-15 08:18:59                                               == "
-" ==   Modify Time          : 2020-09-15 19:51:33                                               == "
+" ==   Modify Time          : 2020-10-01 09:33:01                                               == "
 " ==   Issue                :                                                                   == "
 " ==   Change List          :                                                                   == "
 " ==     [    1.0.0.4     ] - 使用Vundle管理插件                                                == "
@@ -21,6 +21,9 @@
 " ==   Copyright(c) : This file has copyrighted by v.m., the all right will been reserved!      == "
 " ==                                                                                            == "
 " ================================================================================================ "
+
+let $vim_work_path="e:/MyWork"
+let $vm_tools = $vim_work_path."/vm_tools"
 
 " ================================================================================================ "
 " ==  设置运行环                                                                                == "
@@ -45,6 +48,7 @@ source $vim_cfg_path/vim_cfg_base.vim
 let $vim_file_script_path = $vim_cfg_path."/vm_funcs"
 source $vim_file_script_path/vim_funcs.vim
 "source $vim_cfg_path/vim_cfg_func_newvimfile.vim
+source $vim_file_script_path/vim_func_time.vim
 " }}} ! [ 自定义函数 ]
 " ================================================================================================ "
 

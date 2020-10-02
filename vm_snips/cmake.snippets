@@ -1,131 +1,274 @@
-snippet init
-	cmake_minimum_required(VERSION ${1:2.8.2})
-	project(${2:ProjectName})
-
-	find_package(${3:library})
-
-	include_directories(${$3_INCLUDE_DIRS})
-
-	add_subdirectory(${0:src})
-
-	add_executable($2)
-
-	target_link_libraries($2 ${$3_LIBRARIES})
-endsnippet
+# ================================================================================================ #
+# ==                                                                                            == #
+# ==                                       cmake.snippets                                       == #
+# ==                                                                                            == #
+# ------------------------------------------------------------------------------------------------ #
+# ==                                                                                            == #
+# ==   Author               : v.m. ( vincent_ma0001@hotmail.com )                               == #
+# ==   Version              : 0.0.0.0                                                           == #
+# ==   Create Time          : 2020-09-30 18:36:42                                               == #
+# ==   Modify Time          : 2020-09-30 18:36:42                                               == #
+# ==   Issue  List          :                                                                   == #
+# ==   Change List          :                                                                   == #
+# ==     [    0.0.0.0     ] - Basic version                                                     == #
+# ==                                                                                            == #
+# ------------------------------------------------------------------------------------------------ #
+# ==                                                                                            == #
+# ==   Copyright(c) : This file has copyrighted by v.m., the all right will been reserved!      == #
+# ==                                                                                            == #
 # ================================================================================================ #
 
+# ================================================================================================ #
+# ==  cmake file initialize                                                                     == #
+# ================================================================================================ #
+# [ Initialize cmake file ] {{{
 
-snippet proj
-	project(${0:Name})
+# ------------------------------------------------------------------------------------------------ #
+# ==  [ #mInit : Add init codes of slustion to CMakeList.txt ] {{{
+snippet #mInit "Add init codes to CMakeList.txt" bw
+
+# set cmake version request:
+cmake_minimum_required (VERSION 3.8.0)
+
+# set working dirs:
+SET(HOME  ${1:e:/MyWork/vm_tools})
+SET(TNAME ${2:vm_tools})
+SET(VER   ${3:1.0.0.0})
+
+# set project output dirs and source dirs
+SET(PROJECT_BINARY_DIR ${HOME}/prj/cmake)
+SET(PROJECT_SOURCE_DIR ${HOME}/src)
+
+# set libs output dirs
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY          ${HOME}/lib)
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY_DEBUG    ${HOME}/lib)
+ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY_RELEASE ${HOME}/lib)
+
+# set libs file (debug release) output dirs
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY          ${HOME}/lib)
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY_DEBUG    ${HOME}/lib)
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY_RELEASE  ${HOME}/lib)
+
+# set execute file (debug release) output dir
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY          ${HOME}/bin)
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_DEBUG    ${HOME}/bin)
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_RELEASE  ${HOME}/bin)
+
+# specify the C++ standard
+set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD_REQUIRED True)
+
+# add include directories for projects and submudules
+include_directories(${HOME} ${PROJECT_SOURCE_DIR})
+
+# create project
+project(${TNAME} VERSION ${VER})
+# create configure file
+configure_file("${TNAME}_ver.h.in" "${HOME}/${TNAME}_ver.h")
+
+# set sub modules
+#add_subdirectory(${HOME}/tst/vm_tst)
+
 endsnippet
+# ==  }}} End of SnipFunc #mInit
+# ------------------------------------------------------------------------------------------------ #
+
+# ------------------------------------------------------------------------------------------------ #
+# ==  [ #libInit : Add init codes of library to CMakeList.txt ] {{{
+snippet #libInit "Add init codes of library to CMakeList.txt" bw
+
+# set module name
+set(MODULE_NAME ${1:LIBRARY_NAME})
+
+# add __USE_DLL__ macro define
+ADD_DEFINITIONS(-D__USE_DLL__)
+
+# get src file for current directories
+aux_source_directory(. SRCS)
+
+# create modules
+add_library(${MODULE_NAME} SHARED ${SRCS})
+
+endsnippet
+# ==  }}} End of SnipFunc #libInit
+# ------------------------------------------------------------------------------------------------ #
+
+# ------------------------------------------------------------------------------------------------ #
+# ==  [ #exeInit : Add init codes of execute to CMakeList.txt ] {{{
+snippet #exeInit "Add init codes of execute to CMakeList.txt" bw
+
+# set module name
+set(MODULE_NAME ${1:EXECUTE_NAME})
+
+# get src file for current directories
+aux_source_directory(. SRCS)
+
+# create modules
+add_executable(${MODULE_NAME} ${SRCS})
+
+endsnippet
+# ==  }}} End of SnipFunc #exeInit
+# ------------------------------------------------------------------------------------------------ #
+
+# }}} ![ Initialize cmake file ]
 # ================================================================================================ #
 
-
-snippet min
-	cmake_minimum_required(VERSION ${0:2.8.2})
-endsnippet
 # ================================================================================================ #
-
-
-snippet include
-	include_directories(${${0:include_dir}})
-endsnippet
+# ==  CMakeList 语法                                                                              == #
 # ================================================================================================ #
+# [ CMakeList 语法 ] {{{
 
-
-snippet find
-	find_package(${1:library} ${0:REQUIRED})
+# ------------------------------------------------------------------------------------------------ #
+# ==  [ proj : project codes ] {{{
+snippet proj "project codes"
+project(${0:PROJECT_NAME})
 endsnippet
-# ================================================================================================ #
+# ==  }}} End of SnipFunc proj
+# ------------------------------------------------------------------------------------------------ #
 
-
-snippet glob
-	file(glob ${1:srcs} *.${0:cpp})
+# ------------------------------------------------------------------------------------------------ #
+# ==  [ cmake_request : cmake request ] {{{
+snippet cmake_request "cmake request" bw
+cmake_minimum_required(VERSION ${0:3.8.0})
 endsnippet
-# ================================================================================================ #
+# ==  }}} End of SnipFunc cmake_request
+# ------------------------------------------------------------------------------------------------ #
 
-
-snippet subdir
-	add_subdirectory(${0:src})
+# ------------------------------------------------------------------------------------------------ #
+# ==  [ inc : include directories ] {{{
+snippet inc "include directories"
+include_directories(${${0:include_dir}})
 endsnippet
-# ================================================================================================ #
+# ==  }}} End of SnipFunc inc
+# ------------------------------------------------------------------------------------------------ #
 
-
-snippet lib
-	add_library(${1:lib} ${${0:srcs}})
+# ------------------------------------------------------------------------------------------------ #
+# ==  [ find : fine package ] {{{
+snippet find "fine package"
+find_package(${1:library} ${0:REQUIRED})
 endsnippet
-# ================================================================================================ #
+# ==  }}} End of SnipFunc find
+# ------------------------------------------------------------------------------------------------ #
 
-
-snippet link
-	target_link_libraries(${1:bin} ${0:somelib})
+# ------------------------------------------------------------------------------------------------ #
+# ==  [ subdir : add subdirectory ] {{{
+snippet subdir "add subdirectory"
+add_subdirectory(${HOME}/${0:src})
 endsnippet
-# ================================================================================================ #
+# ==  }}} End of SnipFunc subdir
+# ------------------------------------------------------------------------------------------------ #
 
-
-snippet bin
-	add_executable(${1:bin})
+# ------------------------------------------------------------------------------------------------ #
+# ==  [ lib : add library ] {{{
+snippet lib "add library"
+add_library(${1:lib} ${${0:srcs}})
 endsnippet
-# ================================================================================================ #
+# ==  }}} End of SnipFunc lib
+# ------------------------------------------------------------------------------------------------ #
 
-
-snippet set
-	set(${1:var} ${0:val})
+# ------------------------------------------------------------------------------------------------ #
+# ==  [ link : link libraries ] {{{
+snippet link "link libraries"
+target_link_libraries(${MODULE_NAME}
+    ${PROJECT_SOURCE_DIR}/lib/${1:lib_name}.lib
+)
 endsnippet
-# ================================================================================================ #
+# ==  }}} End of SnipFunc link
+# ------------------------------------------------------------------------------------------------ #
 
-
-snippet dep
-	add_dependencies(${1:target}
-		${0:dep}
-	)
+# ------------------------------------------------------------------------------------------------ #
+# ==  [ bin : add executable ] {{{
+snippet bin "add executable"
+add_executable(${MODULE_NAME} ${SRCS})
 endsnippet
-# ================================================================================================ #
+# ==  }}} End of SnipFunc bin
+# ------------------------------------------------------------------------------------------------ #
 
+# ------------------------------------------------------------------------------------------------ #
+# ==  [ set : set value ] {{{
+snippet set "set value"
+set(${1:VALUE_NAME} ${0:VALUE})
+endsnippet
+# ==  }}} End of SnipFunc set
+# ------------------------------------------------------------------------------------------------ #
 
+# ------------------------------------------------------------------------------------------------ #
+# ==  [ glob : file(glob... ] {{{
+snippet glob "file(glob..."
+file(glob ${1:srcs} *.${0:cpp})
+endsnippet
+# ==  }}} End of SnipFunc glob
+# ------------------------------------------------------------------------------------------------ #
+
+# ------------------------------------------------------------------------------------------------ #
+# ==  [ dep : add dependencies ] {{{
+snippet dep "add dependencies"
+add_dependencies(${1:target}
+    ${0:dep}
+)
+endsnippet
+# ==  }}} End of SnipFunc dep
+# ------------------------------------------------------------------------------------------------ #
+
+# ------------------------------------------------------------------------------------------------ #
+# ==  [ Ext_url :  ] {{{
 snippet Ext_url
-	include(ExternalProject)
-	ExternalProject_Add(${1:googletest}
-	  URL ${2:http://googletest.googlecode.com/files/gtest-1.7.0.zip}
-	  URL_HASH SHA1=${3:f85f6d2481e2c6c4a18539e391aa4ea8ab0394af}
-	  SOURCE_DIR "${4:${CMAKE_BINARY_DIR}/gtest-src}"
-	  BINARY_DIR "${0:${CMAKE_BINARY_DIR}/gtest-build}"
-	  CONFIGURE_COMMAND ""
-	  BUILD_COMMAND     ""
-	  INSTALL_COMMAND   ""
-	  TEST_COMMAND      ""
-	)
+include(ExternalProject)
+ExternalProject_Add(${1:googletest}
+    URL ${2:http://googletest.googlecode.com/files/gtest-1.7.0.zip}
+    URL_HASH SHA1=${3:f85f6d2481e2c6c4a18539e391aa4ea8ab0394af}
+    SOURCE_DIR "${4:${CMAKE_BINARY_DIR}/gtest-src}"
+    BINARY_DIR "${0:${CMAKE_BINARY_DIR}/gtest-build}"
+    CONFIGURE_COMMAND ""
+    BUILD_COMMAND     ""
+    INSTALL_COMMAND   ""
+    TEST_COMMAND      ""
+)
 endsnippet
-# ================================================================================================ #
+# ==  }}} End of SnipFunc Ext_url
+# ------------------------------------------------------------------------------------------------ #
 
-
+# ------------------------------------------------------------------------------------------------ #
+# ==  [ Ext_git :  ] {{{
 snippet Ext_git
-	include(ExternalProject)
-	ExternalProject_Add(${1:googletest}
-	  GIT_REPOSITORY    ${2:https://github.com/google/googletest.git}
-	  GIT_TAG           ${3:master}
-	  SOURCE_DIR        "${4:${CMAKE_BINARY_DIR}/googletest-src}"
-	  BINARY_DIR        "${0:${CMAKE_BINARY_DIR}/googletest-build}"
-	  CONFIGURE_COMMAND ""
-	  BUILD_COMMAND     ""
-	  INSTALL_COMMAND   ""
-	  TEST_COMMAND      ""
-	)
+include(ExternalProject)
+ExternalProject_Add(${1:googletest}
+    GIT_REPOSITORY    ${2:https://github.com/google/googletest.git}
+    GIT_TAG           ${3:master}
+    SOURCE_DIR        "${4:${CMAKE_BINARY_DIR}/googletest-src}"
+    BINARY_DIR        "${0:${CMAKE_BINARY_DIR}/googletest-build}"
+    CONFIGURE_COMMAND ""
+    BUILD_COMMAND     ""
+    INSTALL_COMMAND   ""
+    TEST_COMMAND      ""
+)
+
 endsnippet
-# ================================================================================================ #
+# ==  }}} End of SnipFunc Ext_git
+# ------------------------------------------------------------------------------------------------ #
 
-
-snippet props
-	set_target_properties(${1:target}
-		${2:properties} ${3:compile_flags}
-		${0:"-O3 -Wall -pedantic"}
-	)
-endsnippet
-# ================================================================================================ #
-
-
+# ------------------------------------------------------------------------------------------------ #
+# ==  [ test : ] {{{
 snippet test
-	add_test(${1:ATestName} ${0:testCommand --options})
+add_test(${1:ATestName} ${0:testCommand --options})
 endsnippet
+# ==  }}} End of SnipFunc test
+# ------------------------------------------------------------------------------------------------ #
+
+# ------------------------------------------------------------------------------------------------ #
+# ==  [ props : ] {{{
+snippet props
+set_target_properties(${1:target}
+    ${2:properties} ${3:compile_flags}
+    ${0:"-O3 -Wall -pedantic"}
+)
+endsnippet
+# ==  }}} End of SnipFunc props
+# ------------------------------------------------------------------------------------------------ #
+
+# }}} ![ CMakeList 语法 ]
 # ================================================================================================ #
 
+# ================================================================================================ #
+# ==                                        End of file                                         == #
+# ================================================================================================ #

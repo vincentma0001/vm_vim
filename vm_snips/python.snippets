@@ -1,13 +1,13 @@
 # ================================================================================================ #
 # ==                                                                                            == #
-# ==                                          python.snippets                                   == #
+# ==                                       python.snippets                                      == #
 # ==                                                                                            == #
 # == ------------------------------------------------------------------------------------------ == #
 # ==                                                                                            == #
 # ==   Author               : v.m. ( vincent_ma0001@hotmail.com )                               == #
 # ==   Version              : 0.0.0.0                                                           == #
 # ==   Create Time          : 2020-09-17 20:11:23                                               == #
-# ==   Modify Time          : 2020-09-17 20:11:23                                               == #
+# ==   Modify Time          : 2020-10-01 12:40:58                                               == #
 # ==   Issue  List          :                                                                   == #
 # ==   Change List          :                                                                   == #
 # ==     [    0.0.0.0     ] - Basic version                                                     == #
@@ -43,10 +43,29 @@ endglobal
 # ------------------------------------------------------------------------------------------------ #
 # [ #def : python function define ] {{{
 snippet #def "python function define" bw
-# [ $1 : $3 ] {{{
-def ${1:func_name} ( ${2} ):
-    ${0:${VISUAL}}
-# }}} ! [ $1 ]
+`!p line=vLine()`
+`!p snip.rv=line.Line_txt_f( '=', [" ===","=== "] )`
+`!p snip.rv=line.Line_txt_t( " Methord : "+t[1]+"(...)" )`
+`!p snip.rv=line.Line_txt_f( '-' )`
+`!p snip.rv=line.Line_l()` Brief   : ${3:TODO : Add function brief #}
+`!p snip.rv=line.Line_l()` Return  : ${4:RET_VALUE}`!p snip.rv=line.Spc_r(t[4],gLine['MinParamLen'])` - [O] ${0:Nothing for return}
+`!p snip.rv=line.Line_l()` Params  : `!p
+snip.rv = ""
+snip >> 2
+args = get_args(t[2])
+if args:
+    for index in range(len(args)):
+        lsArgName = args[index].split(" ",-1)
+        if index==0:
+            snip.rv += lsArgName[-1]+line.Spc_r(lsArgName[-1],gLine['MinParamLen'])+ ' - [X] # TODO : Add comment for '+lsArgName[-1]+' #'
+            continue
+        snip.rv += '\n'+line.Line_l()+"           "+lsArgName[-1]+line.Spc_r(lsArgName[-1],gLine['MinParamLen'])+ ' - [X] # TODO : Add comment for '+lsArgName[-1]+' #'
+snip<<2
+`
+def ${1:func_name} ( ${2} ): # {{{ 
+    ${VISUAL:# TODO : add function codes here #}
+# }}} ! End of function $1
+`!p snip.rv=line.Line_txt_f( '=', [" ===","=== "] )`
 endsnippet
 # }}} End of SnipFunc #def
 # ------------------------------------------------------------------------------------------------ #

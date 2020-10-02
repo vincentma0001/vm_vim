@@ -7,7 +7,7 @@
 " ==   Author               : v.m. ( vincent_ma000!hotmail.com )                                == "
 " ==   Version              : 1.0.0.0                                                           == "
 " ==   Create Time          : 2020-09-14 22:53:03                                               == "
-" ==   Modify Time          : 2020-09-15 00:30:30                                               == "
+" ==   Modify Time          : 2020-10-01 12:53:44                                               == "
 " ==   Issue  List          :                                                                   == "
 " ==   Change List          :                                                                   == "
 " ==     [    0.0.0.0     ] - Basic version                                                     == "
@@ -27,7 +27,6 @@ function! UpdateVimModifyTime()
     let s:sLineNum =line('.')
 
     execute '1,15s/Modify\sTime\s\{10}:\s[0-9]\{4}-[0-9]\{2}-[0-9]\{2}\s[0-9]\{2}:[0-9]\{2}:[0-9]\{2}/\=strftime("Modify Time          : %Y-%m-%d %H:%M:%S" )/e'
-    execute 'noh'
     echom   "Update Modify time finished!"
 
     execute s:sLineNum
@@ -47,10 +46,15 @@ command! -nargs=0 UmTime :call UpdateVimModifyTime()
 augroup ModityTime
     " this one is which you're most likely to use?
     autocmd!
-    autocmd BufWritePre  *.vim,*.snippets,*.c,*.h,*.h  call UpdateVimModifyTime()
-"    autocmd BufWritePost *  execute 'noh'
+    autocmd BufWritePre  *.vim,*.snippets,*.c,*.cpp,*.h,*.hpp,*.inl  call UpdateVimModifyTime()
+    autocmd BufWritePost *  execute 'noh'
 augroup end
 
+"if exists(g:bUpdatetime)
+"    finish
+"else
+"    let g:bUpdatetime = 1
+"endif
 
 " ================================================================================================ "
 " ==                                          结束文件                                          == "

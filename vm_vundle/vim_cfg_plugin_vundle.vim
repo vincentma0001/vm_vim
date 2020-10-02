@@ -5,11 +5,13 @@
 " ------------------------------------------------------------------------------------------------ "
 " ==                                                                                            == "
 " ==   Author               : v.m. ( vincent_ma0001@hotmail.com )                               == "
-" ==   Version              : 1.0.0.16                                                          == "
+" ==   Version              : 1.0.0.19                                                          == "
 " ==   Create Time          : 2020-09-23 13:04:34                                               == "
 " ==   Modify Time          : 2020-09-23 13:04:34                                               == "
 " ==   Issue  List          :                                                                   == "
 " ==   Change List          :                                                                   == "
+" ==     [    1.0.0.19    ] - 添加syntastic(语法检测)                                           == "
+" ==     [    1.0.0.18    ] - 添加CppHighlight(Cpp语法高亮)                                     == "
 " ==     [    1.0.0.17    ] - 添加YouCompleteMe(文本补全)                                       == "
 " ==     [    1.0.0.16    ] - 添加multiple cursors(操作多个目标)                                == "
 " ==     [    1.0.0.15    ] - 添加fzf（快速查找）                                               == "
@@ -96,7 +98,7 @@ call vundle#begin($vim_cfg_plugin_path)
     " 安装molokai (配色方案)
     Plugin 'tomasr/molokai'
 
-    " 安装coloresque (以背景颜色显示颜色代码)    
+    " 安装coloresque (以背景颜色显示颜色代码)
     Bundle 'https://github.com/gorodinskiy/vim-coloresque.git'
 
 " }}}
@@ -128,15 +130,15 @@ call vundle#begin($vim_cfg_plugin_path)
 " ================================================================================================ "
 " [ 文档界面扩展 ] {{{
 
-    " 安装vim-indent-guides (可视化缩进)
-    "Plugin 'nathanaelkane/vim-indent-guides'
-
     " 安装indentLin(可视化对齐)
     Plugin 'Yggdroot/indentLine'
 
     " 安装syntastic (静态代码分析)
-    Plugin 'vim-syntastic/syntastic'
-    Plugin 'myint/syntastic-extras'
+"   Plugin 'vim-syntastic/syntastic'
+"   Plugin 'myint/syntastic-extras'
+
+    " 安装ale(代码检测)
+    Plugin 'dense-analysis/ale'
 
 " }}}
 " ================================================================================================ "
@@ -181,8 +183,9 @@ call vundle#begin($vim_cfg_plugin_path)
     " 多匹配操作
     Plugin 'terryma/vim-multiple-cursors'
 
-    "Plugin 'octol/vim-cpp-enhanced-highlight'
-    "Plugin 'sheerun/vim-polyglot'
+    " Cpp语法高亮
+    Plugin 'octol/vim-cpp-enhanced-highlight'
+    Plugin 'sheerun/vim-polyglot'
 
 " }}}
 " ================================================================================================ "
@@ -196,8 +199,6 @@ call vundle#begin($vim_cfg_plugin_path)
     " 安装Mark.vim
     " Plugin 'inkarkat/vim-mark'
 
-    " 安装ale(代码检测)
-    " Plugin 'w0rp/ale'
 
     " 管理fzf(快速查询)
     Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -238,12 +239,16 @@ source $vim_cfg_path_vundle/vim_cfg_plugin_nerdtree.vim
 source $vim_cfg_path_vundle/vim_cfg_plugin_tasklist.vim
 
 " ------------------------------------------------------------------------------------------------ "
-" vim-indent_guides 可视化缩进
-source $vim_cfg_path_vundle/vim_cfg_plugin_indent_guides.vim
-
-" ------------------------------------------------------------------------------------------------ "
 " indentLine 可视化对齐
 source $vim_cfg_path_vundle/vim_cfg_plugin_indentLine.vim
+
+" ------------------------------------------------------------------------------------------------ "
+" syntastic 语法检测
+"source $vim_cfg_path_vundle/vim_cfg_plugin_syntastic.vim
+
+" ------------------------------------------------------------------------------------------------ "
+" ale 语法检测
+source $vim_cfg_path_vundle/vim_cfg_plugin_ale.vim
 
 " ------------------------------------------------------------------------------------------------ 
 " Snippet 代码自动化
@@ -272,6 +277,10 @@ source $vim_cfg_path_vundle/vim_cfg_plugin_a.vim
 " ------------------------------------------------------------------------------------------------ "
 " multiple cursors 操纵多个目标
 source $vim_cfg_path_vundle/vim_cfg_plugin_multiple_cursors.vim
+
+" ------------------------------------------------------------------------------------------------ "
+"  CPP语法高亮
+source $vim_cfg_path_vundle/vim_cfg_plugin_cpphighlight.vim
 
 " ------------------------------------------------------------------------------------------------ "
 " Fzf 文件快熟查找
