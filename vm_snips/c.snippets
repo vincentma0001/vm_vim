@@ -7,7 +7,7 @@
 # ==   Author               : v.m. ( vincent_ma000!hotmail.com )                                == #
 # ==   Version              : 0.0.0.0                                                           == #
 # ==   Create Time          : 2020-09-14 11:18:27                                               == #
-# ==   Modify Time          : 2020-10-02 15:48:55                                               == #
+# ==   Modify Time          : 2020-10-07 12:55:28                                               == #
 # ==   Issue  List          :                                                                   == #
 # ==   Change List          :                                                                   == #
 # ==     [    0.0.0.0     ] - Basic version                                                     == #
@@ -35,6 +35,150 @@ from vm_snip_define import *
 from vm_snip_line   import vLine
 endglobal
 # }}} ![ global ]
+# ================================================================================================ #
+
+# ================================================================================================ #
+# ==  vm's macro define snippet                                                                 == #
+# ================================================================================================ #
+# [ vm's macro define snippet ] {{{
+
+# ------------------------------------------------------------------------------------------------ #
+# [ #WcharMcr : about wchar macro define ] {{{
+snippet #WcharMcr "about wchar macro define" bw
+`!p line=vLine()`
+`!p snip.rv=line.Line_txt_f('=',[" ===","=== "])`
+#if defined( _V_USE_WCHAR_ ) && ( _V_USE_WCHAR != 0 )
+`!p snip.rv = line.Line_txt_f("-",[" ---","--- "] )`
+// {{{
+    ${1:// # TODO : Add wchar macro define #}
+// }}}
+#else // default defined : _V_USE_WCHAR_ == 0 
+// {{{
+	${0:// # TODO : Add  char macro define #}
+// }}}
+#endif // !#if defined(...)
+`!p snip.rv=line.Line_txt_f('=',[" ===","=== "])`
+
+endsnippet
+# }}} End of SnipFunc #WcharMcr
+# ------------------------------------------------------------------------------------------------ #
+
+# }}} ![ vm's macro define snippet ]
+# ================================================================================================ #
+
+# ================================================================================================ #
+# ==  单元测试                                                                                  == #
+# ================================================================================================ #
+# [ 单元测试 ] {{{
+
+# ------------------------------------------------------------------------------------------------ #
+# [ #utInit : Create a unit test file ] {{{
+snippet #utInit "Create a unit test file" bw
+
+#include <vm_tools/vm_utst.h>
+
+`!p line=vLine()
+``!p snip.rv=line.Line_txt_f('=',[" ===","=== "])`
+`!p snip.rv =line.Line_l(["",""])` [ ut_$2 ] {{{
+UT_FUNC_BEGIN( ut_${2:func_name} )
+
+vTry
+    vCout << vEndl;
+    vCout << vT("*********************************************************************") << vEndl;
+
+    // Add unit test coder here
+    ${0}
+
+    vCout << vT("*********************************************************************") << vEndl;
+    vCout << vEndl;
+vCatch(...)
+    return false;
+vEnd
+    return true;
+
+UT_FUNC_ENDED
+`!p snip.rv =line.Line_l(["",""])` }}} ! ut_$2
+`!p snip.rv =line.Line_txt_f('=',[" ===","=== "])`
+
+`!p 
+line=vLine()
+``!p snip.rv=line.Line_txt_f('=',[" ===","=== "])`
+`!p snip.rv =line.Line_txt_l2("")` unit test frame tst_frame_$1`!p snip.rv=line.Line_spc_r(" unit test frame tst_frame_"+t[1])`
+`!p snip.rv =line.Line_txt_f('=',[" ===","=== "])`
+`!p snip.rv =line.Line_l(["",""])` [ tst_frame_$1 ] {{{
+UT_FRAME_BEGIN ( tst_frame_${1:name} )
+UT_FRAME_REGIST( ut_$2 )
+UT_FRAME_ENDED
+`!p snip.rv =line.Line_l(["",""])` }}} ![ tst_frame_$1 ]
+`!p snip.rv =line.Line_txt_f('=',[" ===","=== "])`
+endsnippet
+# }}} End of SnipFunc #utInit
+# ------------------------------------------------------------------------------------------------ #
+
+# ------------------------------------------------------------------------------------------------ #
+# [ #utFunc : create a unit test frame ] {{{
+snippet #utFunc "create a unit test frame" bw
+`!p line=vLine()
+``!p snip.rv=line.Line_txt_f('=',[" ===","=== "])`
+`!p snip.rv =line.Line_l(["",""])` [ ut_$1 ] {{{
+UT_FUNC_BEGIN( ut_${1:func_name} )
+
+vTry
+    vCout << vEndl;
+    vCout << vT("*********************************************************************") << vEndl;
+
+    // Add unit test coder here
+    ${0}
+
+    vCout << vT("*********************************************************************") << vEndl;
+    vCout << vEndl;
+vCatch(...)
+    return false;
+vEnd
+    return true;
+
+UT_FUNC_ENDED
+`!p snip.rv =line.Line_l(["",""])` }}} ! ut_$1
+`!p snip.rv =line.Line_txt_f('=',[" ===","=== "])`
+endsnippet
+# }}} End of SnipFunc #utFunc
+# ------------------------------------------------------------------------------------------------ #
+
+# ------------------------------------------------------------------------------------------------ #
+# [ #utFrame : Create a unit test function ] {{{
+snippet #utFrame "Create a unit test function" bw
+`!p 
+line=vLine()
+``!p snip.rv=line.Line_txt_f('=',[" ===","=== "])`
+`!p snip.rv =line.Line_txt_l2(" ")` unit test frame tst_frame_$1 `!p snip.rv=line.Line_spc_r(" unit test frame tst_frame_"+t[1])`
+`!p snip.rv =line.Line_txt_f('=',[" ===","=== "])`
+`!p snip.rv =line.Line_l(["",""])` [ tst_frame_$1 ] {{{
+UT_FRAME_BEGIN ( tst_frame_${1:name} )
+UT_FRAME_REGIST( ut_${0:func_name} )
+UT_FRAME_ENDED
+`!p snip.rv =line.Line_l(["",""])` }}} ![ tst_frame_$1 ]
+`!p snip.rv =line.Line_txt_f('=',[" ===","=== "])`
+endsnippet
+# }}} End of SnipFunc #utFrame
+# ------------------------------------------------------------------------------------------------ #
+
+# ------------------------------------------------------------------------------------------------ #
+# [ #utReg : Regist a ut function to ut frame ] {{{
+snippet #utReg "Regist a ut function to ut frame" bw
+UT_FRAME_REGIST( ut_${0:func_name} )
+endsnippet
+# }}} End of SnipFunc #utReg
+# ------------------------------------------------------------------------------------------------ #
+
+# ------------------------------------------------------------------------------------------------ #
+# [ #utRun : Run a unit test frame ] {{{
+snippet #utRun "Run a unit test frame" bw
+RUN_UNITTEST( tst_frame_${0:name} )
+endsnippet
+# }}} End of SnipFunc #utRun
+# ------------------------------------------------------------------------------------------------ #
+
+# }}} ![ 单元测试 ]
 # ================================================================================================ #
 
 # ================================================================================================ #
@@ -107,20 +251,28 @@ endsnippet
 # [ 宏代码块 ] {{{
 
 # ------------------------------------------------------------------------------------------------ #
-# ==  [ #guard : Add file guard marcro ] {{{
+# [ vT : wchar/char input ] {{{
+snippet vT "wchar/char input"
+vT("${VISUAL}")
+endsnippet
+# }}} End of SnipFunc vT
+# ------------------------------------------------------------------------------------------------ #
+
+# ------------------------------------------------------------------------------------------------ #
+# [ #guard : Add file guard marcro ] {{{
 snippet #guard "Add file guard marcro" bw
-#ifndef   __`!v toupper(tr(expand("%"),'.','_'))`__
-#define   __`!v toupper(tr(expand("%"),'.','_'))`__
+#ifndef  __`!v toupper(tr(expand("%"),'.','_'))`__
+#define  __`!v toupper(tr(expand("%"),'.','_'))`__
 
 ${0:${VISUAL}}
 
-#endif // __`!v toupper(tr(expand("%"),'.','_'))`__
+#endif // ! __`!v toupper(tr(expand("%"),'.','_'))`__
 endsnippet
-# ==  }}} End of SnipFunc #guard
+# }}} End of SnipFunc #guard
 # ------------------------------------------------------------------------------------------------ #
 
 # ------------------------------------------------------------------------------------------------ #
-# ==  [ #include : add include comment ] {{{
+# [ #include : add include comment ] {{{
 snippet #include "add include comment" bw
 `!p line=vLine()`
 `!p snip.rv = line.Line_txt_f("=",[" ===","=== "] )`
@@ -131,11 +283,11 @@ ${0:${VISUAL}}
 `!p snip.rv = cmt()[0]` }}}
 
 endsnippet
-# ==  }}} End of SnipFunc #include
+# }}} End of SnipFunc #include
 # ------------------------------------------------------------------------------------------------ #
 
 # ------------------------------------------------------------------------------------------------ #
-# [ #inc : Add a include file to .c file ] {{{
+# [ #inc  : Add include file to .c file ] {{{
 snippet #inc "Add include file to .c file" bw
 #include <${1:stdio}.h>
 endsnippet
@@ -143,7 +295,7 @@ endsnippet
 # ------------------------------------------------------------------------------------------------ #
 
 # ------------------------------------------------------------------------------------------------ #
-# ==  [ #inc1 : Add include file ] {{{
+# [ #inc1 : Add include file to .h file ] {{{
 snippet #inc1 "Add include file" bw
 `!p 
 lsfile = split_file(t[1])
@@ -152,7 +304,20 @@ lsfile = split_file(t[1])
 #   error this file need #include <${1:stdio}.h>
 #endif  // !__`!p snip.rv=lsfile.upper()`_H__
 endsnippet
-# ==  }}} End of SnipFunc #inc1
+# }}} End of SnipFunc #inc1
+# ------------------------------------------------------------------------------------------------ #
+
+# ------------------------------------------------------------------------------------------------ #
+# [ #Warn : disable win warning ] {{{
+snippet #Warn "disable win warning" bw
+`!p line=vLine()`
+`!p snip.rv = line.Line_txt_f("=",[" ===","=== "] )`
+`!p snip.rv = cmt()[0]` Disable warnings :
+#if defined (_MSC_VER)
+#   pragma warning(disable:${1:4996})
+#endif
+endsnippet
+# }}} End of SnipFunc #Warn
 # ------------------------------------------------------------------------------------------------ #
 
 # ------------------------------------------------------------------------------------------------ #
@@ -174,23 +339,23 @@ endsnippet
 # ------------------------------------------------------------------------------------------------ #
 
 # ------------------------------------------------------------------------------------------------ #
-# [ #def : #define macro ] {{{
+# [ #ifdef : #define macro ] {{{
 snippet #ifdef "#define macro" bw
-#ifdef      $1
+#ifdef     $1
 #   define ${1:SYMBOL} ${2:VALUE}
-#endif  // !$1
+#endif // !$1
 endsnippet
-# }}} End of SnipFunc #def
+# }}} End of SnipFunc #ifdef
 # ------------------------------------------------------------------------------------------------ #
 
 # ------------------------------------------------------------------------------------------------ #
-# [ #ndef : #ifndef macro ] {{{
+# [ #ifndef : #ifndef macro ] {{{
 snippet #ifndef "#ifndef macro" bw
-#ifndef     $1
+#ifndef    $1
 #   define ${1:SYMBOL} ${2:VALUE}
-#endif  // !$1
+#endif // !$1
 endsnippet
-# }}} End of SnipFunc #ndef
+# }}} End of SnipFunc #ifndef
 # ------------------------------------------------------------------------------------------------ #
 
 # }}} ![ 宏代码块 ]
@@ -386,7 +551,7 @@ endsnippet
 # [ 数据类型代码块 ] {{{
 
 # ------------------------------------------------------------------------------------------------ #
-# [ struct : struct define ] {{{
+# [ struct  : struct define ] {{{
 snippet struct "def struct data" bw
 // struct $1 : ${2:stName description}
 struct ${1:stName}
@@ -414,8 +579,8 @@ endsnippet
 # ------------------------------------------------------------------------------------------------ #
 
 # ------------------------------------------------------------------------------------------------ #
-# [ enum : def enum data ] {{{
-snippet enum "def enum data" bw
+# [ enum    : enum define ] {{{
+snippet enum "enum define" bw
 // enum $1 : ${2:emName description}
 enum ${1:emName}
 // {{{
@@ -428,7 +593,7 @@ endsnippet
 # ------------------------------------------------------------------------------------------------ #
 
 # ------------------------------------------------------------------------------------------------ #
-# [ tEnum : typedef enum data ] {{{
+# [ tEnum   : typedef enum data ] {{{
 snippet tEnum "typedef enum data" bw
 // enum $1 : ${2:emName description}
 typedef enum ${1:emName}
@@ -442,8 +607,8 @@ endsnippet
 # ------------------------------------------------------------------------------------------------ #
 
 # ------------------------------------------------------------------------------------------------ #
-# [ union : def union data ] {{{
-snippet union "def union data" bw
+# [ union   : union define ] {{{
+snippet union "union define" bw
 // union $1 : ${2:$1 description}
 union ${1:uiName}
 // {{{
@@ -456,7 +621,7 @@ endsnippet
 # ------------------------------------------------------------------------------------------------ #
 
 # ------------------------------------------------------------------------------------------------ #
-# [ tUnion : typedef union data ] {{{
+# [ tUnion  : typedef union data ] {{{
 snippet tUnion "typedef union data" bw
 // union $1 : ${2:$1 description}
 typedef union ${1:uiName}
@@ -516,7 +681,7 @@ if args:
         snip.rv += '\n'+line.Line_l()+"           "+lsArgName[-1]+line.Spc_r(lsArgName[-1],gLine['MinParamLen'])+ ' - [X] # TODO : Add comment for '+lsArgName[-1]+' #'
 snip<<2
 `
-${3:void} ${1:func_name} ( ${2:p_type p_name} )
+${3:void} vm::${1:func_name} ( ${2:p_type p_name} )
 `!p snip.rv=cmt()[0]` {{{
 {
     ${VISUAL:# TODO : add function codes here #}

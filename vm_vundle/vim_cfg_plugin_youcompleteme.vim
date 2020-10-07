@@ -7,7 +7,7 @@
 " ==   Author               : v.m. ( vincent_ma0001@hotmail.com )                               == "
 " ==   Version              : 1.0.0.0                                                           == "
 " ==   Create Time          : 2020-09-24 20:52:27                                               == "
-" ==   Modify Time          : 2020-10-02 14:03:34                                               == "
+" ==   Modify Time          : 2020-10-04 11:27:03                                               == "
 " ==   Issue  List          :                                                                   == "
 " ==   Change List          :                                                                   == "
 " ==     [    0.0.0.0     ] - Basic version                                                     == "
@@ -57,9 +57,9 @@ let g:ycm_min_num_identifier_candidate_chars = 2
 let g:ycm_show_diagnostics_ui                = 0
 
 " 补全功能在注释中同样有效
-let g:ycm_complete_in_comments               = 1
+let g:ycm_complete_in_comments               = 0
 " 补全功能在字符串中同样有效
-let g:ycm_complete_in_strings                = 1
+let g:ycm_complete_in_strings                = 0
 
 " Ycm Preview显示方式，1
 set completeopt=menu,menuone

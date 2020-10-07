@@ -7,7 +7,7 @@
 " ==   Author               : v.m. ( vincent_ma0001@hotmail.com )                               == "
 " ==   Version              : 1.0.0.19                                                          == "
 " ==   Create Time          : 2020-09-23 13:04:34                                               == "
-" ==   Modify Time          : 2020-09-23 13:04:34                                               == "
+" ==   Modify Time          : 2020-10-06 20:08:40                                               == "
 " ==   Issue  List          :                                                                   == "
 " ==   Change List          :                                                                   == "
 " ==     [    1.0.0.19    ] - 添加syntastic(语法检测)                                           == "
@@ -181,7 +181,7 @@ call vundle#begin($vim_cfg_plugin_path)
     Plugin 'godlygeek/tabular'
 
     " 多匹配操作
-    Plugin 'terryma/vim-multiple-cursors'
+    " Plugin 'terryma/vim-multiple-cursors'
 
     " Cpp语法高亮
     Plugin 'octol/vim-cpp-enhanced-highlight'
@@ -276,7 +276,7 @@ source $vim_cfg_path_vundle/vim_cfg_plugin_a.vim
 
 " ------------------------------------------------------------------------------------------------ "
 " multiple cursors 操纵多个目标
-source $vim_cfg_path_vundle/vim_cfg_plugin_multiple_cursors.vim
+" source $vim_cfg_path_vundle/vim_cfg_plugin_multiple_cursors.vim
 
 " ------------------------------------------------------------------------------------------------ "
 "  CPP语法高亮

@@ -7,7 +7,7 @@
 " ==   Author               : v.m. ( vincent_ma000!hotmail.com )                                == "
 " ==   Version              : 1.0.0.0                                                           == "
 " ==   Create Time          : 2020-09-14 12:04:43                                               == "
-" ==   Modify Time          : 2020-10-01 09:49:24                                               == "
+" ==   Modify Time          : 2020-10-04 08:52:09                                               == "
 " ==   Issue  List          :                                                                   == "
 " ==   Change List          :                                                                   == "
 " ==     [    1.0.0.3     ] - 添加编码配置                                                      == "
@@ -67,6 +67,10 @@ language messages zh_CN.utf-8
 
 " 光标移动到buffer的顶部和底部时保持3行距离 
 set scrolloff=3
+
+" 设置timeout
+set timeoutlen=1 
+set ttimeoutlen=0
 " }}}
 " ================================================================================================ "
 

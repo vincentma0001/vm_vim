@@ -7,7 +7,7 @@
 # ==   Author               : v.m. ( vincent_ma0001@hotmail.com )                               == #
 # ==   Version              : 0.0.0.0                                                           == #
 # ==   Create Time          : 2020-09-15 00:32:11                                               == #
-# ==   Modify Time          : 2020-10-02 22:30:01                                               == #
+# ==   Modify Time          : 2020-10-05 10:07:33                                               == #
 # ==   Issue  List          :                                                                   == #
 # ==   Change List          :                                                                   == #
 # ==     [    0.0.0.0     ] - Basic version                                                     == #
@@ -304,27 +304,27 @@ private:
 `!p snip.rv  = line.Line_txt_f("-",[" ---","--- "])`
 `!p snip.rv  = line.Line_l(["",""])` Menbers   : {{{
 private:
-//  # TODO Add class's menbers here #
+    /* TODO Add class's menbers here */
 `!p snip.rv  = line.Line_l(["",""])` }}} ! Members
 
 `!p snip.rv  = line.Line_txt_f("-",[" ---","--- "])`
 `!p snip.rv  = line.Line_l(["",""])` Methods   : {{{
 public:
-//  # TODO Add class's Methods here #
+    /* TODO Add class's Methods here */
 `!p snip.rv  = line.Line_l(["",""])` }}} ! Methods
 
 };
 `!p snip.rv  = line.Line_l(["",""])` }}} ! [ class $1 ]
 `!p snip.rv  = line.Line_txt_f('=',[" ===","=== "])`
 `!p snip.rv  = cmt()[0]` Class realization :
-#include <`!p snip.rv=snip.fn+".inl"`>
+#include "`!p snip.rv=snip.fn+".inl"`"
 `!p snip.rv  = line.Line_txt_f('=',[" ===","=== "])`
 endsnippet
 # }}} End of SnipFunc class
 # ------------------------------------------------------------------------------------------------ #
 
 # ------------------------------------------------------------------------------------------------ #
-# [ cReal : class realization initialize ] {{{
+# [ cReal   : class realization initialize ] {{{
 snippet cReal "class realization initialize" bw
 
 `!p line =vLine()
@@ -337,7 +337,7 @@ snippet cReal "class realization initialize" bw
 `!p snip.rv  = line.Line_txt_t(" Methord : "+t[1]+"::"+t[1]+"()")`
 `!p snip.rv  = line.Line_txt_f("-")`
 `!p snip.rv  = line.Line_l()` Brief   : Construct define
-inline explicit ${1:CLASS_NAME}::$1(  )
+inline explicit vm::${1:CLASS_NAME}::$1(  )
 // {{{
 {
 }
@@ -348,7 +348,7 @@ inline explicit ${1:CLASS_NAME}::$1(  )
 `!p snip.rv  = line.Line_txt_t(" Methord : virtual "+t[1]+"::"+t[1]+"()")`
 `!p snip.rv  = line.Line_txt_f("-")`
 `!p snip.rv  = line.Line_l()` Brief   : Destruct define
-inline virtual $1::~$1(  )
+inline virtual vm::$1::~$1(  )
 // {{{
 {
 }
@@ -359,7 +359,7 @@ inline virtual $1::~$1(  )
 `!p snip.rv  = line.Line_txt_t(" Methord : "+t[1]+"::"+t[1]+"()")`
 `!p snip.rv  = line.Line_txt_f("-")`
 `!p snip.rv  = line.Line_l()` Brief   : Copy construct define
-inline $1::$1( const $1 &obj )
+inline vm::$1::$1( const vm::$1 &obj )
 // {{{
 {
     *this = obj;
@@ -381,7 +381,7 @@ inline $1::$1( const $1 &obj )
 `!p snip.rv  = line.Line_txt_f("-")`
 `!p snip.rv  = line.Line_l()` Brief   : Assignment operation
 `!p snip.rv  = line.Line_l()` Return  : `!p snip.rv = line.Txt_l(t[1]+'&',gLine['MinParamLen'])` - [O] this object
-inline $1& $1::operator = ( const $1 &obj )
+inline vm::$1& vm::$1::operator = ( const vm::$1 &obj )
 // {{{
 {
     return *this;
@@ -408,28 +408,84 @@ endsnippet
 # ------------------------------------------------------------------------------------------------ #
 
 # ------------------------------------------------------------------------------------------------ #
-# [ cMacro : class's macro defin ] {{{
+# [ cMenber : class's menber define ] {{{
+snippet cMenber "class's menber define" bw
+`!p line =vLine()
+``!p snip.rv = line.Line_txt_f("-",[" ---","--- "])`
+`!p snip.rv  = line.Line_l(["",""])` Methods   : {{{
+public:
+    ${0:/* TODO Add class's Methods here */}
+`!p snip.rv  = line.Line_l(["",""])` }}} ! Methods
+
+endsnippet
+# }}} End of SnipFunc cMenber
+# ------------------------------------------------------------------------------------------------ #
+
+# ------------------------------------------------------------------------------------------------ #
+# [ cMethod : class's method define ] {{{
+snippet cMethod "class's method define" bw
+`!p line =vLine()
+``!p snip.rv = line.Line_txt_f("-",[" ---","--- "])`
+`!p snip.rv  = line.Line_l(["",""])` Methods   : {{{
+public:
+    ${0:/* TODO Add class's Methods here */}
+`!p snip.rv  = line.Line_l(["",""])` }}} ! Methods
+
+endsnippet
+# }}} End of SnipFunc cMethod
+# ------------------------------------------------------------------------------------------------ #
+
+# ------------------------------------------------------------------------------------------------ #
+# [ cMacrodef : class's macro defin ] {{{
 snippet cMacro "class's macro defin" bw
 `!p line =vLine()
 ``!p snip.rv = line.Line_txt_f("-",[" ---","--- "])`
 `!p snip.rv  = line.Line_l(["",""])` Macrodefs : {{{
     #define ${1:Symabl} ${2:Value}
-`!p snip.rv  = line.Line_l(["",""])` }}} ! Macro defines
+`!p snip.rv  = line.Line_l(["",""])` }}} ! Macrodefs
 endsnippet
-# }}} End of SnipFunc C_Macro
+# }}} End of SnipFunc cMacrodef
 # ------------------------------------------------------------------------------------------------ #
 
 # ------------------------------------------------------------------------------------------------ #
-# [ cTypedef : class's typedef ] {{{
+# [ cTypedef  : class's typedef ] {{{
 snippet cTypedef "class's typedef" bw
 `!p line =vLine()
 ``!p snip.rv = line.Line_txt_f("-",[" ---","--- "])`
 `!p snip.rv  = line.Line_l(["",""])` Typedefs  : {{{
 public:
-    typedef ${1:Oldtype} ${2:Newtype}
-`!p snip.rv  = line.Line_l(["",""])` }}} ! Type defines
+    typedef typename ${1:Oldtype} ${2:Newtype};
+`!p snip.rv  = line.Line_l(["",""])` }}} ! Typedefs
 endsnippet
 # }}} End of SnipFunc cTypedef
+# ------------------------------------------------------------------------------------------------ #
+
+# ------------------------------------------------------------------------------------------------ #
+# [ cStdef    : class's type define for std members ] {{{
+snippet cStdef "type define for std members" bw
+`!p line =vLine()
+``!p snip.rv = line.Line_txt_f("-",[" ---","--- "])`
+`!p snip.rv  = line.Line_l(["",""])` Typedefs  : {{{
+public:
+    typedef typename std::${1:vertor}<${2:type}>                t$1;
+    typedef typename std::$1<$2>::iterator      t$1Iter;
+`!p snip.rv  = line.Line_l(["",""])` }}} ! Typedefs
+
+endsnippet
+# }}} End of SnipFunc cStdef
+# ------------------------------------------------------------------------------------------------ #
+
+# ------------------------------------------------------------------------------------------------ #
+# [ cFriend   : class's friend define ] {{{
+snippet cFriend "class's friend define" bw
+`!p line =vLine()
+``!p snip.rv = line.Line_txt_f("-",[" ---","--- "])`
+`!p snip.rv  = line.Line_l(["",""])` Friendefs : {{{
+friend class ${0:friendclassname};
+`!p snip.rv  = line.Line_l(["",""])` }}} ! Friendefs
+
+endsnippet
+# }}} End of SnipFunc cFriend
 # ------------------------------------------------------------------------------------------------ #
 
 # ------------------------------------------------------------------------------------------------ #
@@ -454,7 +510,7 @@ if args:
         snip.rv += '\n'+line.Line_l()+"           "+lsArgName[-1]+line.Spc_r(lsArgName[-1],gLine['MinParamLen'])+ ' - [X] # TODO : Add comment for '+lsArgName[-1]+' #'
 snip<<2
 `
-inline ${4:void} ${1:Class_Name}::${2:Func_name}( ${3:p_type p_name} )
+inline ${4:void} vm::${1:Class_Name}::${2:Func_name}( ${3:p_type p_name} )
 `!p snip.rv=cmt()[0]` {{{
 {
     ${VISUAL:# TODO : add function codes here #}
@@ -489,7 +545,7 @@ if args:
 snip<<2
 `
 template<${1:typename} ${2:tName}>
-${6:void} ${3:Class_Name}<$2>::${4:Func_name}( ${5:p_type p_name} )
+${6:void} vm::${3:Class_Name}<$2>::${4:Func_name}( ${5:p_type p_name} )
 `!p snip.rv=cmt()[0]` {{{ 
 {
     ${VISUAL:# TODO : add function codes here #}
