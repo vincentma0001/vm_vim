@@ -7,7 +7,7 @@
 # ==   Author               : v.m. ( vincent_ma0001@hotmail.com )                               == #
 # ==   Version              : 0.0.0.0                                                           == #
 # ==   Create Time          : 2020-09-15 00:32:11                                               == #
-# ==   Modify Time          : 2020-10-05 10:07:33                                               == #
+# ==   Modify Time          : 2020-10-16 11:52:00                                               == #
 # ==   Issue  List          :                                                                   == #
 # ==   Change List          :                                                                   == #
 # ==     [    0.0.0.0     ] - Basic version                                                     == #
@@ -51,24 +51,33 @@ extends c
 # [ 文件模板代码块 ] {{{
 
 # ------------------------------------------------------------------------------------------------ #
-# [ #incc : #includ <iostream> ] {{{
-snippet #incc "#includ <iostream>" bw
-#include <${1:iostream}>
+# [ #incc< : #includ <iostream> ] {{{
+snippet #incc1 "Add include <> file to .cpp file" bw
+#include <${1:iostream}>${0}
 endsnippet
-# }}} End of SnipFunc #incc
+# }}} End of SnipFunc #incc<
 # ------------------------------------------------------------------------------------------------ #
 
 # ------------------------------------------------------------------------------------------------ #
-# [ #incc1 : #include <iostream> ] {{{
-snippet #incc1 "#include <iostream>" bw
+# [ #incc" : #include 'iostream' ] {{{
+snippet #incc2 "Add inlcude '' file to .cpp file" bw
+#include "${1:`!v expand("%:r")`}.h"${0}
+endsnippet
+# }}} End of SnipFunc #incc"
+# ------------------------------------------------------------------------------------------------ #
+
+# ------------------------------------------------------------------------------------------------ #
+# [ #incc_ : #include <iostream> ] {{{
+snippet #incc3 "Add include file info with define macro" bw
 `!p 
 lsfile = split_file(t[1])
 `
 #ifndef     __`!p snip.rv=lsfile.upper()`_H__
 #   error this file need #include <${1:iostream}>
 #endif  // !__`!p snip.rv=lsfile.upper()`_H__
+${0}
 endsnippet
-# }}} End of SnipFunc #incc1
+# }}} End of SnipFunc #incc_
 # ------------------------------------------------------------------------------------------------ #
 
 # }}} ![ 文件模板代码块 ]
@@ -290,8 +299,9 @@ class ${1:class_name}
 `!p snip.rv  = line.Line_txt_f("-",[" ---","--- "])`
 `!p snip.rv  = line.Line_l(["",""])` Construct & Destruct : {{{
 public:
-    // Construct & Destruct define
+    // Construct define
     inline explicit $1();
+	// Destruct define
     inline virtual ~$1();
 
 private:
@@ -337,7 +347,7 @@ snippet cReal "class realization initialize" bw
 `!p snip.rv  = line.Line_txt_t(" Methord : "+t[1]+"::"+t[1]+"()")`
 `!p snip.rv  = line.Line_txt_f("-")`
 `!p snip.rv  = line.Line_l()` Brief   : Construct define
-inline explicit vm::${1:CLASS_NAME}::$1(  )
+inline vm::${1:CLASS_NAME}::$1(  )
 // {{{
 {
 }
@@ -348,7 +358,7 @@ inline explicit vm::${1:CLASS_NAME}::$1(  )
 `!p snip.rv  = line.Line_txt_t(" Methord : virtual "+t[1]+"::"+t[1]+"()")`
 `!p snip.rv  = line.Line_txt_f("-")`
 `!p snip.rv  = line.Line_l()` Brief   : Destruct define
-inline virtual vm::$1::~$1(  )
+inline vm::$1::~$1(  )
 // {{{
 {
 }
@@ -364,7 +374,7 @@ inline vm::$1::$1( const vm::$1 &obj )
 {
     *this = obj;
 }
-// }}} End of func $1::~$1()
+// }}} End of func $1::$1()
 `!p snip.rv  = line.Line_txt_f("=",[" ===","=== "])`
 
 `!p snip.rv  = cmt()[0]` }}} ![ Class $1 Construct && Destruct realization ]
@@ -386,7 +396,7 @@ inline vm::$1& vm::$1::operator = ( const vm::$1 &obj )
 {
     return *this;
 }
-// }}} End of func $1::~$1()
+// }}} End of func $1::operator=()
 `!p snip.rv  = line.Line_txt_f("=",[" ===","=== "])`
 
 `!p snip.rv  = cmt()[0]` }}} ![ Class $1 operator realization ]
@@ -406,6 +416,91 @@ ${0}
 endsnippet
 # }}} End of SnipFunc cReal
 # ------------------------------------------------------------------------------------------------ #
+
+
+# ------------------------------------------------------------------------------------------------ #
+# [ tReal : template class's realize initaliztion ] {{{
+snippet tReal "template class's realize initaliztion" bw
+
+`!p line =vLine()
+``!p snip.rv = line.Line_txt_f("=",[" ===","=== "])`
+`!p snip.rv  = line.Line_txt_t(" Class "+t[1]+"<"+t[2]+">"+" Construct && Destruct realization")`
+`!p snip.rv  = line.Line_txt_f("=",[" ===","=== "])`
+`!p snip.rv  = cmt()[0]` [ Class $1<$2> Construct && Destruct realization ] {{{
+
+`!p snip.rv  = line.Line_txt_f("=",[" ===","=== "])`
+`!p snip.rv  = line.Line_txt_t(" Methord : "+t[1]+"<"+t[2]+">"+"::"+t[1]+"()")`
+`!p snip.rv  = line.Line_txt_f("-")`
+`!p snip.rv  = line.Line_l()` Brief   : Construct define
+inline vm::${1:CLASS_NAME}<${2:typename}>::$1(  )
+// {{{
+{
+}
+// }}} End of func $1<$2>::$1()
+`!p snip.rv  = line.Line_txt_f("=",[" ===","=== "])`
+
+`!p snip.rv  = line.Line_txt_f("=",[" ===","=== "])`
+`!p snip.rv  = line.Line_txt_t(" Methord : virtual "+t[1]+"<"+t[2]+">"+"::"+t[1]+"()")`
+`!p snip.rv  = line.Line_txt_f("-")`
+`!p snip.rv  = line.Line_l()` Brief   : Destruct define
+inline vm::$1<$2>::~$1(  )
+// {{{
+{
+}
+// }}} End of func $1<$2>::~$1()
+`!p snip.rv  = line.Line_txt_f("=",[" ===","=== "])`
+
+`!p snip.rv  = line.Line_txt_f("=",[" ===","=== "])`
+`!p snip.rv  = line.Line_txt_t(" Methord : "+t[1]+"<"+t[2]+">"+"::"+t[1]+"()")`
+`!p snip.rv  = line.Line_txt_f("-")`
+`!p snip.rv  = line.Line_l()` Brief   : Copy construct define
+inline vm::$1<$2>::$1( const vm::$1<$2> &obj )
+// {{{
+{
+    *this = obj;
+}
+// }}} End of func $1<$2>::$1()
+`!p snip.rv  = line.Line_txt_f("=",[" ===","=== "])`
+
+`!p snip.rv  = cmt()[0]` }}} ![ Class $1<$2> Construct && Destruct realization ]
+`!p snip.rv  = line.Line_txt_f("=",[" ===","=== "])`
+
+
+`!p snip.rv  = line.Line_txt_f("=",[" ===","=== "])`
+`!p snip.rv  = line.Line_txt_t(" Class "+t[1]+"<"+t[2]+">"+" operator realization")`
+`!p snip.rv  = line.Line_txt_f("=",[" ===","=== "])`
+`!p snip.rv  = cmt()[0]` [ Class $1<$2> operator realization ] {{{
+
+`!p snip.rv  = line.Line_txt_f("=",[" ===","=== "])`
+`!p snip.rv  = line.Line_txt_t(" Methord : "+t[1]+"<"+t[2]+">"+"::operator = ()")`
+`!p snip.rv  = line.Line_txt_f("-")`
+`!p snip.rv  = line.Line_l()` Brief   : Assignment operation
+`!p snip.rv  = line.Line_l()` Return  : `!p snip.rv = line.Txt_l(t[1]+"<"+t[2]+">"+'&',gLine['MinParamLen'])` - [O] this object
+inline vm::$1<$2>& vm::$1<$2>::operator = ( const vm::$1<$2> &obj )
+// {{{
+{
+    return *this;
+}
+// }}} End of func $1<$2>::operator=()
+`!p snip.rv  = line.Line_txt_f("=",[" ===","=== "])`
+
+`!p snip.rv  = cmt()[0]` }}} ![ Class $1<$2> operator realization ]
+`!p snip.rv  = line.Line_txt_f("=",[" ===","=== "])`
+
+
+`!p snip.rv  = line.Line_txt_f("=",[" ===","=== "])`
+`!p snip.rv  = line.Line_txt_t(" Class "+t[1]+"<"+t[2]+">"+" Functional realization")`
+`!p snip.rv  = line.Line_txt_f("=",[" ===","=== "])`
+`!p snip.rv  = cmt()[0]` [ Class $1<$2> Functional realization ] {{{
+
+${0}
+
+`!p snip.rv  = cmt()[0]` }}} ![ Class $1<$2> Functional realization ]
+`!p snip.rv  = line.Line_txt_f("=",[" ===","=== "])`
+endsnippet
+# }}} End of SnipFunc tReal
+# ------------------------------------------------------------------------------------------------ #
+
 
 # ------------------------------------------------------------------------------------------------ #
 # [ cMenber : class's menber define ] {{{
@@ -576,7 +671,7 @@ namespace vm
 
 ${0:${VISUAL}}
 
-} 
+}; 
 `!p snip.rv=cmt()[0]` }}} End of namespace vm
 `!p snip.rv=line.Line_txt_f( '=', [" ===","=== "] )`
 
@@ -584,8 +679,12 @@ endsnippet
 # }}} End of SnipFunc namespace
 # ------------------------------------------------------------------------------------------------ #
 
-snippet cout
-std::cout << ${1} << std::endl;
+snippet cout "std::cout << ... << std::endl;"
+std::cout << ${1} << std::endl;${0}
+endsnippet
+
+snippet vCout "vCout << ... << vEndl;"
+vCout << ${1} << vEndl;${0}
 endsnippet
 
 # ------------------------------------------------------------------------------------------------ #
@@ -596,28 +695,28 @@ endsnippet
 
 # ------------------------------------------------------------------------------------------------ #
 
-snippet sca
+snippet sca "static_cast<>()"
 static_cast<${1:unsigned}>(${2:expr})${3}
 endsnippet
 
 # ------------------------------------------------------------------------------------------------ #
 
 # dynamic
-snippet dca
+snippet dca "dynamic_case<>()"
 dynamic_cast<${1:unsigned}>(${2:expr})${3}
 endsnippet
 
 # ------------------------------------------------------------------------------------------------ #
 
 # reinterpret
-snippet rca
+snippet rca "reinterpret_case<>()"
 reinterpret_cast<${1:unsigned}>(${2:expr})${3}
 endsnippet
 
 # ------------------------------------------------------------------------------------------------ #
 
 # const
-snippet cca
+snippet cca "const_case<>()"
 const_cast<${1:unsigned}>(${2:expr})${3}
 endsnippet
 
