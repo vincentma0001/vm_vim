@@ -7,7 +7,7 @@
 # ==   Author               : v.m. ( vincent_ma0001@hotmail.com )                               == #
 # ==   Version              : 0.0.0.0                                                           == #
 # ==   Create Time          : 2020-09-15 00:32:11                                               == #
-# ==   Modify Time          : 2020-10-16 11:52:00                                               == #
+# ==   Modify Time          : 2020-10-18 22:13:15                                               == #
 # ==   Issue  List          :                                                                   == #
 # ==   Change List          :                                                                   == #
 # ==     [    0.0.0.0     ] - Basic version                                                     == #
@@ -306,7 +306,7 @@ public:
 
 private:
     // Copy construct define
-    inline $1( const $1 &obj );
+    inline $1             ( const $1 &obj );
     // Assignment operation
     inline $1& operator = ( const $1 &obj );
 `!p snip.rv  = line.Line_l(["",""])` }}} ! Construct & Destruct
@@ -331,6 +331,55 @@ public:
 `!p snip.rv  = line.Line_txt_f('=',[" ===","=== "])`
 endsnippet
 # }}} End of SnipFunc class
+# ------------------------------------------------------------------------------------------------ #
+
+# ------------------------------------------------------------------------------------------------ #
+# [ tclass : template class define ] {{{
+snippet tclass "template class define" bw
+`!p line =vLine()
+lsTxtClass = " Class "+t[3]+" : "
+``!p snip.rv = line.Line_txt_f("=",[" ===","=== "])`
+`!p snip.rv  = line.Line_l()+lsTxtClass`${4:TODO add class brief here}`!p snip.rv=line.Line_spc_r(lsTxtClass+t[4])`
+`!p snip.rv  = line.Line_txt_f("-",[" ---","--- "])`
+template< ${1:typename} ${2:tName} >
+class ${3:class_name}
+// {{{
+{
+`!p snip.rv  = line.Line_txt_f("-",[" ---","--- "])`
+`!p snip.rv  = line.Line_l(["",""])` Construct & Destruct : {{{
+public:
+    // Construct define
+    inline explicit $3();
+	// Destruct define
+    inline virtual ~$3();
+
+private:
+    // Copy construct define
+    inline $3             ( const $3 &obj );
+    // Assignment operation
+    inline $3& operator = ( const $3 &obj );
+`!p snip.rv  = line.Line_l(["",""])` }}} ! Construct & Destruct
+
+`!p snip.rv  = line.Line_txt_f("-",[" ---","--- "])`
+`!p snip.rv  = line.Line_l(["",""])` Menbers   : {{{
+private:
+    /* TODO Add class's menbers here */
+`!p snip.rv  = line.Line_l(["",""])` }}} ! Members
+
+`!p snip.rv  = line.Line_txt_f("-",[" ---","--- "])`
+`!p snip.rv  = line.Line_l(["",""])` Methods   : {{{
+public:
+    /* TODO Add class's Methods here */
+`!p snip.rv  = line.Line_l(["",""])` }}} ! Methods
+
+};
+`!p snip.rv  = line.Line_l(["",""])` }}} ! [ class $3 ]
+`!p snip.rv  = line.Line_txt_f('=',[" ===","=== "])`
+`!p snip.rv  = cmt()[0]` Class realization :
+#include "`!p snip.rv=snip.fn+".inl"`"
+`!p snip.rv  = line.Line_txt_f('=',[" ===","=== "])`
+endsnippet
+# }}} End of SnipFunc tclass
 # ------------------------------------------------------------------------------------------------ #
 
 # ------------------------------------------------------------------------------------------------ #
@@ -639,7 +688,7 @@ if args:
         snip.rv += '\n'+line.Line_l()+"           "+lsArgName[-1]+line.Spc_r(lsArgName[-1],gLine['MinParamLen'])+ ' - [X] # TODO : Add comment for '+lsArgName[-1]+' #'
 snip<<2
 `
-template<${1:typename} ${2:tName}>
+template< ${1:typename} ${2:tName} >
 ${6:void} vm::${3:Class_Name}<$2>::${4:Func_name}( ${5:p_type p_name} )
 `!p snip.rv=cmt()[0]` {{{ 
 {

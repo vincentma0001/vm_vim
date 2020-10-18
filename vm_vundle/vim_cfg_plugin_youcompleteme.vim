@@ -7,7 +7,7 @@
 " ==   Author               : v.m. ( vincent_ma0001@hotmail.com )                               == "
 " ==   Version              : 1.0.0.0                                                           == "
 " ==   Create Time          : 2020-09-24 20:52:27                                               == "
-" ==   Modify Time          : 2020-10-04 11:27:03                                               == "
+" ==   Modify Time          : 2020-10-18 20:18:06                                               == "
 " ==   Issue  List          :                                                                   == "
 " ==   Change List          :                                                                   == "
 " ==     [    0.0.0.0     ] - Basic version                                                     == "
@@ -34,8 +34,7 @@ scriptencoding utf-8
 let g:ycm_use_clangd = 1
 
 " 设置YouCompleteMe设置目录
-let g:ycm_global_ycm_extra_conf              = $vim_cfg_path."/.ycm_extra_conf.py"
-"let g:ycm_global_ycm_extra_conf = $vim_cfg_path."/vm_plugins/vm_YouCompleteMe/third_party/ycmd/.ycm_extra_conf.py"
+let g:ycm_global_ycm_extra_conf              = $vim_ycm_cfg
 
 " 打开vim时不再询问是否加载ycm_extra_conf.py配置
 let g:ycm_confirm_extra_conf=0
@@ -59,14 +58,14 @@ let g:ycm_show_diagnostics_ui                = 0
 " 补全功能在注释中同样有效
 let g:ycm_complete_in_comments               = 0
 " 补全功能在字符串中同样有效
-let g:ycm_complete_in_strings                = 0
+let g:ycm_complete_in_strings                = 1
 
 " Ycm Preview显示方式，1
 set completeopt=menu,menuone
 let g:ycm_add_preview_to_completeopt = 0
 
 " Ycm调用按键
-let g:ycm_key_invoke_completion                         = '<s-space>'
+let g:ycm_key_invoke_completion                         = '<c-a>'
 let g:ycm_key_list_stop_completion                      = ['<CR>']
 
 " Ycm提示行最大数
@@ -90,12 +89,12 @@ let g:ycm_semantic_triggers =  {
 "            \ }
 
 "let g:ycm_filetype_whitelist = { "*":1, }
-let g:ycm_filetype_whitelist = {
-            \ "c":1,
-            \ "cpp":1,
-            \ "inl":1,
-            \ "python":1,
-            \ }
+"let g:ycm_filetype_whitelist = {
+"            \ "c":1,
+"            \ "cpp":1,
+"            \ "inl":1,
+"            \ "python":1,
+"            \ }
 
 " }}}
 " ================================================================================================ "
