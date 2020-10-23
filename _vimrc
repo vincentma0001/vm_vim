@@ -13,7 +13,8 @@
 
 " =========================================================================================
 " vim配置文件目录变量
-let $vim_cfg_path="e:/MyWork/vm_vim"
+" let $vim_cfg_path="e:/MyWork/vm_vim"
+let $vim_cfg_path="/vm/vm_vim"
 let $vim_work_path="/vm/vm_work"
 
 
