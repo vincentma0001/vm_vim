@@ -21,11 +21,11 @@ map <K9> <ESC>:!copy "E:/MyWork/MyVim/_vimrc" "C:/Program Files (x86)/Vim/_vimrc
 
 
 " K0    - 执行python脚本
-map <K0> <ESC>:!python %<CR>
+map <k0> <ESC>:!python %<CR>
 
 
 " K2    -  重新加载_vimrc文件
-map <K1> <ESC>:source $vim/_vimrc<CR>
+map <k1> <ESC>:source /etc/vimrc<CR>
 
 "
 map <K4> <ESC>:YcmComplete GoToInclude<CR>

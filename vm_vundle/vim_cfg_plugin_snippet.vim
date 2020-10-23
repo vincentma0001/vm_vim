@@ -30,7 +30,6 @@ scriptencoding utf-8
 " 设置ultisnippet模板加载目录
 let $VIM_PLUGIN_ULTISNIPPET = $vim_cfg_path."/vm_snips"
 let g:UltiSnipsSnippetDirectories = [ $VIM_PLUGIN_ULTISNIPPET ]
-echo "[ultiSnips] snipet directory ".$VIM_PLUGIN_ULTISNIPPET
 
 " 设置触发点
 let g:UltiSnipsExpandTrigger="<tab>"
