@@ -7,7 +7,7 @@
 " ==   Author               : v.m. ( vincent_ma0001@hotmail.com )                               == "
 " ==   Version              : 1.0.0.0                                                           == "
 " ==   Create Time          : 2020-09-23 09:17:15                                               == "
-" ==   Modify Time          : 2020-09-23 09:17:15                                               == "
+" ==   Modify Time          : 2020-10-23 11:53:09                                               == "
 " ==   Issue  List          :                                                                   == "
 " ==   Change List          :                                                                   == "
 " ==     [    0.0.0.0     ] - Basic version                                                     == "
@@ -29,7 +29,7 @@ scriptencoding utf-8
 " == TODO : Configures                                                                          == "
 " ================================================================================================ "
 " [ Configures ] {{{
-let g:gitgutter_git_executable = 'C:\Program Files\Git\bin\git.exe'
+let g:gitgutter_git_executable = $vim_git_cmd
 
 let g:gitgutter_max_signs = 500  " default value (Vim < 8.1.0614, Neovim < 0.4.0)
 let g:gitgutter_max_signs = -1   " default value (otherwise)

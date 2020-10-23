@@ -54,7 +54,7 @@ set fileencoding =utf-8
 set encoding     =utf-8
 
 " 解决consle输出乱码
-set termencoding =cp936
+set termencoding =utf-8
 
 " 设置中文帮助
 set helplang=cn
