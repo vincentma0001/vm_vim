@@ -7,7 +7,7 @@
 " ==   Author               : v.m. ( vincent_ma0001@hotmail.com )                               == "
 " ==   Version              : 1.0.0.0                                                           == "
 " ==   Create Time          : 2020-09-24 20:52:27                                               == "
-" ==   Modify Time          : 2020-10-18 20:18:06                                               == "
+" ==   Modify Time          : 2020-10-23 19:59:42                                               == "
 " ==   Issue  List          :                                                                   == "
 " ==   Change List          :                                                                   == "
 " ==     [    0.0.0.0     ] - Basic version                                                     == "
@@ -78,7 +78,7 @@ let g:ycm_collect_identifiers_from_comments_and_strings =1
 "set completeopt                                         =menu,menuone
 
 let g:ycm_semantic_triggers =  {
-  \   'c' : ['->', '.'],
+  \   'c' : ['->', '.', '::'],
   \   'cpp' : ['->', '.', '::'],
   \   'python' : ['.'],
   \   'lua' : ['.', ':'],

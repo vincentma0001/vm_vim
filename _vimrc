@@ -14,15 +14,15 @@
 " =========================================================================================
 " vim配置文件目录变量
 " let $vim_cfg_path="e:/MyWork/vm_vim"
-let $vim_cfg_path="/vm/vm_vim"
+ let $vim_cfg_path="/vm/vm_vim"
 "let $vim_work_path="e:/MyWork/vm_work"
-let $vim_work_path="/vm/vm_work"
+ let $vim_work_path="/vm/vm_work"
 "let $vim_git_cmd="C:/Program Files/Git/bin/git.exe"
-let $vim_git_cmd="/bin/git"
+ let $vim_git_cmd="/bin/git"
 
 
-let $vim_ycm_cfg = $vim_cfg_path."/.ycm_extra_conf_win.py"
-"let $vim_ycm_cfg = $vim_cfg_path."/.ycm_extra_confg.py"
+"let $vim_ycm_cfg = $vim_cfg_path."/.ycm_extra_conf_win.py"
+ let $vim_ycm_cfg = $vim_cfg_path."/.ycm_extra_conf_lux.py"
 
 " 加载配置文件
 source $vim_cfg_path/vm_vimrc.vim
