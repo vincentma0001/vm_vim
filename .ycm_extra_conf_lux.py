@@ -43,6 +43,8 @@ flags = [
 '-x',
 'c++',
 '-isystem',
+'/vm/vm_work/vm_tools/src',
+'-isystem',
 '/usr/include',
 ]
 
