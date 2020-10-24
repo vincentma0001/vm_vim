@@ -42,20 +42,18 @@ let g:nerdtree_tabs_open_on_console_startup=1
 " 忽略一下文件的显示
 let NERDTreeIgnore=['\.pyc','\~$','\.swp']
 
-"""
-" let g:NERDTreeIndicatorMapCustom = {
-"    \ "Modified"  : "★",
-"    \ "Staged"    : "+",
-"    \ "Untracked" : "☆",
-"    \ "Renamed"   : "≈",
-"    \ "Unmerged"  : "═",
-"    \ "Deleted"   : "×",
-"    \ "Dirty"     : "√",
-"    \ "Clean"     : "○",
-"    \ 'Ignored'   : "◇",
-"    \ "Unknown"   : "⊙"
-"    \ }
-"""
+let g:NERDTreeIndicatorMapCustom = {
+    \ "Modified"  : "★",
+    \ "Staged"    : "+",
+    \ "Untracked" : "☆",
+    \ "Renamed"   : "≈",
+    \ "Unmerged"  : "═",
+    \ "Deleted"   : "×",
+    \ "Dirty"     : "√",
+    \ "Clean"     : "○",
+    \ 'Ignored'   : "◇",
+    \ "Unknown"   : "⊙"
+    \ }
 
 " =========================================================================================
 " ==                                   结束文件                                          ==
