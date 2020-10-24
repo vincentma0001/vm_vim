@@ -7,7 +7,7 @@
 " ==   Author               : v.m. ( vincent_ma0001@hotmail.com )                               == "
 " ==   Version              : 1.0.0.0                                                           == "
 " ==   Create Time          : 2020-09-23 11:55:01                                               == "
-" ==   Modify Time          : 2020-09-23 11:55:01                                               == "
+" ==   Modify Time          : 2020-10-24 19:21:15                                               == "
 " ==   Issue  List          :                                                                   == "
 " ==   Change List          :                                                                   == "
 " ==     [    0.0.0.0     ] - Basic version                                                     == "
@@ -33,7 +33,7 @@ scriptencoding utf-8
 let g:indentLine_enabled    = 1
 let g:indentLine_setConceal = 0
 
-let g:indentLine_setColors = 0
+let g:indentLine_setColors = 1
 
 " Vim
 let g:indentLine_color_term = 239
