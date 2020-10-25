@@ -33,7 +33,7 @@ flags = [
 # a "-std=<something>".
 # For a C project, you would set this to something like 'c99' instead of
 # 'c++11'.
-'-std=c++11',
+'-std=c++14',
 # ...and the same thing goes for the magic -x option which specifies the
 # language that the files to be compiled are written in. This is mostly
 # relevant for c++ headers.
@@ -43,7 +43,7 @@ flags = [
 '-x',
 'c++',
 '-isystem',
-'/vm/vm_work/vm_tools/src',
+'/vm/vm_tools/src',
 '-isystem',
 '/usr/include',
 ]
@@ -70,7 +70,7 @@ def DirectoryOfThisScript():
 
 def IsHeaderFile( filename ):
   extension = os.path.splitext( filename )[ 1 ]
-  return extension in [ '.h', '.hxx', '.hpp', '.hh' ]
+  return extension in [ '.h', '.hxx', '.hpp', '.hh', '.inl' ]
 
 
 def GetCompilationInfoForFile( filename ):
