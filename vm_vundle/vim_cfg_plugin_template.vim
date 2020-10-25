@@ -7,7 +7,7 @@
 " ==   Author               : v.m. ( vincent_ma0001@hotmail.com )                               == "
 " ==   Version              : 0.0.0.0                                                           == "
 " ==   Create Time          : 2020-09-23 17:51:13                                               == "
-" ==   Modify Time          : 2020-09-23 17:51:13                                               == "
+" ==   Modify Time          : 2020-10-25 11:14:46                                               == "
 " ==   Issue  List          :                                                                   == "
 " ==   Change List          :                                                                   == "
 " ==     [    0.0.0.0     ] - Basic version                                                     == "
@@ -22,8 +22,8 @@
 " settings for vim-template bundle {{{
 
 " 设置模板目录
-let $VIM_PLUGIN_TEMPLATE = $VIM_CFG_PATH."/vm_template"
-let g:templates_directory = [ $VIM_PLUGIN_TEMPLATE ]
+let $vim_plugin_template  = $vim_cfg_path."/vm_template"
+let g:templates_directory = [ $vim_plugin_template ]
 
 " 设置模板信息
 let g:email     = "vincent_ma0001@hotmail.com"
