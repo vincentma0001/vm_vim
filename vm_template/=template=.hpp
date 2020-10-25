@@ -6,8 +6,8 @@
 // ==                                                                                            == //
 // ==   Author               : %USER% ( %MAIL% )                               == //
 // ==   Version              : 1.0.0.0                                                           == //
-// ==   Create Time          : %DATE% %TIME%                                               == //
-// ==   Modify Time          : %DATE% %TIME%                                               == //
+// ==   Create Time          : %DATE% %TIME%                                                  == //
+// ==   Modify Time          : %DATE% %TIME%                                                  == //
 // ==   Issue  List          :                                                                   == //
 // ==   Change List          :                                                                   == //
 // ==     [    0.0.0.0     ] - Basic version                                                     == //
