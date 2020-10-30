@@ -34,7 +34,7 @@ let NERDTreeShowLineNumbers=1
 let NERDTreeShowHidden=1
 
 " 设置宽度
-let NERDTreeWinSize=30
+let NERDTreeWinSize=40
 
 " 在终端启动vim时，共享NERDTree
 let g:nerdtree_tabs_open_on_console_startup=1

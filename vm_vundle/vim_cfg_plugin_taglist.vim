@@ -37,6 +37,8 @@ scriptencoding utf-8
 "elseif  MySys() == "linux"
 let Tlist_Ctags_Cmd = '/usr/bin/ctags' 
 
+set tags=$vm_tools/vtags
+
 " 不同时显示多个文件的tag，只显示当前文件的
 let Tlist_Show_One_File                   = 1
 " 如果taglist窗口是最后一个窗口，则退出vim
@@ -60,7 +62,7 @@ let Tlist_Process_File_Always             = 1
 " 设置taglist窗口的高度
 "let Tlist_WinHeight = 100
 " 设置taglist窗口的宽度
-let Tlist_WinWidth                        = 32
+let Tlist_WinWidth                        = 40
 " taglist窗口横向显示
 "let Tlist_Use_Horiz_Window                = 1
 
