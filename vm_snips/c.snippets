@@ -7,7 +7,7 @@
 # ==   Author               : v.m. ( vincent_ma000!hotmail.com )                                == #
 # ==   Version              : 0.0.0.0                                                           == #
 # ==   Create Time          : 2020-09-14 11:18:27                                               == #
-# ==   Modify Time          : 2020-10-16 19:10:30                                               == #
+# ==   Modify Time          : 2020-10-30 09:36:33                                               == #
 # ==   Issue  List          :                                                                   == #
 # ==   Change List          :                                                                   == #
 # ==     [    0.0.0.0     ] - Basic version                                                     == #
@@ -332,37 +332,38 @@ endsnippet
 # ------------------------------------------------------------------------------------------------ #
 # [ #def : #define macro ] {{{
 snippet #def "#define macro" bw
-#define ${1:SYMBOL} ${2:VALUE}
+#define ${1:SYMBOL} ${2:VALUE}${0}
 endsnippet
 # }}} End of SnipFunc #def
 # ------------------------------------------------------------------------------------------------ #
 
 # ------------------------------------------------------------------------------------------------ #
 # [ #if : #if macro ] {{{
-snippet #if "#if macro" bw
-#if ${1:FOO}
+snippet #if "#if ... " bw
+#if       ${1:(Condition)}
     ${0:${VISUAL}}
-#else
-#endif
+#endif // !$1
 endsnippet
 # }}} End of SnipFunc #if
 # ------------------------------------------------------------------------------------------------ #
 
 # ------------------------------------------------------------------------------------------------ #
-# [ #ifsys : #if macro with sys define ] {{{
-snippet #ifsys "#if macro with sys define" bw
-#if        ( _V_SYS_ == _V_WIN_ )
-#   define ${1:SYMBOL} ${2:VALUE}
-#elif      ( _V_SYS_ == _V_LUX_ )
-#   define $1 ${3:VALUE}
-#endif // !( _V_SYS_ == _V_WIN_ )${0}
+# [ $ifel : $if ... else ... ] {{{
+snippet $ifel "$if ... else ..." bw
+
+snippet #if "#if ... " bw
+#if       ${1:(Condition)}
+    ${2:${VISUAL}}
+#else  // !$1
+    ${3:// TODO : add else codes}
+#endif // !$1${0}
 endsnippet
-# }}} End of SnipFunc #ifsys
+# }}} End of SnipFunc $ifel
 # ------------------------------------------------------------------------------------------------ #
 
 # ------------------------------------------------------------------------------------------------ #
 # [ #ifdef : #define macro ] {{{
-snippet #ifdef "#define macro" bw
+snippet #ifdef "#ifdef ... " bw
 #ifdef     $1
 #   define ${1:SYMBOL} ${2:VALUE}
 #else
@@ -373,29 +374,69 @@ endsnippet
 # ------------------------------------------------------------------------------------------------ #
 
 # ------------------------------------------------------------------------------------------------ #
+# [ $ifeldef : #ifdef ... else ...  ] {{{
+snippet $ifeldef "#ifdef ... else ... " bw
+#ifdef     $1
+#   define ${1:SYMBOL} ${2:VALUE}
+#else  //  #!def $1
+#   define $1 ${3:VALUE}
+#endif // !$1${0}
+endsnippet
+# }}} End of SnipFunc $ifeldef
+# ------------------------------------------------------------------------------------------------ #
+
+# ------------------------------------------------------------------------------------------------ #
 # [ #ifndef : #ifndef macro ] {{{
-snippet #ifndef "#ifndef macro" bw
+snippet #ifndef "#ifndef ... " bw
 #ifndef    $1
 #   define ${1:SYMBOL} ${2:VALUE}
-#else
-#   define $1 ${3:VALUE}
 #endif // !$1${0}
 endsnippet
 # }}} End of SnipFunc #ifndef
 # ------------------------------------------------------------------------------------------------ #
 
 # ------------------------------------------------------------------------------------------------ #
-# [ #ifndefw : #ifndef macro with wchar ] {{{
-snippet #ifndefw "#ifndef macro with wchar" bw
+# [ $ifelndef : $ifndef ... #else ... ] {{{
+snippet $ifelndef "#ifndef ... #else ..." bw
 #ifndef    $1
-#if        ( _V_USE_WCHAR_ == 0 )
 #   define ${1:SYMBOL} ${2:VALUE}
-#else  //  ( _V_USE_WCHAR_ != 0 )
-#   define $1 ${3:WVALUE}
-#endif // !( _V_USE_WCHAR_ == 0 ) 
+#else  // defined $1
+#   define $1 ${3:VALUE}
 #endif // !$1${0}
 endsnippet
-# }}} End of SnipFunc #ifndefw
+# }}} End of SnipFunc $ifelndef
+# ------------------------------------------------------------------------------------------------ #
+
+# ------------------------------------------------------------------------------------------------ #
+# [ #ifsys : #if macro with sys define ] {{{
+snippet #ifsys "#if macro with sys define" bw
+#if        ( _V_SYS_ == _V_WIN_ )
+// Win coders {{{
+//  TODO : add windows codes
+// }}}
+#elif      ( _V_SYS_ == _V_LUX_ )
+// Lux codes {{{
+//  TODO : add linux codes
+// }}}
+#endif // !( _V_SYS_ == _V_WIN_ )${0}
+endsnippet
+# }}} End of SnipFunc #ifsys
+# ------------------------------------------------------------------------------------------------ #
+
+# ------------------------------------------------------------------------------------------------ #
+# [ #ifwchar : #if ( _V_USE_WCHAR_ ==0 )... ] {{{
+snippet #ifwchar "#if ( _V_USE_WCHAR_ ==0 )..." bw
+#if        ( _V_USE_WCHAR_ == 0 )
+//  char codes {{{
+//  TODO : add char codes
+// }}}
+#else  //  ( _V_USE_WCHAR_ != 0 )
+// wchar codes {{{
+//  TODO : add wchar codes
+// }}}
+#endif // !( _V_USE_WCHAR_ == 0 )${0}
+endsnippet
+# }}} End of SnipFunc #ifwchar
 # ------------------------------------------------------------------------------------------------ #
 
 # }}} ![ 宏代码块 ]
