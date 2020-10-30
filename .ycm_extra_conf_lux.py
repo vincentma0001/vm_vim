@@ -25,15 +25,25 @@ flags = [
 '-Wall',
 '-Wextra',
 '-Werror',
+# 警告一个函数的参数在函数的实现中并未被用到
+'-Wno-unused-parameter',
+#'-Wno-undeclared-selector',
+#'-Wno-c++17-extensions',
+#'-Wno-include-next-outside-header',
 '-fexceptions',
-'-DNDEBUG',
+#'-Dtchar=char',
+#'-Dsize_t=unsigned long',
+#'-DvT(x)=x',
+'-D_vIn_=',
+'-D_vOt_=',
+'-D_vIO_=',
 # THIS IS IMPORTANT! Without a "-std=<something>" flag, clang won't know which
 # language to use when compiling headers. So it will guess. Badly. So C++
 # headers will be compiled as C headers. You don't want that so ALWAYS specify
 # a "-std=<something>".
 # For a C project, you would set this to something like 'c99' instead of
 # 'c++11'.
-'-std=c++14',
+'-std=c++11',
 # ...and the same thing goes for the magic -x option which specifies the
 # language that the files to be compiled are written in. This is mostly
 # relevant for c++ headers.
@@ -43,9 +53,17 @@ flags = [
 '-x',
 'c++',
 '-isystem',
-'/vm/vm_tools/src',
+'/usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/include-fixed',
+'-isystem',
+'/usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/include',
+'-isystem',
+'/usr/include/c++/10.2.0',
 '-isystem',
 '/usr/include',
+'-I',
+'/vm/vm_tools/src',
+'-I',
+'/vm/vm_tools/tst',
 ]
 
 

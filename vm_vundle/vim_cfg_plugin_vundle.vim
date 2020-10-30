@@ -7,7 +7,7 @@
 " ==   Author               : v.m. ( vincent_ma0001@hotmail.com )                               == "
 " ==   Version              : 1.0.0.19                                                          == "
 " ==   Create Time          : 2020-09-23 13:04:34                                               == "
-" ==   Modify Time          : 2020-10-23 20:02:05                                               == "
+" ==   Modify Time          : 2020-10-26 17:29:08                                               == "
 " ==   Issue  List          :                                                                   == "
 " ==   Change List          :                                                                   == "
 " ==     [    1.0.0.19    ] - 添加syntastic(语法检测)                                           == "
@@ -150,6 +150,8 @@ call vundle#begin($vim_cfg_plugin_path)
 
     " 安装YouCompleteMe(文档补全)
     Plugin 'Valloric/YouCompleteMe'
+"    Plugin 'rdnetto/YCM-Generator'
+    Bundle 'git@github.com:rdnetto/YCM-Generator.git'
 
     " 安装template(文件模板)
     Plugin 'aperezdc/vim-template'
