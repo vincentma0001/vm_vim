@@ -7,7 +7,7 @@
 # ==   Author               : v.m. ( vincent_ma0001@hotmail.com )                               == #
 # ==   Version              : 0.0.0.0                                                           == #
 # ==   Create Time          : 2020-09-15 00:32:11                                               == #
-# ==   Modify Time          : 2020-10-30 09:11:16                                               == #
+# ==   Modify Time          : 2020-10-30 09:13:26                                               == #
 # ==   Issue  List          :                                                                   == #
 # ==   Change List          :                                                                   == #
 # ==     [    0.0.0.0     ] - Basic version                                                     == #
@@ -418,7 +418,7 @@ inline vm::$1::~$1(  )
 `!p snip.rv  = line.Line_txt_t(" Methord : "+t[1]+"::"+t[1]+"()")`
 `!p snip.rv  = line.Line_txt_f("-")`
 `!p snip.rv  = line.Line_l()` Brief   : Copy construct define
-inline vm::$1::$1( const vm::$1 &obj )
+inline vm::$1::$1( const $1 &obj )
 // {{{
 {
     *this = obj;
@@ -440,7 +440,7 @@ inline vm::$1::$1( const vm::$1 &obj )
 `!p snip.rv  = line.Line_txt_f("-")`
 `!p snip.rv  = line.Line_l()` Brief   : Assignment operation
 `!p snip.rv  = line.Line_l()` Return  : `!p snip.rv = line.Txt_l(t[1]+'&',gLine['MinParamLen'])` - [O] this object
-inline vm::$1& vm::$1::operator = ( const vm::$1 &obj )
+inline vm::$1& vm::$1::operator = ( const $1 &obj )
 // {{{
 {
     return *this;
