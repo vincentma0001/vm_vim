@@ -7,7 +7,7 @@
 " ==   Author               : v.m. ( vincent_ma0001@hotmail.com )                               == "
 " ==   Version              : 1.0.0.19                                                          == "
 " ==   Create Time          : 2020-09-23 13:04:34                                               == "
-" ==   Modify Time          : 2020-10-26 17:29:08                                               == "
+" ==   Modify Time          : 2020-10-30 10:38:22                                               == "
 " ==   Issue  List          :                                                                   == "
 " ==   Change List          :                                                                   == "
 " ==     [    1.0.0.19    ] - 添加syntastic(语法检测)                                           == "
@@ -161,6 +161,10 @@ call vundle#begin($vim_cfg_plugin_path)
     Plugin 'honza/vim-snippets'
     Plugin 'reconquest/vim-pythonx'
 
+    " 安装taglist(代码查看) "
+    Plugin 'git@github.com:yegappan/taglist.git'
+
+
 " }}}
 " ================================================================================================ "
 
@@ -259,6 +263,10 @@ source $vim_cfg_path_vundle/vim_cfg_plugin_snippet.vim
 " ------------------------------------------------------------------------------------------------ "
 " YouCompleteMe 文本自动补全
 source $vim_cfg_path_vundle/vim_cfg_plugin_youcompleteme.vim
+
+" ------------------------------------------------------------------------------------------------ "
+" Taglist 文档解析
+source $vim_cfg_path_vundle/vim_cfg_plugin_taglist.vim
 
 " ------------------------------------------------------------------------------------------------ "
 " template 文件模板
