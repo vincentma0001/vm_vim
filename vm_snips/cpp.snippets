@@ -7,7 +7,7 @@
 # ==   Author               : v.m. ( vincent_ma0001@hotmail.com )                               == #
 # ==   Version              : 0.0.0.0                                                           == #
 # ==   Create Time          : 2020-09-15 00:32:11                                               == #
-# ==   Modify Time          : 2020-10-31 19:19:28                                               == #
+# ==   Modify Time          : 2020-10-31 19:24:12                                               == #
 # ==   Issue  List          :                                                                   == #
 # ==   Change List          :                                                                   == #
 # ==     [    0.0.0.0     ] - Basic version                                                     == #
@@ -706,7 +706,7 @@ if args:
 snip<<2
 `
 template< ${1:typename tName} >
-${5:void} vm::${2:Class_Name}< `!p snip.rv=get_template_names(t[1])` >::${3:Func_name}( ${4:p_type p_name} )
+inline ${5:void} vm::${2:Class_Name}< `!p snip.rv=get_template_names(t[1])` >::${3:Func_name}( ${4:p_type p_name} )
 `!p snip.rv=cmt()[0]` {{{ 
 {
     ${VISUAL:# TODO : add function codes here #}
