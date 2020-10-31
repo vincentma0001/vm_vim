@@ -7,7 +7,7 @@
 # ==   Author               : v.m. ( vincent_ma0001@hotmail.com )                               == #
 # ==   Version              : 0.0.0.0                                                           == #
 # ==   Create Time          : 2020-09-15 00:32:11                                               == #
-# ==   Modify Time          : 2020-10-30 09:15:04                                               == #
+# ==   Modify Time          : 2020-10-30 13:13:21                                               == #
 # ==   Issue  List          :                                                                   == #
 # ==   Change List          :                                                                   == #
 # ==     [    0.0.0.0     ] - Basic version                                                     == #
@@ -558,10 +558,10 @@ endsnippet
 snippet cMenber "class's menber define" bw
 `!p line =vLine()
 ``!p snip.rv = line.Line_txt_f("-",[" ---","--- "])`
-`!p snip.rv  = line.Line_l(["",""])` Methods   : {{{
+`!p snip.rv  = line.Line_l(["",""])` Members   : {{{
 public:
-    ${0:/* TODO Add class's Methods here */}
-`!p snip.rv  = line.Line_l(["",""])` }}} ! Methods
+    ${0:/* TODO Add class's Members here */}
+`!p snip.rv  = line.Line_l(["",""])` }}} ! Members
 
 endsnippet
 # }}} End of SnipFunc cMenber
@@ -579,6 +579,20 @@ public:
 
 endsnippet
 # }}} End of SnipFunc cMethod
+# ------------------------------------------------------------------------------------------------ #
+
+# ------------------------------------------------------------------------------------------------ #
+# [ cOperator : class's operator define ] {{{
+snippet cOperator "class's operator define" bw
+`!p line =vLine()
+``!p snip.rv = line.Line_txt_f("-",[" ---","--- "])`
+`!p snip.rv  = line.Line_l(["",""])` Operators : {{{
+public:
+    ${0:/* TODO Add class's Operators here */}
+`!p snip.rv  = line.Line_l(["",""])` }}} ! Operators
+
+endsnippet
+# }}} End of SnipFunc cOperator
 # ------------------------------------------------------------------------------------------------ #
 
 # ------------------------------------------------------------------------------------------------ #

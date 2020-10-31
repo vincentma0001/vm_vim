@@ -37,8 +37,6 @@ scriptencoding utf-8
 "elseif  MySys() == "linux"
 let Tlist_Ctags_Cmd = '/usr/bin/ctags' 
 
-set tags=$vm_tools/vtags
-
 " 不同时显示多个文件的tag，只显示当前文件的
 let Tlist_Show_One_File                   = 1
 " 如果taglist窗口是最后一个窗口，则退出vim
