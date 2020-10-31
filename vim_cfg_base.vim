@@ -7,7 +7,7 @@
 " ==   Author               : v.m. ( vincent_ma000!hotmail.com )                                == "
 " ==   Version              : 1.0.0.0                                                           == "
 " ==   Create Time          : 2020-09-14 12:04:43                                               == "
-" ==   Modify Time          : 2020-10-04 08:52:09                                               == "
+" ==   Modify Time          : 2020-10-31 13:37:58                                               == "
 " ==   Issue  List          :                                                                   == "
 " ==   Change List          :                                                                   == "
 " ==     [    1.0.0.3     ] - 添加编码配置                                                      == "
@@ -108,11 +108,11 @@ set guioptions-=m
 " ================================================================================================ "
 " 行控制 {{{
 " 关闭/打开扩展的功能 
-set compatible
-"set nocompatible
+"set compatible
+set nocompatible
 
 "set linebreak
-set textwidth=130
+"set textwidth=130
 
 " 设置是否传行
 set nowrap
