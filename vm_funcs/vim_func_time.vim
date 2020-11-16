@@ -6,8 +6,13 @@
 " ==                                                                                            == "
 " ==   Author               : v.m. ( vincent_ma000!hotmail.com )                                == "
 " ==   Version              : 1.0.0.0                                                           == "
+<<<<<<< HEAD
 " ==   Create Time          : 2020-09-14 22:53:03                                               == "
 " ==   Modify Time          : 2020-11-08 08:45:32                                               == "
+=======
+" ==   Create Time          : 2020-09-14 22:53                                                  == "
+" ==   Modify Time          : 2020-11-16 12:03                                                  == "
+>>>>>>> work
 " ==   Issue  List          :                                                                   == "
 " ==   Change List          :                                                                   == "
 " ==     [    0.0.0.0     ] - Basic version                                                     == "
@@ -26,7 +31,7 @@ function! UpdateVimModifyTime()
 
     let s:sLineNum =line('.')
 
-    execute '1,15s/Modify\sTime\s\{10}:\s[0-9]\{4}-[0-9]\{2}-[0-9]\{2}\s[0-9]\{2}:[0-9]\{2}:[0-9]\{2}/\=strftime("Modify Time          : %Y-%m-%d %H:%M:%S" )/e'
+    execute '1,15s/Modify\sTime\s\{10}:\s[0-9]\{4}-[0-9]\{2}-[0-9]\{2}\s[0-9]\{2}:[0-9]\{2}/\=strftime("Modify Time          : %Y-%m-%d %H:%M" )/e'
     echom   "Update Modify time finished!"
 
     execute s:sLineNum
