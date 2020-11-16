@@ -7,7 +7,7 @@
 # ==   Author               : v.m. ( vincent_ma0001@hotmail.com )                               == #
 # ==   Version              : 0.0.0.0                                                           == #
 # ==   Create Time          : 2020-09-15 00:32:11                                               == #
-# ==   Modify Time          : 2020-10-31 19:24:12                                               == #
+# ==   Modify Time          : 2020-11-16 11:11:54                                               == #
 # ==   Issue  List          :                                                                   == #
 # ==   Change List          :                                                                   == #
 # ==     [    0.0.0.0     ] - Basic version                                                     == #
@@ -290,15 +290,11 @@ endsnippet
 # [ class : class define ] {{{
 snippet class "class define" bw
 `!p line =vLine()
-lsTxtClass = " Class "+t[1]+" : "
-``!p snip.rv = line.Line_txt_f("=",[" ===","=== "])`
-`!p snip.rv  = line.Line_l()+lsTxtClass`${2:TODO add class brief here}`!p snip.rv=line.Line_spc_r(lsTxtClass+t[2])`
-`!p snip.rv  = line.Line_txt_f("-",[" ---","--- "])`
+``!p snip.rv = cmt()[0]+" Class "+t[1]+" : "`${2:TODO add class brief here}
 class ${1:class_name}
-// {{{
-{
-`!p snip.rv  = line.Line_txt_f("-",[" ---","--- "])`
-`!p snip.rv  = line.Line_l(["",""])` Construct & Destruct : {{{
+{ // {{{
+
+`!p snip.rv  = cmt()[0]` Construct & Destruct : {{{
 public:
     // Construct define
     inline explicit $1();
@@ -310,23 +306,19 @@ private:
     inline $1             ( const $1 &obj );
     // Assignment operation
     inline $1& operator = ( const $1 &obj );
-`!p snip.rv  = line.Line_l(["",""])` }}} ! Construct & Destruct
+`!p snip.rv  = cmt()[0]` }}} ! Construct & Destruct
 
-`!p snip.rv  = line.Line_txt_f("-",[" ---","--- "])`
-`!p snip.rv  = line.Line_l(["",""])` Menbers   : {{{
+`!p snip.rv  = cmt()[0]` Menbers   : {{{
 private:
     /* TODO Add class's menbers here */
-`!p snip.rv  = line.Line_l(["",""])` }}} ! Members
+`!p snip.rv  = cmt()[0]` }}} ! Members
 
-`!p snip.rv  = line.Line_txt_f("-",[" ---","--- "])`
-`!p snip.rv  = line.Line_l(["",""])` Methods   : {{{
+`!p snip.rv  = cmt()[0]` Methods   : {{{
 public:
     /* TODO Add class's Methods here */
-`!p snip.rv  = line.Line_l(["",""])` }}} ! Methods
+`!p snip.rv  = cmt()[0]` }}} ! Methods
 
-};
-`!p snip.rv  = line.Line_l(["",""])` }}} ! [ class $1 ]
-`!p snip.rv  = line.Line_txt_f('=',[" ===","=== "])`
+}; // }}} End of class $1
 `!p snip.rv  = cmt()[0]` Class realization :
 #include "`!p snip.rv=snip.fn+".inl"`"
 `!p snip.rv  = line.Line_txt_f('=',[" ===","=== "])`
@@ -338,19 +330,15 @@ endsnippet
 # [ tclass : template class define ] {{{
 snippet tclass "template class define" bw
 `!p line =vLine()
-lsTxtClass = " Class "+t[3]+" : "
-``!p snip.rv = line.Line_txt_f("=",[" ===","=== "])`
-`!p snip.rv  = line.Line_l()+lsTxtClass`${4:TODO add class brief here}`!p snip.rv=line.Line_spc_r(lsTxtClass+t[4])`
-`!p snip.rv  = line.Line_txt_f("-",[" ---","--- "])`
+``!p snip.rv = cmt()[0]+" Class "+t[3]+" : "`${4:TODO add class brief here}
 template< ${1:typename} ${2:tName} >
 class ${3:class_name}
-// {{{
-{
-`!p snip.rv  = line.Line_txt_f("-",[" ---","--- "])`
-`!p snip.rv  = line.Line_l(["",""])` Construct & Destruct : {{{
+{ // {{{
+
+`!p snip.rv  = cmt()[0]` Construct & Destruct : {{{
 public:
     // Construct define
-    inline explicit $3();
+    inline          $3();
 	// Destruct define
     inline virtual ~$3();
 
@@ -359,23 +347,19 @@ private:
     inline $3             ( const $3 &obj );
     // Assignment operation
     inline $3& operator = ( const $3 &obj );
-`!p snip.rv  = line.Line_l(["",""])` }}} ! Construct & Destruct
+`!p snip.rv  = cmt()[0]` }}} ! Construct & Destruct
 
-`!p snip.rv  = line.Line_txt_f("-",[" ---","--- "])`
-`!p snip.rv  = line.Line_l(["",""])` Menbers   : {{{
+`!p snip.rv  = cmt()[0]` Menbers   : {{{
 private:
     /* TODO Add class's menbers here */
-`!p snip.rv  = line.Line_l(["",""])` }}} ! Members
+`!p snip.rv  = cmt()[0]` }}} ! Members
 
-`!p snip.rv  = line.Line_txt_f("-",[" ---","--- "])`
-`!p snip.rv  = line.Line_l(["",""])` Methods   : {{{
+`!p snip.rv  = cmt()[0]` Methods   : {{{
 public:
     /* TODO Add class's Methods here */
-`!p snip.rv  = line.Line_l(["",""])` }}} ! Methods
+`!p snip.rv  = cmt()[0]` }}} ! Methods
 
-};
-`!p snip.rv  = line.Line_l(["",""])` }}} ! [ class $3 ]
-`!p snip.rv  = line.Line_txt_f('=',[" ===","=== "])`
+}; // }}} End of class $3
 `!p snip.rv  = cmt()[0]` Class realization :
 #include "`!p snip.rv=snip.fn+".inl"`"
 `!p snip.rv  = line.Line_txt_f('=',[" ===","=== "])`
@@ -558,8 +542,7 @@ endsnippet
 # [ cMenber : class's menber define ] {{{
 snippet cMenber "class's menber define" bw
 `!p line =vLine()
-``!p snip.rv = line.Line_txt_f("-",[" ---","--- "])`
-`!p snip.rv  = line.Line_l(["",""])` Members   : {{{
+``!p snip.rv = line.Line_l(["",""])` Members   : {{{
 public:
     ${0:/* TODO Add class's Members here */}
 `!p snip.rv  = line.Line_l(["",""])` }}} ! Members
@@ -572,8 +555,7 @@ endsnippet
 # [ cMethod : class's method define ] {{{
 snippet cMethod "class's method define" bw
 `!p line =vLine()
-``!p snip.rv = line.Line_txt_f("-",[" ---","--- "])`
-`!p snip.rv  = line.Line_l(["",""])` Methods   : {{{
+``!p snip.rv = line.Line_l(["",""])` Methods   : {{{
 public:
     ${0:/* TODO Add class's Methods here */}
 `!p snip.rv  = line.Line_l(["",""])` }}} ! Methods
@@ -586,8 +568,7 @@ endsnippet
 # [ cOperator : class's operator define ] {{{
 snippet cOperator "class's operator define" bw
 `!p line =vLine()
-``!p snip.rv = line.Line_txt_f("-",[" ---","--- "])`
-`!p snip.rv  = line.Line_l(["",""])` Operators : {{{
+``!p snip.rv = line.Line_l(["",""])` Operators : {{{
 public:
     ${0:/* TODO Add class's Operators here */}
 `!p snip.rv  = line.Line_l(["",""])` }}} ! Operators
@@ -600,8 +581,7 @@ endsnippet
 # [ cMacrodef : class's macro defin ] {{{
 snippet cMacro "class's macro defin" bw
 `!p line =vLine()
-``!p snip.rv = line.Line_txt_f("-",[" ---","--- "])`
-`!p snip.rv  = line.Line_l(["",""])` Macrodefs : {{{
+``!p snip.rv = line.Line_l(["",""])` Macrodefs : {{{
     #define ${1:Symabl} ${2:Value}
 `!p snip.rv  = line.Line_l(["",""])` }}} ! Macrodefs
 endsnippet
@@ -612,8 +592,7 @@ endsnippet
 # [ cTypedef  : class's typedef ] {{{
 snippet cTypedef "class's typedef" bw
 `!p line =vLine()
-``!p snip.rv = line.Line_txt_f("-",[" ---","--- "])`
-`!p snip.rv  = line.Line_l(["",""])` Typedefs  : {{{
+``!p snip.rv = line.Line_l(["",""])` Typedefs  : {{{
 public:
     typedef typename ${1:Oldtype} ${2:Newtype};
 `!p snip.rv  = line.Line_l(["",""])` }}} ! Typedefs
@@ -625,8 +604,7 @@ endsnippet
 # [ cStdef    : class's type define for std members ] {{{
 snippet cStdef "type define for std members" bw
 `!p line =vLine()
-``!p snip.rv = line.Line_txt_f("-",[" ---","--- "])`
-`!p snip.rv  = line.Line_l(["",""])` Typedefs  : {{{
+``!p snip.rv = line.Line_l(["",""])` Typedefs  : {{{
 public:
     typedef typename std::${1:vertor}<${2:type}>                t$1;
     typedef typename std::$1<$2>::iterator      t$1Iter;
@@ -640,8 +618,7 @@ endsnippet
 # [ cFriend   : class's friend define ] {{{
 snippet cFriend "class's friend define" bw
 `!p line =vLine()
-``!p snip.rv = line.Line_txt_f("-",[" ---","--- "])`
-`!p snip.rv  = line.Line_l(["",""])` Friendefs : {{{
+``!p snip.rv = line.Line_l(["",""])` Friendefs : {{{
 friend class ${0:friendclassname};
 `!p snip.rv  = line.Line_l(["",""])` }}} ! Friendefs
 
@@ -732,13 +709,11 @@ snippet namespace "create a namespace" bw
 `!p line=vLine()`
 `!p snip.rv=line.Line_txt_f( '=', [" ===","=== "] )`
 `!p snip.rv=cmt()[0]` using namespace vm {{{
-namespace vm
-{
+namespace vm {
 
 ${0:${VISUAL}}
 
-}; 
-`!p snip.rv=cmt()[0]` }}} End of namespace vm
+}; `!p snip.rv=cmt()[0]` }}} End of namespace vm
 `!p snip.rv=line.Line_txt_f( '=', [" ===","=== "] )`
 
 endsnippet
@@ -748,6 +723,8 @@ endsnippet
 snippet cout "std::cout << ... << std::endl;"
 std::cout << ${1} << std::endl;${0}
 endsnippet
+
+# ------------------------------------------------------------------------------------------------ #
 
 snippet vCout "vCout << ... << vEndl;"
 vCout << ${1} << vEndl;${0}
@@ -801,7 +778,7 @@ snippet fori
 for ( int ${1:i}=0; $1<${2:count}; $2${3:++} )
 {
     ${0:${VISUAL}}
-}
+} // End of for ( int $1...
 endsnippet
 
 # ------------------------------------------------------------------------------------------------ #
@@ -811,7 +788,7 @@ snippet fore
 for ( ${1:auto} ${2:i} : ${3:container} ) 
 {
     ${4}
-}
+} // End of for ( $1 ...
 endsnippet
 
 # ------------------------------------------------------------------------------------------------ #
@@ -822,7 +799,7 @@ ${1:std::vector}<${2:type}>::${3:const_iterator} ${4:i} = ${5:container}.begin()
 for ( ; $4 != $5.end(); ++$4 ) 
 {
     ${6}
-}
+} // End of for ( ; $4 ...
 endsnippet
 
 # ------------------------------------------------------------------------------------------------ #
@@ -832,7 +809,7 @@ snippet itera
 for (auto ${1:i} = ${2:container}.begin(); $1 != $2.end(); ++$1) 
 {
     ${3:std::cout << *$1 << std::endl;}
-}
+} // End of for ( auto $1 ...
 endsnippet
 
 # ------------------------------------------------------------------------------------------------ #

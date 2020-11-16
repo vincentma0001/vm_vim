@@ -7,7 +7,7 @@
 # ==   Author               : v.m. ( vincent_ma000!hotmail.com )                                == #
 # ==   Version              : 0.0.0.1                                                           == #
 # ==   Create Time          : 2020-09-14 01:32:13                                               == #
-# ==   Modify Time          : 2020-10-23 13:59:09                                               == #
+# ==   Modify Time          : 2020-11-16 11:39:11                                               == #
 # ==   Issue  List          :                                                                   == #
 # ==   Change List          :                                                                   == #
 # ==     [    0.0.0.1     ] - 添加#==,#--,$npvm功能                                             == #
@@ -124,12 +124,12 @@ endsnippet
 # ------------------------------------------------------------------------------------------------ #
 
 # ------------------------------------------------------------------------------------------------ #
-# [ $== : Comment splite line ] {{{
-snippet $== "Comment splite line" bw
+# [ #== : Comment splite line ] {{{
+snippet #== "Comment splite line" bw
 `!p line=vLine()
 ``!p snip.rv=line.Line_txt_f('=',["====","===="])`
 endsnippet
-# ==  }}} End of SnipFunc $==
+# ==  }}} End of SnipFunc #==
 # ------------------------------------------------------------------------------------------------ #
 
 # ------------------------------------------------------------------------------------------------ #
@@ -195,13 +195,13 @@ endsnippet
 # ================================================================================================ #
 
 # ================================================================================================ #
-# ==  Cmt注释                                                                                     == #
+# ==  Cmt注释                                                                                   == #
 # ================================================================================================ #
 # [ Cmt注释 ] {{{
 
 # ------------------------------------------------------------------------------------------------ #
 # [ #cmt : Comment block ] {{{
-snippet #cmt "Comment block" bw
+snippet #cmt "Commit #===# # xxx # #===# #[xx]{}# #===#" bw
 `!p 
 line=vLine()
 ``!p snip.rv=line.Line_txt_f('=',[" ===","=== "])`
@@ -219,7 +219,7 @@ endsnippet
 
 # ------------------------------------------------------------------------------------------------ #
 # [ #cmt2 : Comment block ] {{{
-snippet #cmt2 "Comment block" bw
+snippet #cmt2 "Commit #===# # xxx # #---# #[]{}# #===#" bw
 `!p 
 line=vLine()
 ``!p snip.rv=line.Line_txt_f('=',[" ===","=== "])`
@@ -237,7 +237,7 @@ endsnippet
 
 # ------------------------------------------------------------------------------------------------ #
 # [ #cmt- : comment block with splite line - ] {{{
-snippet #cmt- "comment block type 3" bw
+snippet #cmt- "Commit #---# #[]{}# #---#" bw
 `!p line=vLine()
 ``!p snip.rv=line.Line_txt_f('-',[" ---","--- "])`
 `!p snip.rv =line.Line_l(["",""])` [ ${1:Comment info :} ] {{{
@@ -253,7 +253,7 @@ endsnippet
 
 # ------------------------------------------------------------------------------------------------ #
 # [ #cmt-1 : comment block type splite line - 1 ] {{{
-snippet #cmt-1 "comment block type splite line - 1" bw
+snippet #cmt-1 "Commit #---# #[]{}#" bw
 `!p line=vLine()
 ``!p snip.rv=line.Line_txt_f('-',[" ---","--- "])`
 `!p snip.rv =line.Line_l(["",""])`  ${1:Comment info :}  {{{
@@ -268,7 +268,7 @@ endsnippet
 
 # ------------------------------------------------------------------------------------------------ #
 # [ #cmt= : commment block with splite line = ] {{{
-snippet #cmt= "commment block with splite line =" bw
+snippet #cmt= "Commit #===# #[]{}# #===#" bw
 `!p line=vLine()
 ``!p snip.rv=line.Line_txt_f('=',[" ===","=== "])`
 `!p snip.rv =line.Line_l(["",""])` [ ${1:Comment info :} ] {{{
@@ -284,7 +284,7 @@ endsnippet
 
 # ------------------------------------------------------------------------------------------------ #
 # [ #cmt=1 : comment block with splite line = 1 ] {{{
-snippet #cmt=1 "comment block with splite line = 1" bw
+snippet #cmt=1 "Commit #===# #[]{}#" bw
 `!p line=vLine()
 ``!p snip.rv=line.Line_txt_f('=',[" ===","=== "])`
 `!p snip.rv =line.Line_l(["",""])` ${1:Comment info :} {{{
@@ -436,13 +436,11 @@ snippet #namespace "namespace define" bw
 `!p line=vLine()`
 `!p snip.rv=line.Line_txt_f( '=', [" ===","=== "] )`
 `!p snip.rv=cmt()[0]` using namespace vm {{{
-namespace vm
-{
+namespace vm {
 
 ${0:${VISUAL}}
 
-}; 
-`!p snip.rv=cmt()[0]` }}} End of namespace vm
+}; `!p snip.rv=cmt()[0]` }}} End of namespace vm
 `!p snip.rv=line.Line_txt_f( '=', [" ===","=== "] )`
 
 endsnippet
