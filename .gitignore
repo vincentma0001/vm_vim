@@ -3,4 +3,5 @@ __pycache__
 /vm_fonts
 *.swo
 *.swp
+*.pyc
 /vm_include
