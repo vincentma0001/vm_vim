@@ -6,13 +6,8 @@
 " ==                                                                                            == "
 " ==   Author               : v.m. ( vincent_ma000!hotmail.com )                                == "
 " ==   Version              : 1.0.0.0                                                           == "
-<<<<<<< HEAD
-" ==   Create Time          : 2020-09-14 22:53:03                                               == "
-" ==   Modify Time          : 2020-11-08 08:45:32                                               == "
-=======
 " ==   Create Time          : 2020-09-14 22:53                                                  == "
-" ==   Modify Time          : 2020-11-16 12:03                                                  == "
->>>>>>> work
+" ==   Modify Time          : 2020-11-16 12:25                                                  == "
 " ==   Issue  List          :                                                                   == "
 " ==   Change List          :                                                                   == "
 " ==     [    0.0.0.0     ] - Basic version                                                     == "

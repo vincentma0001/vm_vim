@@ -9,8 +9,8 @@
 # ==                                                                                            == #
 # ==   Author               : v.m. ( vincent_ma0001@hotmail.com )                               == #
 # ==   Version              : 1.0.0.0                                                           == #
-# ==   Create Time          : 2020-09-15 21:25:40                                               == #
-# ==   Modify Time          : 2020-09-15 21:25:40                                               == #
+# ==   Create Time          : 2020-09-15 21:25                                                  == #
+# ==   Modify Time          : 2020-09-15 21:25                                                  == #
 # ==   Issue  List          :                                                                   == #
 # ==   Change List          :                                                                   == #
 # ==     [    0.0.0.0     ] - Basic version                                                     == #
