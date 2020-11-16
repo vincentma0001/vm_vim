@@ -1,7 +1,6 @@
 vm_plugins
 __pycache__
 /vm_fonts
-/*.swo
-/*.swp
-/vm_vundle/*.swp
+*.swo
+*.swp
 /vm_include
